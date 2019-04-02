@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
-import TopBar from './topBar';
-import Content from './content';
-import BottomBar from './bottomBar';
+import TopBar from './Components/topBar';
+import Content from './Components/content';
+import BottomBar from './Components/bottomBar';
 
 class App extends Component {
   render() {
