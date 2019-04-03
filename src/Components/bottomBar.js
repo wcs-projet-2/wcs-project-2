@@ -1,10 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 const BottomBar = () => {
   return (
-    <header>
-      <p>Bottom Bar</p>
-    </header>
+    <footer>
+      <p>
+        All rights reserved - © 2019 - Wild Code School - Made by : Florian Gardy, Marlene Angouillant, Amine Ben Taleb,
+        Hannah Moncot.
+      </p>
+    </footer>
   );
 };
 
