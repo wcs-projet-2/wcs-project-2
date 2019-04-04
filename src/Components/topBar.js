@@ -4,7 +4,7 @@ import { Input, Menu, Dropdown, Icon, Container } from 'semantic-ui-react';
 
 const TopBar = () => {
   return (
-    <Container-fluid>
+    <Container>
       <Menu>
         <img
           src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFMZFzQw4GUNeJz26PswTpAGojWR6zJn-745K2E2GiC6vHLqma1w"
@@ -27,7 +27,7 @@ const TopBar = () => {
           </Dropdown>
         </Menu.Item>
       </Menu>
-    </Container-fluid>
+    </Container>
   );
 };
 
