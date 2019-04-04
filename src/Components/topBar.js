@@ -1,6 +1,6 @@
 import React from 'react';
 import './topBar.css';
-import { Input, Menu, Dropdown, Icon, Container } from 'semantic-ui-react';
+import { Input, Menu, Dropdown, Icon, Container, Checkbox } from 'semantic-ui-react';
 
 const TopBar = () => {
   return (
@@ -16,12 +16,15 @@ const TopBar = () => {
             <Dropdown.Menu>
               <Dropdown.Item>
                 <Icon name="twitter" />
+                <Checkbox toggle />
               </Dropdown.Item>
               <Dropdown.Item>
                 <Icon name="reddit alien" />
+                <Checkbox toggle />
               </Dropdown.Item>
               <Dropdown.Item>
                 <Icon name="hacker news" />
+                <Checkbox toggle />
               </Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
