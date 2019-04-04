@@ -1,0 +1,13 @@
+.ui.grid > .row {
+  border: #61dafb 1px solid;
+  border-radius: 10px;
+  margin: 20px 40px 10px 40px;
+  width: 80%;
+  height: 170px;
+}
+
+h3.ui.left.aligned.header {
+  padding-top: 2px;
+  padding-left: 10px;
+  margin-bottom: 5px;
+}
