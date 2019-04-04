@@ -6,7 +6,9 @@ class Content extends Component {
     return (
       <div>
         <p>
-          <Source />
+          <Source source="Twitter" />
+          <Source source="Reddit" />
+          <Source source="Hacker" />
         </p>
       </div>
     );
