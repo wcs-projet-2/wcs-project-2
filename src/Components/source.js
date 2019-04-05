@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import Article from './article';
+import Article from './Article';
 import { Grid, Container, Header, Icon } from 'semantic-ui-react';
 import './source.css';
 
@@ -28,10 +28,18 @@ class Source extends Component {
             <p> {title} </p>
           </Grid.Row>
           <Grid.Row>
-            <Grid.Column width={3}>Article HERE</Grid.Column>
-            <Grid.Column width={3}>Article HERE</Grid.Column>
-            <Grid.Column width={3}>Article HERE</Grid.Column>
-            <Grid.Column width={3}>Article HERE</Grid.Column>
+            <Grid.Column width={3}>
+              <Article />
+            </Grid.Column>
+            <Grid.Column width={3}>
+              <Article />
+            </Grid.Column>
+            <Grid.Column width={3}>
+              <Article />
+            </Grid.Column>
+            <Grid.Column width={3}>
+              <Article />
+            </Grid.Column>
             {/* </Container> */}
           </Grid.Row>
         </Grid>
