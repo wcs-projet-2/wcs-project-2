@@ -47,9 +47,6 @@ class App extends Component {
       <div className="App">
         <TopBar />
         <Content />
-        {this.state.redditData.map((post) => (
-          <p>{post.title}</p>
-        ))}
         <BottomBar />
       </div>
     );
