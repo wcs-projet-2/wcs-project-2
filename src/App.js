@@ -46,10 +46,6 @@ class App extends Component {
     this.refreshDataFromAPI(this.state.keyWord);
   };
 
-  componentDidMount() {
-    this.refreshDataFromAPI();
-  }
-
   render() {
     return (
       <div className="App">
