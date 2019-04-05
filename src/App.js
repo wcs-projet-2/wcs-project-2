@@ -10,6 +10,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      keyWord: '',
       redditData: [],
     };
     this.refreshDataFromAPI = this.refreshDataFromAPI.bind(this);
@@ -38,6 +39,13 @@ class App extends Component {
     // Add the code here...
   }
 
+  handleChange = (event) => {
+    this.setState({
+      keyWord: event.target.value,
+    });
+    this.refreshDataFromAPI(this.state.keyWord);
+  };
+
   componentDidMount() {
     this.refreshDataFromAPI();
   }
@@ -45,7 +53,13 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <TopBar />
+        <TopBar changeHandler={this.handleChange} searchValue={this.state.keyWord} />
+
+        {/* Affichage à retirer une fois le lien avec content établi */}
+        {this.state.redditData.map((post) => (
+          <p>{post.title}</p>
+        ))}
+
         <Content />
         <BottomBar />
       </div>
