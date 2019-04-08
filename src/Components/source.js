@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Article from './Article';
-import { Grid, Container, Header, Icon } from 'semantic-ui-react';
+import { Grid, Header, Icon } from 'semantic-ui-react';
 import './source.css';
 
 class Source extends Component {
@@ -9,41 +9,32 @@ class Source extends Component {
     let iconName = this.props.source;
     let iconColor;
 
-    if (iconName === 'Twitter') {
+    if (iconName === 'twitter') {
       iconColor = 'blue';
-    } else if (iconName === 'Reddit') {
+    } else if (iconName === 'reddit') {
       iconColor = 'red';
-    } else if (iconName === 'Hacker') {
+    } else if (iconName === 'hacker') {
       iconColor = 'green';
     }
 
+    let cardDisplay = this.props.data.map((post) => {
+      return (
+        <Grid.Column width={3}>
+          <Article title={post.title} date={post.creationDate} content={post.text} />
+        </Grid.Column>
+      );
+    });
+
     return (
-      <div>
-        <Grid>
-          <Grid.Row>
-            {/* <Container fluid> */}
-            <Header as="h3" textAlign="left">
-              <Icon name={iconName} color={iconColor} />
-            </Header>
-            <p> {title} </p>
-          </Grid.Row>
-          <Grid.Row>
-            <Grid.Column width={3}>
-              <Article />
-            </Grid.Column>
-            <Grid.Column width={3}>
-              <Article />
-            </Grid.Column>
-            <Grid.Column width={3}>
-              <Article />
-            </Grid.Column>
-            <Grid.Column width={3}>
-              <Article />
-            </Grid.Column>
-            {/* </Container> */}
-          </Grid.Row>
-        </Grid>
-      </div>
+      <Grid>
+        <Grid.Row>
+          <Header textAlign="left">
+            <Icon name={iconName} color={iconColor} />
+          </Header>
+          <p>{title}</p>
+        </Grid.Row>
+        <Grid.Row>{cardDisplay}</Grid.Row>
+      </Grid>
     );
   }
 }

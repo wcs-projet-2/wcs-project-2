@@ -5,11 +5,9 @@ class Content extends Component {
   render() {
     return (
       <div>
-        <p>
-          <Source source="Twitter" />
-          <Source source="Reddit" />
-          <Source source="Hacker" />
-        </p>
+        <Source source="twitter" data={this.props.redditData} />
+        <Source source="reddit" data={this.props.redditData} />
+        <Source source="hacker" data={this.props.redditData} />
       </div>
     );
   }

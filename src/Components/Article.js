@@ -2,16 +2,13 @@ import React from 'react';
 import { Card, Button } from 'semantic-ui-react';
 import './Article.css';
 
-const Article = () => (
+const Article = (props) => (
   <Card.Group>
     <Card>
       <Card.Content>
-        <Card.Header>#Test1</Card.Header>
-        <Card.Meta>Date</Card.Meta>
-        <Card.Description>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-          magna aliqua.
-        </Card.Description>
+        <Card.Header>{props.title}</Card.Header>
+        <Card.Description>{props.date}</Card.Description>
+        <Card.Description>{props.content}</Card.Description>
         <div>
           <Button circular color="facebook" icon="facebook" />
           <Button circular color="twitter" icon="twitter" />

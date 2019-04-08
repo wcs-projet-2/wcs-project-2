@@ -28,7 +28,7 @@ const getDataFromReddit = (keyWord, sortType, nbOfItems) => {
       children.map((child) => ({
         source: 'Reddit',
         id: `Reddit_${child.data.author}_${child.data.created_utc}`,
-        creactionDate: child.data.created_utc,
+        creationDate: child.data.created_utc,
         author: child.data.author,
         score: child.data.score,
         title: child.data.title,
