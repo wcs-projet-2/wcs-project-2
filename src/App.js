@@ -12,6 +12,8 @@ class App extends Component {
     this.state = {
       keyWord: '',
       redditData: [],
+      twitterData: [],
+      hackerNoonData: [],
     };
     this.refreshDataFromAPI = this.refreshDataFromAPI.bind(this);
   }
@@ -53,13 +55,11 @@ class App extends Component {
     return (
       <div className="App">
         <TopBar changeHandler={this.handleChange} clickHandler={this.handleClick} searchValue={this.state.keyWord} />
-
-        {/* Affichage à retirer une fois le lien avec content établi */}
-        {this.state.redditData.map((post) => (
-          <p>{post.title}</p>
-        ))}
-
-        <Content />
+        <Content
+          redditData={this.state.redditData}
+          twitterData={this.state.twitterData}
+          hackerNoonData={this.state.hackerNoonData}
+        />
         <BottomBar />
       </div>
     );
