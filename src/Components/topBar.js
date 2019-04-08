@@ -1,8 +1,9 @@
 import React from 'react';
 import './topBar.css';
 import { Input, Menu, Dropdown, Icon, Container, Checkbox } from 'semantic-ui-react';
+// import { prependOnceListener } from 'cluster';
 
-const TopBar = () => {
+const TopBar = (props) => {
   return (
     <Container>
       <Menu>
@@ -11,7 +12,13 @@ const TopBar = () => {
           alt="logo"
         />
         <Menu.Item id="search" position="right" style={{ marginRight: '2em' }}>
-          <Input className="icon" icon="search" placeholder="Search..." />
+          <Input
+            className="icon"
+            placeholder="Search..."
+            icon={{ name: 'search', circular: true, link: true, onClick: () => props.clickHandler() }}
+            value={props.searchValue}
+            onChange={props.changeHandler}
+          />
           <Dropdown>
             <Dropdown.Menu>
               <Dropdown.Item>
