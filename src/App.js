@@ -43,13 +43,16 @@ class App extends Component {
     this.setState({
       keyWord: event.target.value,
     });
+  };
+
+  handleClick = (event) => {
     this.refreshDataFromAPI(this.state.keyWord);
   };
 
   render() {
     return (
       <div className="App">
-        <TopBar changeHandler={this.handleChange} searchValue={this.state.keyWord} />
+        <TopBar changeHandler={this.handleChange} clickHandler={this.handleClick} searchValue={this.state.keyWord} />
 
         {/* Affichage à retirer une fois le lien avec content établi */}
         {this.state.redditData.map((post) => (

@@ -14,8 +14,8 @@ const TopBar = (props) => {
         <Menu.Item id="search" position="right" style={{ marginRight: '2em' }}>
           <Input
             className="icon"
-            icon="search"
             placeholder="Search..."
+            icon={{ name: 'search', circular: true, link: true, onClick: () => props.clickHandler() }}
             value={props.searchValue}
             onChange={props.changeHandler}
           />
