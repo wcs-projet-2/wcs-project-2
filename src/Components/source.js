@@ -1,20 +1,23 @@
 import React, { Component } from 'react';
 import Article from './Article';
-import { Grid, Header, Icon } from 'semantic-ui-react';
+import { Grid, Header, Container, Image } from 'semantic-ui-react';
 import './source.css';
+import HackerNoon from './assets/images/HackerNoon.png';
+import reddit from './assets/images/reddit.png';
+import twitter from './assets/images/twitter.png';
 
 class Source extends Component {
   render() {
     let title = this.props.source;
     let iconName = this.props.source;
-    let iconColor;
+    let icon;
 
     if (iconName === 'twitter') {
-      iconColor = 'blue';
+      icon = twitter;
     } else if (iconName === 'reddit') {
-      iconColor = 'red';
-    } else if (iconName === 'hacker') {
-      iconColor = 'green';
+      icon = reddit;
+    } else if (iconName === 'hacker noon') {
+      icon = HackerNoon;
     }
 
     let cardDisplay = this.props.data.map((post) => {
@@ -26,15 +29,21 @@ class Source extends Component {
     });
 
     return (
-      <Grid>
-        <Grid.Row>
-          <Header textAlign="left">
-            <Icon name={iconName} color={iconColor} />
-          </Header>
-          <p>{title}</p>
-        </Grid.Row>
-        <Grid.Row>{cardDisplay}</Grid.Row>
-      </Grid>
+      <div>
+        <br />
+        <Container className="source">
+          <Grid>
+            <Grid.Row>
+              <Header as="h3" textAlign="left" style={{ textTransform: 'uppercase' }}>
+                {title}
+                <Image src={icon} size="mini" />
+              </Header>
+              <br />
+            </Grid.Row>
+            <Grid.Row>{cardDisplay}</Grid.Row>
+          </Grid>
+        </Container>
+      </div>
     );
   }
 }

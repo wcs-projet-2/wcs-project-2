@@ -7,7 +7,7 @@ class Content extends Component {
       <div>
         <Source source="twitter" data={this.props.redditData} />
         <Source source="reddit" data={this.props.redditData} />
-        <Source source="hacker" data={this.props.redditData} />
+        <Source source="hacker noon" data={this.props.redditData} />
       </div>
     );
   }

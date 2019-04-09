@@ -1,8 +1,8 @@
-.ui.grid > .row {
+div.ui.container.source {
   border: #61dafb 1px solid;
   border-radius: 10px;
   margin: 20px 40px 10px 40px;
-  width: 80%;
+  padding: 10px 20px 10px 20px;
   height: auto;
 }
 
@@ -10,4 +10,8 @@ h3.ui.left.aligned.header {
   padding-top: 2px;
   padding-left: 10px;
   margin-bottom: 5px;
+}
+
+img.ui.mini.image {
+  margin-left: 5px;
 }
