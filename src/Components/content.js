@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import Source from './source';
+import './content.css';
 
 class Content extends Component {
   render() {
     return (
       <div>
-        {this.props.toggle ? (
+        {this.props.toggle.twitter ? (
           <div>
             <Source source="twitter" data={this.props.redditData} />
           </div>
@@ -15,7 +16,7 @@ class Content extends Component {
           </div>
         )}
 
-        {this.props.toggle ? (
+        {this.props.toggle.reddit ? (
           <div>
             <Source source="reddit" data={this.props.redditData} />
           </div>
@@ -25,7 +26,7 @@ class Content extends Component {
           </div>
         )}
 
-        {this.props.toggle ? (
+        {this.props.toggle.hacker ? (
           <div>
             <Source source="hacker" data={this.props.redditData} />
           </div>

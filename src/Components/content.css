@@ -1,9 +1,9 @@
 .Twitter-toggle {
-  visibility: hidden;
+  display: none;
 }
 .Reddit-toggle {
-  visibility: hidden;
+  display: none;
 }
 .Hacker-toggle {
-  visibility: hidden;
+  display: none;
 }
