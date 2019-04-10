@@ -19,6 +19,7 @@ class Article extends React.Component {
     return (
       <div>
         <Card.Group>
+          {this.props.source}
           <Card onClick={this.handleClick}>
             <Card.Content>
               <Card.Header>{this.props.title}</Card.Header>
