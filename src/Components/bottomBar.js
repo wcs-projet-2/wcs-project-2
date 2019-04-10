@@ -1,4 +1,5 @@
 import React from 'react';
+import './bottomBar.css';
 
 const BottomBar = () => {
   return (
