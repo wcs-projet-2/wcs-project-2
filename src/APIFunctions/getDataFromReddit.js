@@ -7,22 +7,24 @@ inputs:
   sortType --> sort type -- can be one of (relevance, hot, top, new, comments)
   nbOfItems --> the maximum number of items desired (default: 25, maximum: 100)
 
-Output:
-  array of objects
-    - source = Reddit
-    - id = Reddit_$author_$creationDate
-    - creation date
-    - author
-    - score
-    - title
-    - text
-    - postUrl
-    
-  */
+Output: Array of articles comming from reddit
+
+*/
+
+import axios from 'axios';
 
 const getDataFromReddit = (keyWord, sortType, nbOfItems) => {
-  return fetch(`http://www.reddit.com/search.json?q=${keyWord}&sort=${sortType}&limit=${nbOfItems}`)
-    .then((response) => response.json())
+  return axios({
+    method: 'get',
+    url: `http://www.reddit.com/search.json`,
+    params: {
+      // ?q=${keyWord}&sort=${sortType}&limit=${nbOfItems}
+      q: keyWord,
+      sort: sortType,
+      limit: nbOfItems,
+    },
+    responseType: 'json',
+  })
     .then((JSONData) => dataSelection(JSONData))
     .then((selectedData) => dataNormalization(selectedData))
     .catch((error) => console.log(error));
@@ -31,7 +33,7 @@ const getDataFromReddit = (keyWord, sortType, nbOfItems) => {
 const dataSelection = (JSONdata) => {
   let selectedData = [];
 
-  selectedData = JSONdata.data.children.map((child) => {
+  selectedData = JSONdata.data.data.children.map((child) => {
     let creationDate = child.data.created_utc;
     let author = child.data.author;
     let score = child.data.score;
