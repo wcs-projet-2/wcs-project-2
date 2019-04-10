@@ -22,7 +22,7 @@ class Source extends Component {
 
     let cardDisplay = this.props.data.map((post) => {
       return (
-        <Grid.Column width={3}>
+        <Grid.Column width={3} style={{ marginLeft: '8px' }}>
           <Article title={post.title} date={post.creationDate} content={post.text} />
         </Grid.Column>
       );

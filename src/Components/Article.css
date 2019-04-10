@@ -1,4 +1,12 @@
 .ui.cards {
   display: flex;
   justify-content: center;
+  width: 220px;
+}
+
+.content {
+  overflow: hidden;
+  width: auto;
+  height: 250px;
+  margin: 5px;
 }
