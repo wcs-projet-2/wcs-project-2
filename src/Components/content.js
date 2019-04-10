@@ -1,40 +1,33 @@
+/* eslint-disable no-lone-blocks */
 import React, { Component } from 'react';
 import Source from './source';
 import './content.css';
 
 class Content extends Component {
   render() {
+    let resultTwitter;
+    let resultReddit;
+    let resultHacker;
+    {
+      this.props.toggle.twitter ? (resultTwitter = '') : (resultTwitter = 'Content-toggle');
+    }
+    {
+      this.props.toggle.reddit ? (resultReddit = '') : (resultReddit = 'Content-toggle');
+    }
+    {
+      this.props.toggle.hacker ? (resultHacker = '') : (resultHacker = 'Content-toggle');
+    }
     return (
       <div>
-        {this.props.toggle.twitter ? (
-          <div>
-            <Source source="twitter" data={this.props.redditData} />
-          </div>
-        ) : (
-          <div className="Twitter-toggle">
-            <Source source="twitter" data={this.props.redditData} />
-          </div>
-        )}
-
-        {this.props.toggle.reddit ? (
-          <div>
-            <Source source="reddit" data={this.props.redditData} />
-          </div>
-        ) : (
-          <div className="Reddit-toggle">
-            <Source source="reddit" data={this.props.redditData} />
-          </div>
-        )}
-
-        {this.props.toggle.hacker ? (
-          <div>
-            <Source source="hacker" data={this.props.redditData} />
-          </div>
-        ) : (
-          <div className="Hacker-toggle">
-            <Source source="hacker" data={this.props.redditData} />
-          </div>
-        )}
+        <div className={resultTwitter}>
+          <Source source="twitter" data={this.props.redditData} />
+        </div>
+        <div className={resultReddit}>
+          <Source source="reddit" data={this.props.redditData} />
+        </div>
+        <div className={resultHacker}>
+          <Source source="hacker" data={this.props.redditData} />
+        </div>
       </div>
     );
   }

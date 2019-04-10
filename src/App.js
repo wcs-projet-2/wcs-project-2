@@ -15,9 +15,9 @@ class App extends Component {
       twitterData: [],
       hackerNoonData: [],
       sourceToggle: {
-        twitter: false,
-        reddit: false,
-        hacker: false,
+        twitter: true,
+        reddit: true,
+        hacker: true,
       },
     };
     this.refreshDataFromAPI = this.refreshDataFromAPI.bind(this);
@@ -66,6 +66,7 @@ class App extends Component {
     return (
       <div className="App">
         <TopBar
+          toggle={this.state.sourceToggle}
           onToggle={this.handleToggle}
           changeHandler={this.handleChange}
           clickHandler={this.handleClick}
