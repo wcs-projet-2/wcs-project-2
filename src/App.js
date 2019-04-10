@@ -20,19 +20,7 @@ class App extends Component {
 
   refreshDataFromAPI(keyWord = 'Apple', sort = 'relevance', nbOfItems = 5) {
     // Refresh data from Reddit
-    getDataFromReddit(keyWord, sort, nbOfItems)
-      .then((result) => {
-        let arr = [];
-        result.map((element) =>
-          arr.push({
-            title: element.title,
-            text: element.text,
-            author: element.author,
-          })
-        );
-        return arr;
-      })
-      .then((result) => this.setState({ redditData: result }));
+    getDataFromReddit(keyWord, sort, nbOfItems).then((result) => this.setState({ redditData: result }));
 
     // refresh data from Twitter
     // Add the code here...
