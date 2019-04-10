@@ -8,15 +8,11 @@ class Content extends Component {
     let resultTwitter;
     let resultReddit;
     let resultHacker;
-    {
-      this.props.toggle.twitter ? (resultTwitter = '') : (resultTwitter = 'Content-toggle');
-    }
-    {
-      this.props.toggle.reddit ? (resultReddit = '') : (resultReddit = 'Content-toggle');
-    }
-    {
-      this.props.toggle.hacker ? (resultHacker = '') : (resultHacker = 'Content-toggle');
-    }
+
+    this.props.toggle.twitter ? (resultTwitter = '') : (resultTwitter = 'Content-toggle');
+    this.props.toggle.reddit ? (resultReddit = '') : (resultReddit = 'Content-toggle');
+    this.props.toggle.hacker ? (resultHacker = '') : (resultHacker = 'Content-toggle');
+
     return (
       <div>
         <div className={resultTwitter}>
