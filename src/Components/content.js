@@ -5,9 +5,35 @@ class Content extends Component {
   render() {
     return (
       <div>
-        <Source source="twitter" data={this.props.redditData} />
-        <Source source="reddit" data={this.props.redditData} />
-        <Source source="hacker noon" data={this.props.redditData} />
+        {this.props.toggle ? (
+          <div>
+            <Source source="twitter" data={this.props.redditData} />
+          </div>
+        ) : (
+          <div className="Twitter-toggle">
+            <Source source="twitter" data={this.props.redditData} />
+          </div>
+        )}
+
+        {this.props.toggle ? (
+          <div>
+            <Source source="reddit" data={this.props.redditData} />
+          </div>
+        ) : (
+          <div className="Reddit-toggle">
+            <Source source="reddit" data={this.props.redditData} />
+          </div>
+        )}
+
+        {this.props.toggle ? (
+          <div>
+            <Source source="hacker" data={this.props.redditData} />
+          </div>
+        ) : (
+          <div className="Hacker-toggle">
+            <Source source="hacker" data={this.props.redditData} />
+          </div>
+        )}
       </div>
     );
   }

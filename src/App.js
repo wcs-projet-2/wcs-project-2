@@ -14,6 +14,7 @@ class App extends Component {
       redditData: [],
       twitterData: [],
       hackerNoonData: [],
+      toggle: false,
     };
     this.refreshDataFromAPI = this.refreshDataFromAPI.bind(this);
   }
@@ -51,10 +52,19 @@ class App extends Component {
     this.refreshDataFromAPI(this.state.keyWord);
   };
 
+  handleToggle = () => {
+    this.setState({ toggle: !this.state.toggle });
+  };
+
   render() {
     return (
       <div className="App">
-        <TopBar changeHandler={this.handleChange} clickHandler={this.handleClick} searchValue={this.state.keyWord} />
+        <TopBar
+          onToggle={this.state.handleToggle}
+          changeHandler={this.handleChange}
+          clickHandler={this.handleClick}
+          searchValue={this.state.keyWord}
+        />
         <Content
           redditData={this.state.redditData}
           twitterData={this.state.twitterData}
