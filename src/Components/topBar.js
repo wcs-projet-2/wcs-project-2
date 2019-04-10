@@ -1,6 +1,6 @@
 import React from 'react';
 import './topBar.css';
-import { Input, Menu, Dropdown, Icon, Container, Checkbox } from 'semantic-ui-react';
+import { Input, Menu, Icon, Container, Checkbox } from 'semantic-ui-react';
 // import { prependOnceListener } from 'cluster';
 
 const TopBar = (props) => {
@@ -19,22 +19,18 @@ const TopBar = (props) => {
             value={props.searchValue}
             onChange={props.changeHandler}
           />
-          <Dropdown>
-            <Dropdown.Menu>
-              <Dropdown.Item>
-                <Icon name="twitter" />
-                <Checkbox toggle />
-              </Dropdown.Item>
-              <Dropdown.Item>
-                <Icon name="reddit alien" />
-                <Checkbox toggle />
-              </Dropdown.Item>
-              <Dropdown.Item>
-                <Icon name="hacker news" />
-                <Checkbox toggle />
-              </Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
+          <div>
+            <Icon className="twitter" />
+            <Checkbox toggle defaultChecked="true" onChange={() => props.onToggle('twitter')} />
+          </div>
+          <div>
+            <Icon className="reddit alien" />
+            <Checkbox toggle defaultChecked="true" onChange={() => props.onToggle('reddit')} />
+          </div>
+          <div>
+            <Icon className="moon" />
+            <Checkbox toggle defaultChecked="true" onChange={() => props.onToggle('hacker')} />
+          </div>
         </Menu.Item>
       </Menu>
     </Container>
