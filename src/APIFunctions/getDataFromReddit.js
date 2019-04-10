@@ -37,7 +37,10 @@ const dataSelection = (JSONdata) => {
     let score = child.data.score;
     let title = child.data.title;
     let text = child.data.selftext;
-    let postUrl = child.data.url;
+    let postUrl = child.data.permalink;
+    let postHint = child.data.post_hint;
+    let mediaSrc = child.data.url;
+    let thumbnail = child.data.thumbnail;
 
     return {
       creationDate: creationDate,
@@ -46,6 +49,9 @@ const dataSelection = (JSONdata) => {
       title: title,
       text: text,
       postUrl: postUrl,
+      postHint: postHint,
+      mediaSrc: mediaSrc,
+      thumbnail: thumbnail,
     };
   });
 
@@ -57,13 +63,16 @@ const dataNormalization = (selectedData) => {
 
   normalizedData = selectedData.map((article) => {
     let source = 'Reddit';
-    let id = `Reddit_${article.author}_${article.created_utc}`;
+    let id = `Reddit_${article.author}_${article.creationDate}`;
     let creationDate = new Date(article.creationDate * 1000).toDateString();
     let author = article.author;
     let score = article.score;
     let title = article.title;
     let text = article.text;
-    let postUrl = article.posturl;
+    let postUrl = `https://www.reddit.com/${article.postUrl}`;
+    let mediaSrc = article.mediaSrc;
+    let thumbnail = article.thumbnail;
+    let postType = article.postHint;
 
     return {
       source: source,
@@ -74,6 +83,9 @@ const dataNormalization = (selectedData) => {
       title: title,
       text: text,
       postUrl: postUrl,
+      mediaSrc: mediaSrc,
+      thumbnail: thumbnail,
+      postType: postType,
     };
   });
 
