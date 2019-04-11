@@ -21,15 +21,15 @@ const TopBar = (props) => {
           />
           <div>
             <Icon className="twitter" />
-            <Checkbox toggle defaultChecked="true" onChange={() => props.onToggle('twitter')} />
+            <Checkbox toggle defaultChecked={true} onChange={() => props.onToggle('twitter')} />
           </div>
           <div>
             <Icon className="reddit alien" />
-            <Checkbox toggle defaultChecked="true" onChange={() => props.onToggle('reddit')} />
+            <Checkbox toggle defaultChecked={true} onChange={() => props.onToggle('reddit')} />
           </div>
           <div>
             <Icon className="moon" />
-            <Checkbox toggle defaultChecked="true" onChange={() => props.onToggle('hacker')} />
+            <Checkbox toggle defaultChecked={true} onChange={() => props.onToggle('hacker')} />
           </div>
         </Menu.Item>
       </Menu>
