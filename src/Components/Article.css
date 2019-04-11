@@ -1,10 +1,9 @@
-div.ui.cards {
+div.row {
   display: flex;
   justify-content: center;
-  width: 220px;
 }
 
-.cardtest {
+.cardstyle {
   overflow: hidden;
   width: auto;
   height: 250px;
