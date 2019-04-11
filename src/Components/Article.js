@@ -11,7 +11,7 @@ class Article extends React.Component {
     };
   }
 
-  handleClick = () => {
+  handleCardClick = () => {
     this.setState({ isModalOpen: true });
   };
 
@@ -23,7 +23,7 @@ class Article extends React.Component {
     return (
       <div>
         <Card.Group>
-          <Card onClick={this.handleClick}>
+          <Card onClick={this.handleCardClick}>
             <Card.Content>
               <Card.Header>{this.props.title}</Card.Header>
               <Card.Description>{this.props.date}</Card.Description>
