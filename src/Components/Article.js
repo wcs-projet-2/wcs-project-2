@@ -20,7 +20,7 @@ class Article extends React.Component {
       <div>
         <Card.Group>
           {this.props.source}
-          <Card onClick={this.handleClick}>
+          <Card onClick={this.handleClick} className="cardtest">
             <Card.Content>
               <Card.Header>{this.props.title}</Card.Header>
               <Card.Description>{this.props.date}</Card.Description>
