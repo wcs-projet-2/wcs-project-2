@@ -5,22 +5,32 @@ class ModalExampleDimmer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      open: false,
-      dimmer: true,
+      isOpen: false,
+      dimmer: 'blurring',
     };
   }
 
-  show = (dimmer) => this.setState({ dimmer, open: true });
+  close = () => {
+    this.setState({ isOpen: false });
+    this.props.onModalClose();
+  };
 
-  close = () => this.setState({ open: false });
+  shouldComponentUpdate(nextProps, nextState) {
+    let shouldCompUpdate = false;
+    if (this.state.isOpen !== nextProps.isModalOpen) {
+      this.setState({ isOpen: nextProps.isModalOpen });
+      shouldCompUpdate = true;
+    }
+    return shouldCompUpdate;
+  }
 
-  componentWillReceiveProps() {
-    this.show('blurring');
+  componentWillMount() {
+    this.setState({ isOpen: this.props.isModalOpen });
   }
 
   render() {
     return (
-      <Modal dimmer={this.state.dimmer} open={this.state.open} onClose={this.close}>
+      <Modal dimmer={this.state.dimmer} open={this.state.isOpen} onClose={this.close}>
         <Modal.Header>Select a Photo</Modal.Header>
         <Modal.Content image>
           <Image wrapped size="medium" src="https://react.semantic-ui.com/images/avatar/large/rachel.png" />

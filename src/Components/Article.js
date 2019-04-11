@@ -7,12 +7,16 @@ class Article extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      open: false,
+      isModalOpen: false,
     };
   }
 
   handleClick = () => {
-    this.setState({ open: true });
+    this.setState({ isModalOpen: true });
+  };
+
+  handleModalClose = () => {
+    this.setState({ isModalOpen: false });
   };
 
   render() {
@@ -31,7 +35,7 @@ class Article extends React.Component {
             </Card.Content>
           </Card>
         </Card.Group>
-        <ArticleModal open={this.state.open} />
+        <ArticleModal isModalOpen={this.state.isModalOpen} onModalClose={this.handleModalClose} />
       </div>
     );
   }
