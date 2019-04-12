@@ -20,14 +20,29 @@ class Article extends React.Component {
   };
 
   render() {
+    let content;
+
+    if (typeof this.props.data.postType === 'undefined') {
+      content = this.props.data.text;
+    } else if (this.props.data.postType === 'image') {
+      content = <img src={this.props.data.thumbnail} alt="" />;
+    } else if (this.props.data.postType === 'link') {
+      content = (
+        <div>
+          <img src={this.props.data.thumbnail} alt="" />
+          <p>this.props.data.postUrl</p>
+        </div>
+      );
+    }
+
     return (
       <div>
         <Card onClick={this.handleCardClick} className="cardstyle">
           <Card.Content>
-            <Card.Header>{this.props.title}</Card.Header>
-            <Card.Description>{this.props.date}</Card.Description>
+            <Card.Header className="title">{this.props.data.title}</Card.Header>
+            <Card.Description className="description">{this.props.data.creationDate}</Card.Description>
             <hr />
-            <Card.Description>{this.props.content}</Card.Description>
+            <Card.Description>{content}</Card.Description>
             {/*   Commentés car on va les utiliser seulement dans le pop-up            
               <div>
                 <Button circular color="facebook" icon="facebook" />
