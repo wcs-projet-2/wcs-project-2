@@ -1,17 +1,18 @@
 import React from 'react';
 import './topBar.css';
-import { Input, Menu, Icon, Container, Checkbox } from 'semantic-ui-react';
+import { Input, Menu, Icon, Container, Checkbox, Image } from 'semantic-ui-react';
 // import { prependOnceListener } from 'cluster';
+import logo from './assets/images/Logo.png';
 
 const TopBar = (props) => {
   return (
     <Container>
       <Menu>
-        <img
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFMZFzQw4GUNeJz26PswTpAGojWR6zJn-745K2E2GiC6vHLqma1w"
-          alt="logo"
-        />
-        <Menu.Item id="search" position="right" style={{ marginRight: '2em' }}>
+        <Menu.Item id="image">
+          <Image src={logo} alt="logo" />
+        </Menu.Item>
+        <h1 id="title">Welcome to Search Point!</h1>
+        <Menu.Item id="search" position="right">
           <Input
             className="icon"
             placeholder="Search..."
