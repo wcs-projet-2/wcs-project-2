@@ -1,12 +1,29 @@
 import React, { Component } from 'react';
 import Article from './Article';
-import { Grid, Header, Container, Image } from 'semantic-ui-react';
+import { Grid, Header, Container, Image, Button } from 'semantic-ui-react';
 import './source.css';
 import HackerNoon from './assets/images/HackerNoon.png';
 import reddit from './assets/images/reddit.png';
 import twitter from './assets/images/twitter.png';
 
 class Source extends Component {
+  constructor(props) {
+    super(props);
+    this.handleClick = this.handleClick.bind(this);
+    this.state = {
+      startIndex: 0,
+      nbCard: 4,
+    };
+  }
+
+  handleClick = (direction) => {
+    if (direction === 'left') {
+      this.setState({ startIndex: this.state.startIndex - 1 });
+    } else if (direction === 'right') {
+      this.setState({ startIndex: this.state.startIndex + 1 });
+    }
+  };
+
   render() {
     let title = this.props.source;
     let iconName = this.props.source;
@@ -40,7 +57,15 @@ class Source extends Component {
               </Header>
               <br />
             </Grid.Row>
-            <Grid.Row>{cardDisplay}</Grid.Row>
+            <Grid.Row centered>
+              <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                <Button icon="arrow left" onClick={() => this.handleClick('left')} />
+              </div>
+              {cardDisplay}
+              <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                <Button icon="arrow right" onClick={() => this.handleClick('right')} />
+              </div>
+            </Grid.Row>
           </Grid>
         </Container>
       </div>
