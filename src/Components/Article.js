@@ -35,8 +35,8 @@ class Article extends React.Component {
       <div>
         <Card onClick={this.handleClick} className="cardstyle">
           <Card.Content>
-            <Card.Header className="title">{this.props.title}</Card.Header>
-            <Card.Description className="description">{this.props.date}</Card.Description>
+            <Card.Header className="title">{this.props.data.title}</Card.Header>
+            <Card.Description className="description">{this.props.data.creationDate}</Card.Description>
             <hr />
             <Card.Description>{content}</Card.Description>
             {/*   Commentés car on va les utiliser seulement dans le pop-up            
