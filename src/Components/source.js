@@ -41,7 +41,7 @@ class Source extends Component {
       if (index >= this.state.startIndex && index < this.state.startIndex + this.state.nbCard) {
         return (
           <Grid.Column width={3}>
-            <Article key={post.id} id={post.id} title={post.title} date={post.creationDate} content={post.text} />
+            <Article key={post.id} id={post.id} data={post} />
           </Grid.Column>
         );
       } else {
