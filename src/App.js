@@ -23,7 +23,7 @@ class App extends Component {
     this.refreshDataFromAPI = this.refreshDataFromAPI.bind(this);
   }
 
-  refreshDataFromAPI(keyWord = 'Apple', sort = 'relevance', nbOfItems = 5) {
+  refreshDataFromAPI(keyWord = 'Apple', sort = 'relevance', nbOfItems = 25) {
     // Refresh data from Reddit
     getDataFromReddit(keyWord, sort, nbOfItems).then((result) => this.setState({ redditData: result }));
 
