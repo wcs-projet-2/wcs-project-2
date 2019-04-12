@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Article from './Article';
+import Article from './Article.jsx';
 import { Grid, Header, Container, Image, Button } from 'semantic-ui-react';
 import './source.css';
 import HackerNoon from './assets/images/HackerNoon.png';
