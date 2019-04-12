@@ -40,7 +40,7 @@ class Source extends Component {
     let cardDisplay = this.props.data.map((post, index) => {
       if (index >= this.state.startIndex && index < this.state.startIndex + this.state.nbCard) {
         return (
-          <Grid.Column width={3}>
+          <Grid.Column width={3} key={post.id} id={post.id}>
             <Article key={post.id} id={post.id} data={post} />
           </Grid.Column>
         );
