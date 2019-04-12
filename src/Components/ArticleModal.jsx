@@ -2,25 +2,9 @@ import React, { Component } from 'react';
 import { Button, Header, Image, Modal } from 'semantic-ui-react';
 
 class ModalExampleDimmer extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      open: false,
-      dimmer: true,
-    };
-  }
-
-  show = (dimmer) => this.setState({ dimmer, open: true });
-
-  close = () => this.setState({ open: false });
-
-  componentWillReceiveProps() {
-    this.show('blurring');
-  }
-
   render() {
     return (
-      <Modal dimmer={this.state.dimmer} open={this.state.open} onClose={this.close}>
+      <Modal dimmer={true} open={this.props.isModalOpen} onClose={this.props.onModalClose}>
         <Modal.Header>Select a Photo</Modal.Header>
         <Modal.Content image>
           <Image wrapped size="medium" src="https://react.semantic-ui.com/images/avatar/large/rachel.png" />
@@ -31,10 +15,16 @@ class ModalExampleDimmer extends Component {
           </Modal.Description>
         </Modal.Content>
         <Modal.Actions>
-          <Button color="black" onClick={this.close}>
+          <Button color="black" onClick={this.props.onModalClose}>
             Nope
           </Button>
-          <Button positive icon="checkmark" labelPosition="right" content="Yep, that's me" onClick={this.close} />
+          <Button
+            positive
+            icon="checkmark"
+            labelPosition="right"
+            content="Yep, that's me"
+            onClick={this.props.onModalClose}
+          />
         </Modal.Actions>
       </Modal>
     );

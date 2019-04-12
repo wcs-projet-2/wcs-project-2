@@ -7,18 +7,23 @@ class Article extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      open: false,
+      isModalOpen: false,
     };
   }
 
-  handleClick = () => {
-    this.setState({ open: true });
+  handleCardClick = () => {
+    this.setState({ isModalOpen: true });
+  };
+
+  handleModalClose = () => {
+    this.setState({ isModalOpen: false });
   };
 
   render() {
     return (
       <div>
-        <Card onClick={this.handleClick} className="cardstyle">
+
+        <Card onClick={this.handleCardClick} className="cardstyle">
           <Card.Content>
             <Card.Header>{this.props.title}</Card.Header>
             <Card.Description>{this.props.date}</Card.Description>
@@ -31,7 +36,7 @@ class Article extends React.Component {
               </div> */}
           </Card.Content>
         </Card>
-        <ArticleModal open={this.state.open} />
+        <ArticleModal isModalOpen={this.state.isModalOpen} onModalClose={this.handleModalClose} />
       </div>
     );
   }
