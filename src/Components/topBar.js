@@ -18,6 +18,11 @@ const TopBar = (props) => {
             icon={{ name: 'search', circular: true, link: true, onClick: () => props.clickHandler() }}
             value={props.searchValue}
             onChange={props.changeHandler}
+            onKeyPress={(event) => {
+              if (event.key === 'Enter') {
+                props.clickHandler();
+              }
+            }}
           />
           <div>
             <Icon className="twitter" />
