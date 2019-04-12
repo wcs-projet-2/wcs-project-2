@@ -37,12 +37,16 @@ class Source extends Component {
       icon = HackerNoon;
     }
 
-    let cardDisplay = this.props.data.map((post) => {
-      return (
-        <Grid.Column width={3}>
-          <Article title={post.title} date={post.creationDate} content={post.text} />
-        </Grid.Column>
-      );
+    let cardDisplay = this.props.data.map((post, index) => {
+      if (index >= this.state.startIndex && index < this.state.startIndex + this.state.nbCard) {
+        return (
+          <Grid.Column width={3}>
+            <Article key={post.id} id={post.id} title={post.title} date={post.creationDate} content={post.text} />
+          </Grid.Column>
+        );
+      } else {
+        return null;
+      }
     });
 
     return (
