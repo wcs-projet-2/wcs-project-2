@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
-import TopBar from './Components/topBar';
-import Content from './Components/content';
-import BottomBar from './Components/bottomBar';
+import TopBar from './Components/topBar.jsx';
+import Content from './Components/content.jsx';
+import BottomBar from './Components/bottomBar.jsx';
 import 'semantic-ui-css/semantic.min.css';
 import getDataFromReddit from './APIFunctions/getDataFromReddit';
 
