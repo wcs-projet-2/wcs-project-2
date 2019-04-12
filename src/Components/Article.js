@@ -22,6 +22,7 @@ class Article extends React.Component {
   render() {
     return (
       <div>
+
         <Card onClick={this.handleCardClick} className="cardstyle">
           <Card.Content>
             <Card.Header>{this.props.title}</Card.Header>
