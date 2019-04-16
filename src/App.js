@@ -30,12 +30,10 @@ class App extends Component {
     getDataFromReddit(keyWord, sort, nbOfItems).then((result) => this.setState({ redditData: result }));
 
     // refresh data from Twitter
-    let fakeDataFromTwitter = getDataFromTwitter();
-    this.setState({ twitterData: fakeDataFromTwitter });
+    this.setState({ twitterData: getDataFromTwitter() });
 
     // refresh data from Hacker noon
-    let fakeDataFromHN = getDataFromHackerNoon();
-    this.setState({ hackerNoonData: fakeDataFromHN });
+    this.setState({ hackerNoonData: getDataFromHackerNoon() });
   }
 
   handleChange = (event) => {
