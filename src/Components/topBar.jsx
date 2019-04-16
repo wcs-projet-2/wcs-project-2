@@ -18,7 +18,7 @@ const TopBar = (props) => {
           <Input
             className="icon"
             placeholder="Search..."
-            icon={{ name: 'search', circular: props.toggle, link: true, onClick: () => props.clickHandler() }}
+            icon={{ name: 'search', link: true, onClick: () => props.clickHandler() }}
             value={props.searchValue}
             onChange={props.changeHandler}
             onKeyPress={(event) => {

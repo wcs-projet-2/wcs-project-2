@@ -51,22 +51,16 @@ class SearchPoint extends Component {
   componentDidMount() {
     this.setState((prevState) => {
       let finalState = { ...prevState };
-      console.log('final');
-      console.log(finalState);
-
       finalState.keyWord = this.props.location.state.keyWord;
       finalState.sourceToggle = this.props.location.state.sourceToggle;
-
-      console.log('final2');
-      console.log(finalState);
       return finalState;
     });
+
+    // console.log("KeyWord = " + this.state.keyWord);
+    // this.refreshDataFromAPI(this.state.keyWord)
   }
 
   render() {
-    console.log(this.props.location.state);
-    console.log(this.state);
-
     return (
       <div className="App">
         <TopBar
