@@ -9,7 +9,9 @@ const TopBar = (props) => {
     <Container>
       <Menu>
         <Menu.Item id="image">
-          <Image src={logo} alt="logo" />
+          <a href="/">
+            <Image src={logo} alt="logo" />
+          </a>
         </Menu.Item>
         <h1 id="title">Welcome to Search Point!</h1>
         <Menu.Item id="search" position="right">

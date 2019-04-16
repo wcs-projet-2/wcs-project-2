@@ -1,4 +1,8 @@
+.container {
+  overflow-y: hidden;
+}
 .input {
+  margin-left: 4%;
   width: 90%;
   margin-bottom: 3%;
   display: flex;
@@ -13,6 +17,7 @@
   color: rgb(57, 4, 182);
 }
 .image {
+  margin-top: 3%;
   display: flex;
   justify-content: center;
 }

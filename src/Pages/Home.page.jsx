@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Home.css';
 import { Image, Icon, Checkbox, Input } from 'semantic-ui-react';
-import logo from './assets/images/Logo.png';
+import logo from '../assets/images/Logo.png';
 
 class Home extends Component {
   render() {

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import TopBar from './topBar';
-import Content from './content';
-import BottomBar from './bottomBar';
+import TopBar from '../Components/topBar';
+import Content from '../Components/content';
+import BottomBar from '../Components/bottomBar';
 import getDataFromReddit from '../APIFunctions/getDataFromReddit';
 
 class SearchPoint extends Component {
