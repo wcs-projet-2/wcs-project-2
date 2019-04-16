@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import Source from './source';
 import './content.css';
+import { Responsive } from 'semantic-ui-react';
 
 class Content extends Component {
   render() {
@@ -14,15 +15,21 @@ class Content extends Component {
     this.props.toggle.hacker ? (resultHacker = '') : (resultHacker = 'Content-toggle');
 
     return (
-      <div>
+      <div className="sourceContent">
         <div className={resultTwitter}>
-          <Source source="twitter" data={this.props.redditData} />
+          <Responsive>
+            <Source source="twitter" data={this.props.redditData} />
+          </Responsive>
         </div>
         <div className={resultReddit}>
-          <Source source="reddit" data={this.props.redditData} />
+          <Responsive>
+            <Source source="reddit" data={this.props.redditData} />
+          </Responsive>
         </div>
         <div className={resultHacker}>
-          <Source source="hacker noon" data={this.props.redditData} />
+          <Responsive>
+            <Source source="hacker noon" data={this.props.redditData} />
+          </Responsive>
         </div>
       </div>
     );

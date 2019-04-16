@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Article from './Article';
-import { Grid, Header, Container, Image, Button } from 'semantic-ui-react';
+import { Grid, Header, Container, Image, Button, Responsive } from 'semantic-ui-react';
 import './source.css';
 import HackerNoon from './assets/images/HackerNoon.png';
 import reddit from './assets/images/reddit.png';
@@ -13,14 +13,23 @@ class Source extends Component {
     this.state = {
       startIndex: 0,
       nbCard: 4,
+      currentIndex: 0,
     };
   }
-
+  // Si on clique sur la flèche de gauche, nos cards se déplacent vers la gauche
+  // Si on clique sur la flèche de droite, nos cards se déplacent vers la droite
   handleClick = (direction) => {
     if (direction === 'left') {
       this.setState({ startIndex: this.state.startIndex - 1 });
     } else if (direction === 'right') {
       this.setState({ startIndex: this.state.startIndex + 1 });
+    }
+  };
+  // Si on fait une nouvelle recherche, nos cards index redémarrent à zéro
+  onKeyPress = (event) => {
+    if (event.key === 'Enter') {
+      this.setState({ startIndex: this.state.startIndex === 0 });
+    } else {
     }
   };
 
@@ -40,9 +49,11 @@ class Source extends Component {
     let cardDisplay = this.props.data.map((post, index) => {
       if (index >= this.state.startIndex && index < this.state.startIndex + this.state.nbCard) {
         return (
-          <Grid.Column width={3}>
-            <Article key={post.id} id={post.id} title={post.title} date={post.creationDate} content={post.text} />
-          </Grid.Column>
+          <Responsive>
+            <Grid.Column width={3}>
+              <Article key={post.id} id={post.id} title={post.title} date={post.creationDate} content={post.text} />
+            </Grid.Column>
+          </Responsive>
         );
       } else {
         return null;
@@ -52,26 +63,28 @@ class Source extends Component {
     return (
       <div>
         <br />
-        <Container className="source">
-          <Grid>
-            <Grid.Row>
-              <Header as="h3" textAlign="left" style={{ textTransform: 'uppercase' }}>
-                {title}
-                <Image src={icon} size="mini" />
-              </Header>
-              <br />
-            </Grid.Row>
-            <Grid.Row centered>
-              <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                <Button icon="arrow left" onClick={() => this.handleClick('left')} />
-              </div>
-              {cardDisplay}
-              <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                <Button icon="arrow right" onClick={() => this.handleClick('right')} />
-              </div>
-            </Grid.Row>
-          </Grid>
-        </Container>
+        <Responsive>
+          <Container fluid className="source">
+            <Grid>
+              <Grid.Row>
+                <Header as="h3" textAlign="left" style={{ textTransform: 'uppercase' }}>
+                  {title}
+                  <Image src={icon} size="mini" />
+                </Header>
+                <br />
+              </Grid.Row>
+              <Grid.Row>
+                <div className="leftArrow" width={1} style={{ display: 'flex', alignItems: 'center' }}>
+                  <Button icon="arrow left" onClick={() => this.handleClick('left')} />
+                </div>
+                {cardDisplay}
+                <div className="rightArrow" width={1} style={{ display: 'flex', alignItems: 'center' }}>
+                  <Button icon="arrow right" onClick={() => this.handleClick('right')} />
+                </div>
+              </Grid.Row>
+            </Grid>
+          </Container>
+        </Responsive>
       </div>
     );
   }
