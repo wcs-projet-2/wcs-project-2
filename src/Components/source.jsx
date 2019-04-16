@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Article from './Article';
-import { Grid, Header, Container, Image, Button, Responsive } from 'semantic-ui-react';
+import Article from './Article.jsx';
+import { Grid, Header, Container, Image, Button } from 'semantic-ui-react';
 import './source.css';
 import HackerNoon from './assets/images/HackerNoon.png';
 import reddit from './assets/images/reddit.png';
@@ -49,11 +49,9 @@ class Source extends Component {
     let cardDisplay = this.props.data.map((post, index) => {
       if (index >= this.state.startIndex && index < this.state.startIndex + this.state.nbCard) {
         return (
-          <Responsive>
-            <Grid.Column width={3}>
-              <Article key={post.id} id={post.id} title={post.title} date={post.creationDate} content={post.text} />
-            </Grid.Column>
-          </Responsive>
+          <Grid.Column width={3} key={post.id} id={post.id}>
+            <Article key={post.id} id={post.id} data={post} />
+          </Grid.Column>
         );
       } else {
         return null;

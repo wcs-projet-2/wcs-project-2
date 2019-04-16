@@ -1,6 +1,6 @@
 /* eslint-disable no-lone-blocks */
 import React, { Component } from 'react';
-import Source from './source';
+import Source from './source.jsx';
 import './content.css';
 import { Responsive } from 'semantic-ui-react';
 
