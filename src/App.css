@@ -31,11 +31,3 @@
     transform: rotate(360deg);
   }
 }
-
-footer {
-  background-color: rgb(138, 240, 206);
-  padding: 1%;
-  position: fixed;
-  bottom: 0%;
-  width: 100%;
-}

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
-import TopBar from './Components/topBar';
-import Content from './Components/content';
-import BottomBar from './Components/bottomBar';
+import TopBar from './Components/topBar.jsx';
+import Content from './Components/content.jsx';
+import BottomBar from './Components/bottomBar.jsx';
 import 'semantic-ui-css/semantic.min.css';
 import getDataFromReddit from './APIFunctions/getDataFromReddit';
 
@@ -12,25 +12,20 @@ class App extends Component {
     this.state = {
       keyWord: '',
       redditData: [],
+      twitterData: [],
+      hackerNoonData: [],
+      sourceToggle: {
+        twitter: true,
+        reddit: true,
+        hacker: true,
+      },
     };
     this.refreshDataFromAPI = this.refreshDataFromAPI.bind(this);
   }
 
-  refreshDataFromAPI(keyWord = 'Apple', sort = 'relevance', nbOfItems = 5) {
+  refreshDataFromAPI(keyWord = 'Apple', sort = 'relevance', nbOfItems = 25) {
     // Refresh data from Reddit
-    getDataFromReddit(keyWord, sort, nbOfItems)
-      .then((result) => {
-        let arr = [];
-        result.map((element) =>
-          arr.push({
-            title: element.title,
-            text: element.text,
-            author: element.author,
-          })
-        );
-        return arr;
-      })
-      .then((result) => this.setState({ redditData: result }));
+    getDataFromReddit(keyWord, sort, nbOfItems).then((result) => this.setState({ redditData: result }));
 
     // refresh data from Twitter
     // Add the code here...
@@ -49,17 +44,28 @@ class App extends Component {
     this.refreshDataFromAPI(this.state.keyWord);
   };
 
+  handleToggle = (source) => {
+    let sourceToggle = { ...this.state.sourceToggle };
+    sourceToggle[source] = !sourceToggle[source];
+    this.setState({ sourceToggle });
+  };
+
   render() {
     return (
       <div className="App">
-        <TopBar changeHandler={this.handleChange} clickHandler={this.handleClick} searchValue={this.state.keyWord} />
-
-        {/* Affichage à retirer une fois le lien avec content établi */}
-        {this.state.redditData.map((post) => (
-          <p>{post.title}</p>
-        ))}
-
-        <Content />
+        <TopBar
+          toggle={this.state.sourceToggle}
+          onToggle={this.handleToggle}
+          changeHandler={this.handleChange}
+          clickHandler={this.handleClick}
+          searchValue={this.state.keyWord}
+        />
+        <Content
+          toggle={this.state.sourceToggle}
+          redditData={this.state.redditData}
+          twitterData={this.state.twitterData}
+          hackerNoonData={this.state.hackerNoonData}
+        />
         <BottomBar />
       </div>
     );

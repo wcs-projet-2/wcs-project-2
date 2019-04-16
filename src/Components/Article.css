@@ -1,4 +1,14 @@
-.ui.cards {
-  display: flex;
-  justify-content: center;
+.cardstyle {
+  overflow: hidden;
+  width: auto;
+  height: 250px;
+  margin: 5px;
+}
+
+.title {
+  font-size: 13px;
+}
+
+.description {
+  font-size: 11px;
 }
