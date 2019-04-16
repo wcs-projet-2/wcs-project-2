@@ -49,15 +49,15 @@ class SearchPoint extends Component {
   };
 
   componentDidMount() {
-    this.setState((prevState) => {
-      let finalState = { ...prevState };
-      finalState.keyWord = this.props.location.state.keyWord;
-      finalState.sourceToggle = this.props.location.state.sourceToggle;
-      return finalState;
-    });
-
-    // console.log("KeyWord = " + this.state.keyWord);
-    // this.refreshDataFromAPI(this.state.keyWord)
+    this.setState(
+      (prevState) => {
+        let finalState = { ...prevState };
+        finalState.keyWord = this.props.location.state.keyWord;
+        finalState.sourceToggle = this.props.location.state.sourceToggle;
+        return finalState;
+      },
+      () => this.refreshDataFromAPI(this.state.keyWord)
+    );
   }
 
   render() {
