@@ -2,7 +2,7 @@ import React from 'react';
 import './topBar.css';
 import { Input, Menu, Icon, Container, Checkbox, Image } from 'semantic-ui-react';
 // import { prependOnceListener } from 'cluster';
-import logo from './assets/images/Logo.png';
+import logo from '../assets/images/Logo.png';
 
 const TopBar = (props) => {
   return (
