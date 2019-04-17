@@ -7,6 +7,20 @@ Output: Array of fake data
 
 */
 
+import Twit from 'twit';
+import twitterConfig from './twitterConfig';
+
+console.log(twitterConfig);
+
+var T = new Twit(twitterConfig);
+
+T.get('search/tweets', { q: 'rainbow', count: 2 }, function(err, data, response) {
+  console.log('Data from Twitter');
+  console.log(data);
+  console.log(err);
+  console.log(response);
+});
+
 // get random text
 const getRandomText = (minLenght, maxLenght) => {
   const lorem =
