@@ -15,14 +15,14 @@ class Content extends Component {
 
     return (
       <div>
-        <div className={resultTwitter}>
-          <Source source="twitter" data={this.props.redditData} />
-        </div>
         <div className={resultReddit}>
           <Source source="reddit" data={this.props.redditData} />
         </div>
+        <div className={resultTwitter}>
+          <Source source="twitter" data={this.props.twitterData} />
+        </div>
         <div className={resultHacker}>
-          <Source source="hacker noon" data={this.props.redditData} />
+          <Source source="hacker noon" data={this.props.hackerNoonData} />
         </div>
       </div>
     );
