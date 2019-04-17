@@ -59,6 +59,7 @@ class Home extends Component {
             value={this.state.keyWord}
             onChange={this.handleInputChange}
             onKeyPress={(event) => event.key === 'Enter' && this.handleInputClick()}
+            autoFocus="true"
           />
         </div>
         <div className="checkbox">
