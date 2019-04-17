@@ -13,18 +13,22 @@ div.sourceContent {
 }
 
 div.leftArrow {
-  justify-content: flex-start;
+  position: relative;
+  margin: auto;
+  padding: auto;
 }
 div.rightArrow {
-  margin-right: 0;
+  position: relative;
+  margin: auto;
+  padding: auto;
 }
 
-h3.ui.left.aligned.header {
+h3 {
   padding-top: 2px;
   padding-left: 10px;
   margin-bottom: 5px;
 }
 
-img.ui.mini.image {
+.imageIcon {
   margin-left: 5px;
 }
