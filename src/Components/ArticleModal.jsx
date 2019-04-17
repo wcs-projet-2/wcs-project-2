@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './ArticleModal.css';
 import { Button, Image, Modal, Embed } from 'semantic-ui-react';
 
 class ModalExampleDimmer extends Component {
@@ -51,18 +50,27 @@ class ModalExampleDimmer extends Component {
 
     return (
       <Modal dimmer={true} open={this.props.isModalOpen} onClose={this.props.onModalClose}>
-        <Modal.Header className="Header">
-          {this.props.data.title} by <span className="author">{this.props.data.author}</span>
-          <Button className="source" target="blank" href={this.props.data.postUrl}>
-            Source
-          </Button>
+        <Modal.Header style={{ color: 'rgb(57,4,182)' }}>
+          {this.props.data.title} <span style={{ color: 'black' }}>by</span>{' '}
+          <span style={{ textDecoration: 'underline' }}>{this.props.data.author}</span>
         </Modal.Header>
-        <Modal.Content className="content">
+        <div style={{ marginBottom: '20px', marginTop: '5px' }}>
+          <Button
+            style={{ position: 'absolute', right: '45%', backgroundColor: '#61dafb' }}
+            target="blank"
+            href={this.props.data.postUrl}
+          >
+            Go to Source
+          </Button>
+        </div>
+        <Modal.Content style={{ fontSize: '17px' }}>
           {content}
-          <Modal.Description className="description">{this.props.data.creationDate}</Modal.Description>
+          <Modal.Description style={{ fontWeight: 'bold', fontSize: '15px', color: 'rgb(57,4,182)' }}>
+            {this.props.data.creationDate}
+          </Modal.Description>
         </Modal.Content>
-        <Modal.Actions className="button">
-          <div>
+        <Modal.Actions>
+          <div style={{ display: 'flex', justifyContent: 'center' }}>
             <Button circular color="facebook" icon="facebook" />
             <Button circular color="twitter" icon="twitter" />
           </div>
