@@ -43,11 +43,6 @@ class Article extends React.Component {
             <Card.Description className="description">{this.props.data.creationDate}</Card.Description>
             <hr />
             <Card.Description>{content}</Card.Description>
-            {/*   Commentés car on va les utiliser seulement dans le pop-up            
-              <div>
-                <Button circular color="facebook" icon="facebook" />
-                <Button circular color="twitter" icon="twitter" />
-              </div> */}
           </Card.Content>
         </Card>
         <ArticleModal
