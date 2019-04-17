@@ -1,17 +1,4 @@
-#source {
-  position: 'fixed';
-  right: '30px';
-}
-
-#author {
-  text-decoration: 'underline';
-}
-
-#description {
-  font-weight: 'bold';
-  font-size: '15px';
-}
-
-#content {
-  font-size: '17px';
+.Header {
+  font-size: 23px;
+  color: rgba(rgb(57, 4, 182));
 }
