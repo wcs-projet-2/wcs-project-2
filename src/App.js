@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import './App.css';
-import TopBar from './Components/topBar.jsx';
-import Content from './Components/content.jsx';
-import BottomBar from './Components/bottomBar.jsx';
+import Router from './Router';
 import 'semantic-ui-css/semantic.min.css';
+
 import getDataFromReddit from './APIFunctions/getDataFromReddit';
+import getDataFromHackerNoon from './APIFunctions/getDataFromHN';
+import getDataFromTwitter from './APIFunctions/getDataFromTwitter';
 
 class App extends Component {
   constructor(props) {
@@ -28,10 +29,10 @@ class App extends Component {
     getDataFromReddit(keyWord, sort, nbOfItems).then((result) => this.setState({ redditData: result }));
 
     // refresh data from Twitter
-    // Add the code here...
+    this.setState({ twitterData: getDataFromTwitter() });
 
     // refresh data from Hacker noon
-    // Add the code here...
+    this.setState({ hackerNoonData: getDataFromHackerNoon() });
   }
 
   handleChange = (event) => {
@@ -51,24 +52,7 @@ class App extends Component {
   };
 
   render() {
-    return (
-      <div className="App">
-        <TopBar
-          toggle={this.state.sourceToggle}
-          onToggle={this.handleToggle}
-          changeHandler={this.handleChange}
-          clickHandler={this.handleClick}
-          searchValue={this.state.keyWord}
-        />
-        <Content
-          toggle={this.state.sourceToggle}
-          redditData={this.state.redditData}
-          twitterData={this.state.twitterData}
-          hackerNoonData={this.state.hackerNoonData}
-        />
-        <BottomBar />
-      </div>
-    );
+    return <Router />;
   }
 }
 
