@@ -9,29 +9,37 @@ import twitter from '../assets/images/twitter.png';
 class Source extends Component {
   constructor(props) {
     super(props);
-    this.handleClick = this.handleClick.bind(this);
     this.state = {
       startIndex: 0,
       nbCard: 4,
-      currentIndex: 0,
+      cardsToBeDisplayed: [],
     };
   }
+
   // Si on clique sur la flèche de gauche, nos cards se déplacent vers la gauche
-  // Si on clique sur la flèche de droite, nos cards se déplacent vers la droite
-  handleClick = (direction) => {
+  handleClickArrow = (direction) => {
     if (direction === 'left') {
-      this.setState({ startIndex: this.state.startIndex - 1 });
+      this.setState({
+        startIndex:
+          (((this.state.startIndex - 1) % this.props.data.length) + this.props.data.length) % this.props.data.length,
+        // https://dev.to/maurobringolf/a-neat-trick-to-compute-modulo-of-negative-numbers-111e
+      });
     } else if (direction === 'right') {
-      this.setState({ startIndex: this.state.startIndex + 1 });
+      this.setState({ startIndex: (this.state.startIndex + 1) % this.props.data.length });
     }
   };
-  // Si on fait une nouvelle recherche, nos cards index redémarrent à zéro A FINIR !!!!
-  // onKeyPress = (event) => {
-  //   if (event.key === 'Enter') {
-  //     this.setState({ startIndex: this.state.startIndex === 0 });
-  //   } else {
-  //   }
-  // };
+
+  static getDerivedStateFromProps(props, state) {
+    // Update state.cardsToBeDisplayed according to state.startIndex
+    let finalArray = [];
+    if (props.data.length > 0) {
+      let currentIndex = state.startIndex;
+      for (let i = 0; i < state.nbCard; i++) {
+        finalArray.push(props.data[currentIndex++ % props.data.length]);
+      }
+    }
+    return { cardsToBeDisplayed: finalArray };
+  }
 
   render() {
     let title = this.props.source;
@@ -46,21 +54,13 @@ class Source extends Component {
       icon = HackerNoon;
     }
 
-    let cardDisplay = this.props.data.map((post, index) => {
-      if (index >= this.state.startIndex && index < this.state.startIndex + this.state.nbCard) {
-        return (
-          <Grid.Column width={3} key={post.id} id={post.id}>
-            <Article key={post.id} id={post.id} data={post} />
-          </Grid.Column>
-        );
-      } else {
-        return null;
-      }
+    let cardDisplay = this.state.cardsToBeDisplayed.map((post) => {
+      return (
+        <Grid.Column width={3} key={post.id} id={post.id}>
+          <Article key={post.id} id={post.id} data={post} />
+        </Grid.Column>
+      );
     });
-    // BOUCLE FOR POUR CAROUSEL
-    // for (let index = 0; index < this.state.startIndex || index > this.state.nbCard; index++) {
-    //   this.setState.startIndex += index;
-    // }
 
     return (
       <div>
@@ -77,11 +77,11 @@ class Source extends Component {
               </Grid.Row>
               <Grid.Row>
                 <div className="leftArrow" width={1}>
-                  <Button icon="arrow left" onClick={() => this.handleClick('left')} />
+                  <Button icon="arrow left" onClick={() => this.handleClickArrow('left')} />
                 </div>
                 {cardDisplay}
                 <div className="rightArrow" width={1}>
-                  <Button icon="arrow right" onClick={() => this.handleClick('right')} />
+                  <Button icon="arrow right" onClick={() => this.handleClickArrow('right')} />
                 </div>
               </Grid.Row>
             </Grid>
