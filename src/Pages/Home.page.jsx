@@ -37,10 +37,6 @@ class Home extends Component {
   };
 
   render() {
-    console.log('state home:');
-
-    console.log(this.state);
-
     let redirect = this.state.toSearch && <Redirect to={{ pathname: '/searchpoint', state: this.state }} />;
 
     return (
@@ -59,7 +55,7 @@ class Home extends Component {
             value={this.state.keyWord}
             onChange={this.handleInputChange}
             onKeyPress={(event) => event.key === 'Enter' && this.handleInputClick()}
-            autoFocus="true"
+            autoFocus={true}
           />
         </div>
         <div className="checkbox">
