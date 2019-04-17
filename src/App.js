@@ -54,7 +54,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="appBody">
         <TopBar
           toggle={this.state.sourceToggle}
           onToggle={this.handleToggle}
