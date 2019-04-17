@@ -5,6 +5,8 @@ import Content from './Components/content.jsx';
 import BottomBar from './Components/bottomBar.jsx';
 import 'semantic-ui-css/semantic.min.css';
 import getDataFromReddit from './APIFunctions/getDataFromReddit';
+import getDataFromHackerNoon from './APIFunctions/getDataFromHN';
+import getDataFromTwitter from './APIFunctions/getDataFromTwitter';
 
 class App extends Component {
   constructor(props) {
@@ -28,10 +30,10 @@ class App extends Component {
     getDataFromReddit(keyWord, sort, nbOfItems).then((result) => this.setState({ redditData: result }));
 
     // refresh data from Twitter
-    // Add the code here...
+    this.setState({ twitterData: getDataFromTwitter() });
 
     // refresh data from Hacker noon
-    // Add the code here...
+    this.setState({ hackerNoonData: getDataFromHackerNoon() });
   }
 
   handleChange = (event) => {
