@@ -13,7 +13,7 @@ class Source extends Component {
     this.state = {
       startIndex: 0,
       nbCard: 4,
-      currentIndex: 0,
+      cardsToBeDisplayed: [],
     };
   }
   // Si on clique sur la flèche de gauche, nos cards se déplacent vers la gauche
@@ -23,6 +23,27 @@ class Source extends Component {
       this.setState({ startIndex: this.state.startIndex - 1 });
     } else if (direction === 'right') {
       this.setState({ startIndex: this.state.startIndex + 1 });
+      let finalArray = [];
+      let currentIndex = this.state.startIndex;
+      let i = 0;
+      while (i < this.state.nbCard) {
+        console.log('data[currentIndex] :');
+        console.log(currentIndex);
+        console.log(this.props.data[currentIndex]);
+
+        finalArray.push(this.props.data[currentIndex]);
+        console.log(currentIndex === this.props.data.length - 1);
+
+        if (currentIndex === this.props.data.length - 1) {
+          currentIndex = 0;
+        } else {
+          currentIndex++;
+        }
+        console.log(finalArray);
+        i++;
+      }
+      console.log(finalArray);
+      this.setState({ cardsToBeDisplayed: finalArray });
     }
   };
   // Si on fait une nouvelle recherche, nos cards index redémarrent à zéro A FINIR !!!!
@@ -33,7 +54,15 @@ class Source extends Component {
   //   }
   // };
 
+  static getDerivedStateFromProps(props, state) {
+    let resultArray = props.data.filter(
+      (item, index) => index >= state.startIndex && index < state.startIndex + state.nbCard
+    );
+    return { cardsToBeDisplayed: resultArray };
+  }
+
   render() {
+    console.log(this.state);
     let title = this.props.source;
     let iconName = this.props.source;
     let icon;
@@ -46,16 +75,14 @@ class Source extends Component {
       icon = HackerNoon;
     }
 
-    let cardDisplay = this.props.data.map((post, index) => {
-      if (index >= this.state.startIndex && index < this.state.startIndex + this.state.nbCard) {
-        return (
-          <Grid.Column width={3} key={post.id} id={post.id}>
-            <Article key={post.id} id={post.id} data={post} />
-          </Grid.Column>
-        );
-      } else {
-        return null;
-      }
+    // if (index >= this.state.startIndex && index < this.state.startIndex + this.state.nbCard) {
+
+    let cardDisplay = this.state.cardsToBeDisplayed.map((post) => {
+      return (
+        <Grid.Column width={3} key={post.id} id={post.id}>
+          <Article key={post.id} id={post.id} data={post} />
+        </Grid.Column>
+      );
     });
     // BOUCLE FOR POUR CAROUSEL
     // for (let index = 0; index < this.state.startIndex || index > this.state.nbCard; index++) {
