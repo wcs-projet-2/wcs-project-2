@@ -9,60 +9,39 @@ import twitter from '../assets/images/twitter.png';
 class Source extends Component {
   constructor(props) {
     super(props);
-    this.handleClick = this.handleClick.bind(this);
     this.state = {
       startIndex: 0,
       nbCard: 4,
       cardsToBeDisplayed: [],
     };
   }
+
   // Si on clique sur la flèche de gauche, nos cards se déplacent vers la gauche
-  // Si on clique sur la flèche de droite, nos cards se déplacent vers la droite
-  handleClick = (direction) => {
+  handleClickArrow = (direction) => {
     if (direction === 'left') {
-      this.setState({ startIndex: this.state.startIndex - 1 });
+      this.setState({
+        startIndex:
+          (((this.state.startIndex - 1) % this.props.data.length) + this.props.data.length) % this.props.data.length,
+        // https://dev.to/maurobringolf/a-neat-trick-to-compute-modulo-of-negative-numbers-111e
+      });
     } else if (direction === 'right') {
-      this.setState({ startIndex: this.state.startIndex + 1 });
-      let finalArray = [];
-      let currentIndex = this.state.startIndex;
-      let i = 0;
-      while (i < this.state.nbCard) {
-        console.log('data[currentIndex] :');
-        console.log(currentIndex);
-        console.log(this.props.data[currentIndex]);
-
-        finalArray.push(this.props.data[currentIndex]);
-        console.log(currentIndex === this.props.data.length - 1);
-
-        if (currentIndex === this.props.data.length - 1) {
-          currentIndex = 0;
-        } else {
-          currentIndex++;
-        }
-        console.log(finalArray);
-        i++;
-      }
-      console.log(finalArray);
-      this.setState({ cardsToBeDisplayed: finalArray });
+      this.setState({ startIndex: (this.state.startIndex + 1) % this.props.data.length });
     }
   };
-  // Si on fait une nouvelle recherche, nos cards index redémarrent à zéro A FINIR !!!!
-  // onKeyPress = (event) => {
-  //   if (event.key === 'Enter') {
-  //     this.setState({ startIndex: this.state.startIndex === 0 });
-  //   } else {
-  //   }
-  // };
 
   static getDerivedStateFromProps(props, state) {
-    let resultArray = props.data.filter(
-      (item, index) => index >= state.startIndex && index < state.startIndex + state.nbCard
-    );
-    return { cardsToBeDisplayed: resultArray };
+    // Update state.cardsToBeDisplayed according to state.startIndex
+    let finalArray = [];
+    if (props.data.length > 0) {
+      let currentIndex = state.startIndex;
+      for (let i = 0; i < state.nbCard; i++) {
+        finalArray.push(props.data[currentIndex++ % props.data.length]);
+      }
+    }
+    return { cardsToBeDisplayed: finalArray };
   }
 
   render() {
-    console.log(this.state);
     let title = this.props.source;
     let iconName = this.props.source;
     let icon;
@@ -75,8 +54,6 @@ class Source extends Component {
       icon = HackerNoon;
     }
 
-    // if (index >= this.state.startIndex && index < this.state.startIndex + this.state.nbCard) {
-
     let cardDisplay = this.state.cardsToBeDisplayed.map((post) => {
       return (
         <Grid.Column width={3} key={post.id} id={post.id}>
@@ -84,10 +61,6 @@ class Source extends Component {
         </Grid.Column>
       );
     });
-    // BOUCLE FOR POUR CAROUSEL
-    // for (let index = 0; index < this.state.startIndex || index > this.state.nbCard; index++) {
-    //   this.setState.startIndex += index;
-    // }
 
     return (
       <div>
@@ -104,11 +77,11 @@ class Source extends Component {
               </Grid.Row>
               <Grid.Row>
                 <div className="leftArrow" width={1}>
-                  <Button icon="arrow left" onClick={() => this.handleClick('left')} />
+                  <Button icon="arrow left" onClick={() => this.handleClickArrow('left')} />
                 </div>
                 {cardDisplay}
                 <div className="rightArrow" width={1}>
-                  <Button icon="arrow right" onClick={() => this.handleClick('right')} />
+                  <Button icon="arrow right" onClick={() => this.handleClickArrow('right')} />
                 </div>
               </Grid.Row>
             </Grid>
