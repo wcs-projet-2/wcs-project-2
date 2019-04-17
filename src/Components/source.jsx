@@ -16,9 +16,6 @@ class Source extends Component {
       currentIndex: 0,
     };
   }
-  componentDidUpdate() {
-    this.setState({ startIndex: 0 });
-  }
   // Si on clique sur la flèche de gauche, nos cards se déplacent vers la gauche
   // Si on clique sur la flèche de droite, nos cards se déplacent vers la droite
   handleClick = (direction) => {
