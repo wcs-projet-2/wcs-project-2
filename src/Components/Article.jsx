@@ -30,7 +30,7 @@ class Article extends React.Component {
       content = (
         <div>
           <img src={this.props.data.thumbnail} alt="" />
-          <p>this.props.data.postUrl</p>
+          <p>{this.props.data.postUrl}</p>
         </div>
       );
     }
@@ -50,7 +50,11 @@ class Article extends React.Component {
               </div> */}
           </Card.Content>
         </Card>
-        <ArticleModal isModalOpen={this.state.isModalOpen} onModalClose={this.handleModalClose} />
+        <ArticleModal
+          isModalOpen={this.state.isModalOpen}
+          onModalClose={this.handleModalClose}
+          data={this.props.data}
+        />
       </div>
     );
   }
