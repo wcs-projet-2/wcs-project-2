@@ -40,7 +40,6 @@ class Home extends Component {
     let urlParams = `?keyWord=${this.state.keyWord}&STTwitter=${this.state.sourceToggle.twitter}&STReddit=${
       this.state.sourceToggle.reddit
     }&STHackerNoon=${this.state.sourceToggle.hacker}`;
-    console.log(urlParams);
     let redirect = this.state.toSearch && <Redirect to={{ pathname: '/searchpoint', search: urlParams }} />;
 
     return (

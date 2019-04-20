@@ -62,8 +62,6 @@ class SearchPoint extends Component {
           reddit: urlParams.STReddit === 'true',
           hacker: urlParams.STHackerNoon === 'true',
         };
-        console.log(newState);
-
         return newState;
       },
       () => this.refreshDataFromAPI(this.state.keyWord)
