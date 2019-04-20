@@ -3,6 +3,8 @@ import TopBar from '../Components/topBar';
 import Content from '../Components/content';
 import BottomBar from '../Components/bottomBar';
 import getDataFromReddit from '../APIFunctions/getDataFromReddit';
+import getDataFromTwitter from '../APIFunctions/getDataFromTwitter';
+import getDataFromHackerNoon from '../APIFunctions/getDataFromHackerNoon';
 
 class SearchPoint extends Component {
   constructor(props) {
@@ -26,10 +28,10 @@ class SearchPoint extends Component {
     getDataFromReddit(keyWord, sort, nbOfItems).then((result) => this.setState({ redditData: result }));
 
     // refresh data from Twitter
-    // Add the code here...
+    this.setState({ twitterData: getDataFromTwitter() });
 
     // refresh data from Hacker noon
-    // Add the code here...
+    this.setState({ hackerNoonData: getDataFromHackerNoon() });
   }
 
   handleChange = (event) => {
