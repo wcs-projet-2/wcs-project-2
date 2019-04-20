@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import queryString from 'query-string';
 import TopBar from '../Components/topBar';
 import Content from '../Components/content';
 import BottomBar from '../Components/bottomBar';
@@ -53,10 +54,17 @@ class SearchPoint extends Component {
   componentDidMount() {
     this.setState(
       (prevState) => {
-        let finalState = { ...prevState };
-        finalState.keyWord = this.props.location.state.keyWord;
-        finalState.sourceToggle = this.props.location.state.sourceToggle;
-        return finalState;
+        let urlParams = queryString.parse(this.props.location.search);
+        let newState = { ...prevState };
+        newState.keyWord = urlParams.keyWord;
+        newState.sourceToggle = {
+          twitter: urlParams.STTwitter === 'true',
+          reddit: urlParams.STReddit === 'true',
+          hacker: urlParams.STHackerNoon === 'true',
+        };
+        console.log(newState);
+
+        return newState;
       },
       () => this.refreshDataFromAPI(this.state.keyWord)
     );
