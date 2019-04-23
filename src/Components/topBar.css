@@ -3,25 +3,19 @@
   align-self: center;
 }
 #search {
-  width: 100%;
-  padding-top: 15px;
-}
-.searchTopBar {
-  width: 100%;
-}
-.checkBox {
+
+  width: 35%;
   display: flex;
-  width: auto;
-  margin: auto;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.checkBox ul {
-  list-style-type: none;
+.item {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
 }
 
-.checkBox ul > li {
-  float: left;
-}
 #image {
   width: 100px;
   height: 100px;
@@ -30,8 +24,10 @@
   font-size: 23px;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   color: rgb(57, 4, 182);
-  margin-left: 8%;
-  margin-right: 8%;
-  width: 55%;
-  align-self: center;
+
+  margin: auto;
+}
+
+.iconTopBar {
+  margin: 3px;
 }
