@@ -1,5 +1,6 @@
 import React from 'react';
 import { Card } from 'semantic-ui-react';
+import PropTypes from 'prop-types';
 import './Article.css';
 import ArticleModal from './ArticleModal.jsx';
 
@@ -62,5 +63,9 @@ class Article extends React.Component {
     );
   }
 }
+
+Article.propTypes = {
+  data: PropTypes.object.isRequired,
+};
 
 export default Article;
