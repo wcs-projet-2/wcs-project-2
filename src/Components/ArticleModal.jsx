@@ -50,13 +50,13 @@ class ModalExampleDimmer extends Component {
 
     return (
       <Modal dimmer={true} open={this.props.isModalOpen} onClose={this.props.onModalClose}>
-        <Modal.Header style={{ color: 'rgb(57,4,182)' }}>
+        <Modal.Header style={{ color: 'rgb(57,4,182)', display: 'flex', justifyContent: 'center' }}>
           {this.props.data.title} <span style={{ color: 'black' }}>by</span>{' '}
           <span style={{ textDecoration: 'underline' }}>{this.props.data.author}</span>
         </Modal.Header>
-        <div style={{ marginBottom: '20px', marginTop: '5px' }}>
+        <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '6%', marginTop: '1,5%' }}>
           <Button
-            style={{ position: 'absolute', right: '45%', backgroundColor: '#61dafb' }}
+            style={{ position: 'absolute', backgroundColor: '#61dafb' }}
             target="blank"
             href={this.props.data.postUrl}
           >
@@ -71,8 +71,8 @@ class ModalExampleDimmer extends Component {
         </Modal.Content>
         <Modal.Actions>
           <div style={{ display: 'flex', justifyContent: 'center' }}>
-            <Button circular color="facebook" icon="facebook" />
-            <Button circular color="twitter" icon="twitter" />
+            <Button circular color="facebook" icon="facebook" href="https://facebook.com/" target="_blank" />
+            <Button circular color="twitter" icon="twitter" href="https://twitter.com/" target="_blank" />
           </div>
         </Modal.Actions>
       </Modal>
