@@ -58,7 +58,7 @@ class Article extends React.Component {
               </div> */}
           </Card.Content>
         </Card>
-        <ArticleModal isModalOpen={this.state.isModalOpen} onModalClose={this.handleModalClose} />
+        <ArticleModal isModalOpen={this.state.isModalOpen} handleModalClose={this.handleModalClose} />
       </div>
     );
   }
