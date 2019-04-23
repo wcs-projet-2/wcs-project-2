@@ -9,10 +9,9 @@ const TopBar = (props) => {
     <Responsive minWidth={320} maxWidth={2580}>
       <Container fluid>
         <Menu>
-          <Menu.Item id="image">
-            <Image src={logo} alt="logo" />
-          </Menu.Item>
-          <h1 id="title">Welcome to Search Point!</h1>
+          <div>
+            <Image id="image" src={logo} alt="logo" />
+          </div>
           <Menu.Item id="search" position="right">
             <Input
               className="icon"

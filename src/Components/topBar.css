@@ -8,20 +8,9 @@
 .item {
   display: flex;
   flex-direction: column;
-  align-items: baseline;
 }
 
 #image {
   width: 90px;
   height: 90px;
-}
-#title {
-  font-size: 23px;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  color: rgb(57, 4, 182);
-  margin: auto;
-}
-
-.iconTopBar {
-  margin: 3px;
 }
