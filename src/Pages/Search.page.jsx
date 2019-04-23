@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
+import queryString from 'query-string';
 import TopBar from '../Components/topBar';
 import Content from '../Components/content';
 import BottomBar from '../Components/bottomBar';
 import getDataFromReddit from '../APIFunctions/getDataFromReddit';
+import getDataFromTwitter from '../APIFunctions/getDataFromTwitter';
+import getDataFromHackerNoon from '../APIFunctions/getDataFromHackerNoon';
 
 class SearchPoint extends Component {
   constructor(props) {
@@ -26,10 +29,10 @@ class SearchPoint extends Component {
     getDataFromReddit(keyWord, sort, nbOfItems).then((result) => this.setState({ redditData: result }));
 
     // refresh data from Twitter
-    // Add the code here...
+    this.setState({ twitterData: getDataFromTwitter() });
 
     // refresh data from Hacker noon
-    // Add the code here...
+    this.setState({ hackerNoonData: getDataFromHackerNoon() });
   }
 
   handleChange = (event) => {
@@ -51,10 +54,15 @@ class SearchPoint extends Component {
   componentDidMount() {
     this.setState(
       (prevState) => {
-        let finalState = { ...prevState };
-        finalState.keyWord = this.props.location.state.keyWord;
-        finalState.sourceToggle = this.props.location.state.sourceToggle;
-        return finalState;
+        let urlParams = queryString.parse(this.props.location.search);
+        let newState = { ...prevState };
+        newState.keyWord = urlParams.keyWord;
+        newState.sourceToggle = {
+          twitter: urlParams.STTwitter === 'true',
+          reddit: urlParams.STReddit === 'true',
+          hacker: urlParams.STHackerNoon === 'true',
+        };
+        return newState;
       },
       () => this.refreshDataFromAPI(this.state.keyWord)
     );

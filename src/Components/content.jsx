@@ -16,19 +16,19 @@ class Content extends Component {
 
     return (
       <div className="sourceContent">
-        <div className={resultTwitter}>
-          <Responsive>
-            <Source source="twitter" data={this.props.redditData} />
-          </Responsive>
-        </div>
         <div className={resultReddit}>
           <Responsive>
             <Source source="reddit" data={this.props.redditData} />
           </Responsive>
         </div>
+        <div className={resultTwitter}>
+          <Responsive>
+            <Source source="twitter" data={this.props.twitterData} />
+          </Responsive>
+        </div>
         <div className={resultHacker}>
           <Responsive>
-            <Source source="hacker noon" data={this.props.redditData} />
+            <Source source="hacker noon" data={this.props.hackerNoonData} />
           </Responsive>
         </div>
       </div>

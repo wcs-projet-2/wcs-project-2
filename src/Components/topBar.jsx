@@ -9,7 +9,7 @@ const TopBar = (props) => {
     <Responsive minWidth={320} maxWidth={2580}>
       <Container fluid>
         <Menu>
-          <Menu.Item id="image">
+          <Menu.Item id="image" onClick={() => (window.location = '/')}>
             <Image src={logo} alt="logo" />
           </Menu.Item>
           <h1 id="title">Welcome to Search Point!</h1>

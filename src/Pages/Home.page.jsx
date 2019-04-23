@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './Home.css';
+import './Home.page.css';
 import { Image, Icon, Checkbox, Input } from 'semantic-ui-react';
 import { Redirect } from 'react-router-dom';
 import logo from '../assets/images/Logo.png';
@@ -37,7 +37,10 @@ class Home extends Component {
   };
 
   render() {
-    let redirect = this.state.toSearch && <Redirect to={{ pathname: '/searchpoint', state: this.state }} />;
+    let urlParams = `?keyWord=${this.state.keyWord}&STTwitter=${this.state.sourceToggle.twitter}&STReddit=${
+      this.state.sourceToggle.reddit
+    }&STHackerNoon=${this.state.sourceToggle.hacker}`;
+    let redirect = this.state.toSearch && <Redirect to={{ pathname: '/searchpoint', search: urlParams }} />;
 
     return (
       <div className="container">
