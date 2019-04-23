@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Button, Header, Image, Modal } from 'semantic-ui-react';
 
-class ModalExampleDimmer extends Component {
+class ArticleModal extends Component {
   render() {
     return (
       <Modal dimmer={true} open={this.props.isModalOpen} onClose={this.props.onModalClose}>
@@ -31,4 +31,4 @@ class ModalExampleDimmer extends Component {
   }
 }
 
-export default ModalExampleDimmer;
+export default ArticleModal;
