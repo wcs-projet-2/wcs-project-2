@@ -49,7 +49,11 @@ const TopBar = ({ keyWord, sourceToggles, handleToggle, handleChange, handleClic
 
 TopBar.propTypes = {
   keyWord: PropTypes.string.isRequired,
-  sourceToggles: PropTypes.object.isRequired,
+  sourceToggles: PropTypes.shape({
+    twitter: PropTypes.bool.isRequired,
+    reddit: PropTypes.bool.isRequired,
+    hacker: PropTypes.bool.isRequired,
+  }),
   handleToggle: PropTypes.func.isRequired,
   handleChange: PropTypes.func.isRequired,
   handleClick: PropTypes.func.isRequired,
