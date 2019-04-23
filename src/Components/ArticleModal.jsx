@@ -51,10 +51,13 @@ class ModalExampleDimmer extends Component {
     return (
       <Modal dimmer={true} open={this.props.isModalOpen} onClose={this.props.onModalClose}>
         <Modal.Header style={{ color: 'rgb(57,4,182)', display: 'flex', justifyContent: 'center' }}>
-          {this.props.data.title} <span style={{ color: 'black' }}>by</span>{' '}
-          <span style={{ textDecoration: 'underline' }}>{this.props.data.author}</span>
+          <p>
+            {this.props.data.title} <br />
+            <span style={{ color: 'black' }}>by</span>{' '}
+            <span style={{ textDecoration: 'underline' }}>{this.props.data.author}</span>
+          </p>
         </Modal.Header>
-        <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '6%', marginTop: '1,5%' }}>
+        <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '6%', marginTop: '2%' }}>
           <Button
             style={{ position: 'absolute', backgroundColor: '#61dafb' }}
             target="blank"
@@ -63,10 +66,21 @@ class ModalExampleDimmer extends Component {
             Go to Source
           </Button>
         </div>
-        <Modal.Content style={{ fontSize: '17px' }}>
-          {content}
-          <Modal.Description style={{ fontWeight: 'bold', fontSize: '15px', color: 'rgb(57,4,182)' }}>
-            {this.props.data.creationDate}
+
+        <Modal.Content>
+          <div style={{ fontSize: '17px', display: 'flex', justifyContent: 'center' }}>{content}</div>
+          <Modal.Description>
+            <div
+              style={{
+                fontWeight: 'bold',
+                fontSize: '15px',
+                color: 'rgb(57,4,182)',
+                display: 'flex',
+                justifyContent: 'center',
+              }}
+            >
+              posted on {this.props.data.creationDate}
+            </div>
           </Modal.Description>
         </Modal.Content>
         <Modal.Actions>
