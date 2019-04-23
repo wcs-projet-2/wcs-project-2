@@ -79,7 +79,7 @@ class SearchPoint extends Component {
           handleClick={this.handleClick}
         />
         <Content
-          toggle={this.state.sourceToggles}
+          sourceToggles={this.state.sourceToggles}
           redditData={this.state.redditData}
           twitterData={this.state.twitterData}
           hackerNoonData={this.state.hackerNoonData}

@@ -47,8 +47,6 @@ const TopBar = ({ keyWord, sourceToggles, handleToggle, handleChange, handleClic
   );
 };
 
-export default TopBar;
-
 TopBar.propTypes = {
   keyWord: PropTypes.string.isRequired,
   sourceToggles: PropTypes.object.isRequired,
@@ -56,3 +54,5 @@ TopBar.propTypes = {
   handleChange: PropTypes.func.isRequired,
   handleClick: PropTypes.func.isRequired,
 };
+
+export default TopBar;
