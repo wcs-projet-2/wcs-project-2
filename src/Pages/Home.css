@@ -3,9 +3,10 @@
 }
 .input {
   margin-left: 4%;
-  width: 90%;
+  width: 80%;
   margin-bottom: 3%;
   display: flex;
+  justify-content: flex-end;
 }
 .title {
   display: flex;
