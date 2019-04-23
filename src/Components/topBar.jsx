@@ -9,9 +9,7 @@ const TopBar = (props) => {
     <Responsive minWidth={320} maxWidth={2580}>
       <Container fluid>
         <Menu>
-          <div>
-            <Image id="image" src={logo} alt="logo" />
-          </div>
+          <Image id="image" onClick={() => (window.location = '/')} src={logo} alt="logo" />
           <Menu.Item id="search" position="right">
             <Input
               className="icon"
