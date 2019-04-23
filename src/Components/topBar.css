@@ -1,19 +1,37 @@
+.papaContainer {
+  width: 100%;
+  align-self: center;
+}
 #search {
-  width: 35%;
-  margin-right: 2em;
+  width: 100%;
+  padding-top: 15px;
+}
+.searchTopBar {
+  width: 100%;
+}
+.checkBox {
+  display: flex;
+  width: auto;
+  margin: auto;
 }
 
-div {
-  margin-right: 8px;
+.checkBox ul {
+  list-style-type: none;
+}
+
+.checkBox ul > li {
+  float: left;
 }
 #image {
-  width: 90px;
-  height: 90px;
+  width: 100px;
+  height: 100px;
 }
 #title {
   font-size: 23px;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   color: rgb(57, 4, 182);
-  margin-top: 3%;
-  margin-left: 12%;
+  margin-left: 8%;
+  margin-right: 8%;
+  width: 55%;
+  align-self: center;
 }

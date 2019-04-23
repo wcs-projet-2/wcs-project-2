@@ -46,13 +46,6 @@ class Source extends Component {
       this.setState({ cardsToBeDisplayed: finalArray });
     }
   };
-  // Si on fait une nouvelle recherche, nos cards index redémarrent à zéro A FINIR !!!!
-  // onKeyPress = (event) => {
-  //   if (event.key === 'Enter') {
-  //     this.setState({ startIndex: this.state.startIndex === 0 });
-  //   } else {
-  //   }
-  // };
 
   static getDerivedStateFromProps(props, state) {
     let resultArray = props.data.filter(
@@ -84,10 +77,6 @@ class Source extends Component {
         </Grid.Column>
       );
     });
-    // BOUCLE FOR POUR CAROUSEL
-    // for (let index = 0; index < this.state.startIndex || index > this.state.nbCard; index++) {
-    //   this.setState.startIndex += index;
-    // }
 
     return (
       <div>
