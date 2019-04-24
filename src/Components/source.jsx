@@ -7,7 +7,7 @@ import HackerNoon from '../assets/images/HackerNoon.png';
 import reddit from '../assets/images/reddit.png';
 import twitter from '../assets/images/twitter.png';
 
-const Source = (props) => {
+const Source = ({ source, data }) => {
   const [startIndex, setStartIndex] = useState(0);
   const [cardsToBeDisplayed, setCardsToBeDisplayed] = useState([]);
   //const [nbCard, setNbCard] = useState(4); // To be used once responsivity will be put in place
@@ -17,11 +17,11 @@ const Source = (props) => {
   const handleClickArrow = (direction) => {
     if (direction === 'left') {
       setStartIndex(
-        (((startIndex - 1) % props.data.length) + props.data.length) % props.data.length
+        (((startIndex - 1) % data.length) + data.length) % data.length
         // https://dev.to/maurobringolf/a-neat-trick-to-compute-modulo-of-negative-numbers-111e
       );
     } else if (direction === 'right') {
-      setStartIndex((startIndex + 1) % props.data.length);
+      setStartIndex((startIndex + 1) % data.length);
     }
   };
 
@@ -29,29 +29,17 @@ const Source = (props) => {
   useEffect(() => {
     // Update state.cardsToBeDisplayed according to state.startIndex
     let finalArray = [];
-    if (props.data.length > 0) {
+    if (data.length > 0) {
       let currentIndex = startIndex;
       for (let i = 0; i < nbCard; i++) {
-        finalArray.push(props.data[currentIndex++ % props.data.length]);
+        finalArray.push(data[currentIndex++ % data.length]);
       }
       setCardsToBeDisplayed(finalArray);
     }
   });
 
-  // static getDerivedStateFromProps(props, state) {
-  //   // Update state.cardsToBeDisplayed according to state.startIndex
-  //   let finalArray = [];
-  //   if (props.data.length > 0) {
-  //     let currentIndex = startIndex;
-  //     for (let i = 0; i < nbCard; i++) {
-  //       finalArray.push(props.data[currentIndex++ % props.data.length]);
-  //     }
-  //   }
-  //   return { cardsToBeDisplayed: finalArray };
-  // }
-
-  let title = props.source;
-  let iconName = props.source;
+  let title = source;
+  let iconName = source;
   let icon;
 
   if (iconName === 'twitter') {
