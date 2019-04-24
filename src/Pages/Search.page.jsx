@@ -26,7 +26,13 @@ class SearchPoint extends Component {
 
   refreshDataFromAPI(keyWord = 'Apple', sort = 'relevance', nbOfItems = 25) {
     // Refresh data from Reddit
-    getDataFromReddit(keyWord, sort, nbOfItems).then((result) => this.setState({ redditData: result }));
+    getDataFromReddit(keyWord, sort, nbOfItems).then((result) => {
+      if (result.length !== 0) {
+        this.setState({ redditData: result });
+      } else {
+        alert('Oups, no result for this keyword');
+      }
+    });
 
     // refresh data from Twitter
     this.setState({ twitterData: getDataFromTwitter() });
