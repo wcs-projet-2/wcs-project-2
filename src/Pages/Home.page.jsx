@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './Home.css';
+import styles from './Home.module.css';
 import { Image, Icon, Checkbox, Input, Container } from 'semantic-ui-react';
 import { Redirect } from 'react-router-dom';
 import logo from '../assets/images/Logo.png';
@@ -41,15 +41,15 @@ class Home extends Component {
 
     return (
       <Container fluid>
-        <div className="container">
+        <div className={styles.container}>
           {redirect}
-          <div className="image">
+          <div className={styles.image}>
             <Image src={logo} alt="logo" />
           </div>
-          <div className="title">
+          <div className={styles.title}>
             <h1 style={{ textAlign: 'center' }}>Welcome !</h1>
           </div>
-          <div className="input">
+          <div className={styles.input}>
             <Input
               placeholder="Search..."
               icon={{ name: 'search', circular: true, link: true, onClick: () => this.handleInputClick() }}
@@ -57,15 +57,22 @@ class Home extends Component {
               onChange={this.handleInputChange}
               onKeyPress={(event) => event.key === 'Enter' && this.handleInputClick()}
               autoFocus={true}
+              style={{ width: '70%' }}
             />
           </div>
-          <div className="checkbox">
-            <Icon className="twitter" color="blue" />
-            <Checkbox toggle defaultChecked={true} onChange={() => this.handleToggleChange('twitter')} />
-            <Icon className="reddit alien" color="red" />
-            <Checkbox toggle defaultChecked={true} onChange={() => this.handleToggleChange('reddit')} />
-            <Icon className="moon" color="green" />
-            <Checkbox toggle defaultChecked={true} onChange={() => this.handleToggleChange('hacker')} />
+          <div className={styles.content}>
+            <div className={styles.checkbox}>
+              <Icon className="twitter" color="blue" />
+              <Checkbox toggle defaultChecked={true} onChange={() => this.handleToggleChange('twitter')} />
+            </div>
+            <div className={styles.checkbox}>
+              <Icon className="reddit alien" color="red" />
+              <Checkbox toggle defaultChecked={true} onChange={() => this.handleToggleChange('reddit')} />
+            </div>
+            <div className={styles.checkbox}>
+              <Icon className="moon" color="green" />
+              <Checkbox toggle defaultChecked={true} onChange={() => this.handleToggleChange('hacker')} />
+            </div>
           </div>
         </div>
       </Container>

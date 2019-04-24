@@ -1,13 +1,15 @@
 .container {
   overflow-y: hidden;
 }
+
 .input {
   margin: auto;
-  width: 70%;
   justify-content: center;
-  margin-bottom: 3%;
+  margin-bottom: 5%;
   display: flex;
+  width: 60%;
 }
+
 .title {
   margin-top: 7%;
   margin-bottom: 5%;
@@ -15,14 +17,18 @@
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   color: rgb(57, 4, 182);
 }
+
 .image {
   margin-top: 3%;
   display: flex;
   justify-content: center;
 }
-.checkbox {
+
+.content {
   display: flex;
-  justify-content: center;
-  size: 10%;
-  margin-right: 30px;
+  justify-content: space-evenly;
+}
+
+.checkbox {
+  align-items: center;
 }
