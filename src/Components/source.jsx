@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import Article from './Article.jsx';
 import { Grid, Header, Container, Image, Button, Responsive } from 'semantic-ui-react';
+import PropTypes from 'prop-types';
+import Article from './Article.jsx';
 import './source.css';
 import HackerNoon from '../assets/images/HackerNoon.png';
 import reddit from '../assets/images/reddit.png';
@@ -91,5 +92,10 @@ class Source extends Component {
     );
   }
 }
+
+Source.propTypes = {
+  source: PropTypes.string.isRequired,
+  data: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
 
 export default Source;

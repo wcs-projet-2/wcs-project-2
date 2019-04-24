@@ -1,5 +1,6 @@
 import React from 'react';
 import { Card } from 'semantic-ui-react';
+import PropTypes from 'prop-types';
 import './Article.css';
 import ArticleModal from './ArticleModal.jsx';
 
@@ -54,12 +55,24 @@ class Article extends React.Component {
         </Card>
         <ArticleModal
           isModalOpen={this.state.isModalOpen}
-          onModalClose={this.handleModalClose}
+          handleModalClose={this.handleModalClose}
           data={this.props.data}
+          content={content}
         />
       </div>
     );
   }
 }
+
+Article.propTypes = {
+  data: PropTypes.shape({
+    postType: PropTypes.string,
+    title: PropTypes.string.isRequired,
+    text: PropTypes.string.isRequired,
+    thumbnail: PropTypes.string,
+    postUrl: PropTypes.string,
+    creationDate: PropTypes.string.isRequired,
+  }),
+};
 
 export default Article;
