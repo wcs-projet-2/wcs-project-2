@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Button, Modal, Embed, Image } from 'semantic-ui-react';
 
-const ModalExampleDimmer = ({ isModalOpen, handleModalClose, data }) => {
+const ArticleModal = ({ isModalOpen, handleModalClose, data }) => {
   let content;
 
   // displays youtube videos correctly.
@@ -73,9 +73,9 @@ const ModalExampleDimmer = ({ isModalOpen, handleModalClose, data }) => {
   );
 };
 
-ModalExampleDimmer.propTypes = {
+ArticleModal.propTypes = {
   isModalOpen: PropTypes.bool.isRequired,
   handleModalClose: PropTypes.func.isRequired,
 };
 
-export default ModalExampleDimmer;
+export default ArticleModal;
