@@ -1,68 +1,62 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Card } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import './Article.css';
 import ArticleModal from './ArticleModal.jsx';
 
-class Article extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isModalOpen: false,
-    };
+const Article = (props) => {
+  // Declaration State key "isModalOpen"
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleCardClick = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleModalClose = () => {
+    setIsModalOpen(false);
+  };
+
+  let content;
+
+  if (typeof props.data.postType === 'undefined') {
+    content = props.data.text;
+  } else if (props.data.postType === 'image') {
+    content = <img src={props.data.thumbnail} alt="" />;
+  } else if (props.data.postType === 'link') {
+    content = (
+      <div>
+        <img src={props.data.thumbnail} alt="" />
+        <p>{props.data.postUrl}</p>
+      </div>
+    );
   }
 
-  handleCardClick = () => {
-    this.setState({ isModalOpen: true });
-  };
+  // Card title definition
+  const MAX_TITLE_LENGTH = 20;
+  let cardTitle = props.data.title.substring(0, MAX_TITLE_LENGTH);
+  if (props.data.title.length > MAX_TITLE_LENGTH) {
+    cardTitle += '...';
+  }
 
-  handleModalClose = () => {
-    this.setState({ isModalOpen: false });
-  };
-
-  render() {
-    let content;
-
-    if (typeof this.props.data.postType === 'undefined') {
-      content = this.props.data.text;
-    } else if (this.props.data.postType === 'image') {
-      content = <img src={this.props.data.thumbnail} alt="" />;
-    } else if (this.props.data.postType === 'link') {
-      content = (
-        <div>
-          <img src={this.props.data.thumbnail} alt="" />
-          <p>{this.props.data.postUrl}</p>
-        </div>
-      );
-    }
-
-    // Card title definition
-    const MAX_TITLE_LENGTH = 20;
-    let cardTitle = this.props.data.title.substring(0, MAX_TITLE_LENGTH);
-    if (this.props.data.title.length > MAX_TITLE_LENGTH) {
-      cardTitle += '...';
-    }
-
-    return (
-      <div>
-        <Card onClick={this.handleCardClick} className="cardstyle">
-          <Card.Content>
-            <Card.Header className="title">{cardTitle}</Card.Header>
-            <Card.Description className="description">{this.props.data.creationDate}</Card.Description>
-            <hr />
-            <Card.Description>{content}</Card.Description>
-            {/*   Commentés car on va les utiliser seulement dans le pop-up            
+  return (
+    <div>
+      <Card onClick={handleCardClick} className="cardstyle">
+        <Card.Content>
+          <Card.Header className="title">{cardTitle}</Card.Header>
+          <Card.Description className="description">{props.data.creationDate}</Card.Description>
+          <hr />
+          <Card.Description>{content}</Card.Description>
+          {/*   Commentés car on va les utiliser seulement dans le pop-up            
               <div>
                 <Button circular color="facebook" icon="facebook" />
                 <Button circular color="twitter" icon="twitter" />
               </div> */}
-          </Card.Content>
-        </Card>
-        <ArticleModal isModalOpen={this.state.isModalOpen} handleModalClose={this.handleModalClose} />
-      </div>
-    );
-  }
-}
+        </Card.Content>
+      </Card>
+      <ArticleModal isModalOpen={isModalOpen} handleModalClose={handleModalClose} />
+    </div>
+  );
+};
 
 Article.propTypes = {
   data: PropTypes.shape({
