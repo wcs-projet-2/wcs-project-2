@@ -19,6 +19,8 @@ const ArticleModal = ({ isModalOpen, handleModalClose, data }) => {
 
   if (typeof data.postType === 'undefined') {
     content = data.text;
+  } else if (data.postType === 'self') {
+    content = data.text;
   } else if (data.postType === 'image') {
     content = <Image src={data.mediaSrc} alt="img" />;
   }
@@ -27,24 +29,23 @@ const ArticleModal = ({ isModalOpen, handleModalClose, data }) => {
     if (data.mediaSrc.includes('youtu')) {
       content = (
         <div>
-          <Embed placeholder={data.thumbnail} url={vidUrl} />
+          <Embed placeholder={data.mediaSrc} url={vidUrl} />
         </div>
       );
     } else {
       content = (
-        <div>
-          <Image src={data.mediaSrc} alt="img" />
-          <a target="blank" href={data.mediaSrc}>
-            {data.mediaSrc}
-          </a>
-        </div>
+        <a target="blank" href={data.postUrl}>
+          {data.postUrl}
+        </a>
       );
     }
   } else if (data.postType === 'link' || 'hosted:video') {
     content = (
-      <a target="blank" href={data.mediaSrc}>
-        {data.mediaSrc}
-      </a>
+      <div>
+        <a target="blank" href={data.postUrl}>
+          {data.postUrl}
+        </a>
+      </div>
     );
   }
 
@@ -53,12 +54,13 @@ const ArticleModal = ({ isModalOpen, handleModalClose, data }) => {
       <Modal.Header style={{ color: 'rgb(57,4,182)', display: 'flex', justifyContent: 'center' }}>
         <div>
           {data.title} <br />
-          <span style={{ color: 'black' }}>submitted on</span> {data.creationDate}
-          <span style={{ color: 'black' }}>by</span> <span style={{ textDecoration: 'underline' }}>{data.author}</span>
+          <span style={{ color: 'black' }}>submitted on </span> {data.creationDate}
+          <span style={{ color: 'black' }}> by </span>
+          <span style={{ textDecoration: 'underline' }}>{data.author}</span>
         </div>
       </Modal.Header>
       <Modal.Content style={{ height: '618px', overflowY: 'auto' }}>
-        <div style={{ fontSize: '17px', display: 'flex', justifyContent: 'center' }}>{content}</div>
+        <div style={{ fontSize: '20px', margin: 'auto' }}>{content}</div>
       </Modal.Content>
       <Modal.Actions>
         <div style={{ display: 'flex', justifyContent: 'center' }}>
