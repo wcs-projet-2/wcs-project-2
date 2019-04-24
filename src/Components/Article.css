@@ -1,12 +1,33 @@
 .cardstyle {
   overflow: hidden;
   width: auto;
-  height: 250px;
-  margin: 5px;
+  height: 260px;
+  min-width: 180px;
+}
+
+.cardContent {
+  padding: 0px;
+}
+
+.cardHeader {
+  height: 75px;
+  text-align: center;
+  background-color: rgb(320, 210, 210, 0.5);
 }
 
 .title {
-  font-size: 13px;
+  font-size: 0.8em;
+  height: 45px;
+}
+
+.date {
+  font-size: 0.7em;
+  height: 20px;
+}
+
+.cardContent {
+  word-wrap: break-word;
+  text-align: center;
 }
 
 .description {
