@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Button, Header, Image, Modal } from 'semantic-ui-react';
 
-const ModalExampleDimmer = ({ isModalOpen, handleModalClose }) => {
+const ArticleModal = ({ isModalOpen, handleModalClose }) => {
   return (
     <Modal dimmer={true} open={isModalOpen} onClose={handleModalClose}>
       <Modal.Header>Select a Photo</Modal.Header>
@@ -24,9 +24,9 @@ const ModalExampleDimmer = ({ isModalOpen, handleModalClose }) => {
   );
 };
 
-ModalExampleDimmer.propTypes = {
+ArticleModal.propTypes = {
   isModalOpen: PropTypes.bool.isRequired,
   handleModalClose: PropTypes.func.isRequired,
 };
 
-export default ModalExampleDimmer;
+export default ArticleModal;
