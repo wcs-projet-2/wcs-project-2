@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card } from 'semantic-ui-react';
+import { Card, Image } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import './Article.css';
 import ArticleModal from './ArticleModal.jsx';
@@ -26,11 +26,11 @@ class Article extends React.Component {
     if (typeof this.props.data.postType === 'undefined') {
       content = this.props.data.text;
     } else if (this.props.data.postType === 'image') {
-      content = <img src={this.props.data.thumbnail} alt="" />;
+      content = <Image src={this.props.data.thumbnail} alt="" />;
     } else if (this.props.data.postType === 'link') {
       content = (
         <div>
-          <img src={this.props.data.thumbnail} alt="" />
+          <Image src={this.props.data.thumbnail} alt="" />
           <p>{this.props.data.postUrl}</p>
         </div>
       );
