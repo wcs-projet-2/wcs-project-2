@@ -1,5 +1,4 @@
 import React from 'react';
-import { Card } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import './Article.css';
 import { Card, Responsive } from 'semantic-ui-react';

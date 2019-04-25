@@ -5,19 +5,17 @@
   min-width: 180px;
 }
 
-.cardContent {
-  padding: 0px;
-}
-
 .cardHeader {
   height: 75px;
   text-align: center;
-  background-color: rgb(320, 210, 210, 0.5);
+  background-color: rgb(126, 185, 247, 0.5);
 }
 
 .title {
   font-size: 0.8em;
   height: 45px;
+  margin-top: 0px;
+  padding-top: 5px;
 }
 
 .date {
