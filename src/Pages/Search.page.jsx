@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import queryString from 'query-string';
 import TopBar from '../Components/topBar';
 import Content from '../Components/content';
@@ -7,93 +7,108 @@ import getDataFromReddit from '../APIFunctions/getDataFromReddit';
 import getDataFromTwitter from '../APIFunctions/getDataFromTwitter';
 import getDataFromHackerNoon from '../APIFunctions/getDataFromHackerNoon';
 
-class SearchPoint extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      keyWord: '',
-      redditData: [],
-      twitterData: [],
-      hackerNoonData: [],
-      sourceToggles: {
-        twitter: true,
-        reddit: true,
-        hacker: true,
-      },
-    };
-    this.refreshDataFromAPI = this.refreshDataFromAPI.bind(this);
-  }
+const SearchPoint = (props) => {
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     keyWord: '',
+  //     redditData: [],
+  //     twitterData: [],
+  //     hackerNoonData: [],
+  //     sourceToggles: {
+  //       twitter: true,
+  //       reddit: true,
+  //       hacker: true,
+  //     },
+  //   };
+  //   this.refreshDataFromAPI = this.refreshDataFromAPI.bind(this);
+  // }
 
-  refreshDataFromAPI(keyWord = 'Apple', sort = 'relevance', nbOfItems = 25) {
+  const [keyWord, setKeyWord] = useState('');
+  const [redditData, setRedditData] = useState([]);
+  const [twitterData, setTwitterData] = useState([]);
+  const [hackerNoonData, setHackerNoonData] = useState([]);
+  const [sourceToggles, setSourceToggles] = useState({
+    twitter: true,
+    reddit: true,
+    hacker: true,
+  });
+
+  const refreshDataFromAPI = (keyWord = 'Apple', sort = 'relevance', nbOfItems = 25) => {
     // Refresh data from Reddit
     getDataFromReddit(keyWord, sort, nbOfItems).then((result) => {
       if (result.length !== 0) {
-        this.setState({ redditData: result });
+        setRedditData(result);
       } else {
         alert('Oups, no result for this keyword');
       }
     });
 
     // refresh data from Twitter
-    this.setState({ twitterData: getDataFromTwitter() });
+    setTwitterData(getDataFromTwitter());
 
     // refresh data from Hacker noon
-    this.setState({ hackerNoonData: getDataFromHackerNoon() });
-  }
-
-  handleChange = (event) => {
-    this.setState({
-      keyWord: event.target.value,
-    });
+    setHackerNoonData(getDataFromHackerNoon());
   };
 
-  handleClick = (event) => {
-    this.refreshDataFromAPI(this.state.keyWord);
+  const handleChange = (event) => {
+    setKeyWord(event.target.value);
   };
 
-  handleToggle = (source) => {
-    let sourceToggles = { ...this.state.sourceToggles };
-    sourceToggles[source] = !sourceToggles[source];
-    this.setState({ sourceToggles });
+  const handleClick = (event) => {
+    refreshDataFromAPI(keyWord);
   };
 
-  componentDidMount() {
-    this.setState(
-      (prevState) => {
-        let urlParams = queryString.parse(this.props.location.search);
-        let newState = { ...prevState };
-        newState.keyWord = urlParams.keyWord;
-        newState.sourceToggles = {
-          twitter: urlParams.STTwitter === 'true',
-          reddit: urlParams.STReddit === 'true',
-          hacker: urlParams.STHackerNoon === 'true',
-        };
-        return newState;
-      },
-      () => this.refreshDataFromAPI(this.state.keyWord)
-    );
-  }
+  const handleToggleChange = (source) => {
+    setSourceToggles({ ...sourceToggles, [source]: !sourceToggles[source] });
+  };
 
-  render() {
-    return (
-      <div className="appBody">
-        <TopBar
-          keyWord={this.state.keyWord}
-          sourceToggles={this.state.sourceToggles}
-          handleToggle={this.handleToggle}
-          handleChange={this.handleChange}
-          handleClick={this.handleClick}
-        />
-        <Content
-          sourceToggles={this.state.sourceToggles}
-          redditData={this.state.redditData}
-          twitterData={this.state.twitterData}
-          hackerNoonData={this.state.hackerNoonData}
-        />
-        <BottomBar />
-      </div>
-    );
-  }
-}
+  // componentDidMount() {
+  //   this.setState(
+  //     (prevState) => {
+  //       let urlParams = queryString.parse(this.props.location.search);
+  //       let newState = { ...prevState };
+  //       newState.keyWord = urlParams.keyWord;
+  //       newState.sourceToggles = {
+  //         twitter: urlParams.STTwitter === 'true',
+  //         reddit: urlParams.STReddit === 'true',
+  //         hacker: urlParams.STHackerNoon === 'true',
+  //       };
+  //       return newState;
+  //     },
+  //     () => refreshDataFromAPI(keyWord)
+  //   );
+  // }
+
+  // useEffect(() => {
+  //   let urlParams = queryString.parse(props.location.search);
+  //   setKeyWord(urlParams.keyWord);
+  //   setSourceToggles({
+  //     twitter: urlParams.STTwitter === 'true',
+  //     reddit: urlParams.STReddit === 'true',
+  //     hacker: urlParams.STHackerNoon === 'true',
+  //   });
+  //   refreshDataFromAPI(keyWord);
+  // }, [keyWord]);
+
+  return (
+    <div className="appBody">
+      <TopBar
+        keyWord={keyWord}
+        sourceToggles={sourceToggles}
+        handleToggle={handleToggleChange}
+        handleChange={handleChange}
+        handleClick={handleClick}
+      />
+      <Content
+        sourceToggles={sourceToggles}
+        redditData={redditData}
+        twitterData={twitterData}
+        hackerNoonData={hackerNoonData}
+      />
+      <BottomBar />
+    </div>
+  );
+};
 
 export default SearchPoint;
