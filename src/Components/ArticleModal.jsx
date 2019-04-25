@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button, Modal, Embed, Image } from 'semantic-ui-react';
+import { Button, Modal, Embed, Image, Responsive } from 'semantic-ui-react';
 
 const ArticleModal = ({ isModalOpen, handleModalClose, data }) => {
   let content;
@@ -29,7 +29,7 @@ const ArticleModal = ({ isModalOpen, handleModalClose, data }) => {
     if (data.mediaSrc.includes('youtu')) {
       content = (
         <div>
-          <Embed placeholder={data.mediaSrc} url={vidUrl} />
+          <Embed placeholder={data.thumbnail} url={vidUrl} />
         </div>
       );
     } else {
@@ -50,28 +50,30 @@ const ArticleModal = ({ isModalOpen, handleModalClose, data }) => {
   }
 
   return (
-    <Modal dimmer={true} open={isModalOpen} onClose={handleModalClose}>
-      <Modal.Header style={{ color: 'rgb(57,4,182)', display: 'flex', justifyContent: 'center' }}>
-        <div>
-          {data.title} <br />
-          <span style={{ color: 'black' }}>submitted on </span> {data.creationDate}
-          <span style={{ color: 'black' }}> by </span>
-          <span style={{ textDecoration: 'underline' }}>{data.author}</span>
-        </div>
-      </Modal.Header>
-      <Modal.Content style={{ height: '618px', overflowY: 'auto' }}>
-        <div style={{ fontSize: '20px', margin: 'auto' }}>{content}</div>
-      </Modal.Content>
-      <Modal.Actions>
-        <div style={{ display: 'flex', justifyContent: 'center' }}>
-          <Button style={{ backgroundColor: '#61dafb' }} target="blank" href={data.postUrl}>
-            Go to Source
-          </Button>
-          <Button circular color="facebook" icon="facebook" href="https://facebook.com/" target="_blank" />
-          <Button circular color="twitter" icon="twitter" href="https://twitter.com/" target="_blank" />
-        </div>
-      </Modal.Actions>
-    </Modal>
+    <Responsive>
+      <Modal dimmer={true} open={isModalOpen} onClose={handleModalClose}>
+        <Modal.Header style={{ color: 'rgb(57,4,182)', display: 'flex', justifyContent: 'center' }}>
+          <div>
+            {data.title} <br />
+            <span style={{ color: 'black' }}>submitted on </span> {data.creationDate}
+            <span style={{ color: 'black' }}> by </span>
+            <span style={{ textDecoration: 'underline' }}>{data.author}</span>
+          </div>
+        </Modal.Header>
+        <Modal.Content className="content" style={{ overflowY: 'auto' }}>
+          <div style={{ fontSize: '20px', margin: 'auto' }}>{content}</div>
+        </Modal.Content>
+        <Modal.Actions>
+          <div style={{ display: 'flex', justifyContent: 'center' }}>
+            <Button style={{ backgroundColor: '#61dafb' }} target="blank" href={data.postUrl}>
+              Go to Source
+            </Button>
+            <Button circular color="facebook" icon="facebook" href="https://facebook.com/" target="_blank" />
+            <Button circular color="twitter" icon="twitter" href="https://twitter.com/" target="_blank" />
+          </div>
+        </Modal.Actions>
+      </Modal>
+    </Responsive>
   );
 };
 
