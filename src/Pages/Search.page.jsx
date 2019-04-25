@@ -8,22 +8,7 @@ import getDataFromTwitter from '../APIFunctions/getDataFromTwitter';
 import getDataFromHackerNoon from '../APIFunctions/getDataFromHackerNoon';
 
 const SearchPoint = (props) => {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     keyWord: '',
-  //     redditData: [],
-  //     twitterData: [],
-  //     hackerNoonData: [],
-  //     sourceToggles: {
-  //       twitter: true,
-  //       reddit: true,
-  //       hacker: true,
-  //     },
-  //   };
-  //   this.refreshDataFromAPI = this.refreshDataFromAPI.bind(this);
-  // }
-
+  // State definition
   const [keyWord, setKeyWord] = useState('');
   const [redditData, setRedditData] = useState([]);
   const [twitterData, setTwitterData] = useState([]);
@@ -51,6 +36,7 @@ const SearchPoint = (props) => {
     setHackerNoonData(getDataFromHackerNoon());
   };
 
+  // Event handlers
   const handleChange = (event) => {
     setKeyWord(event.target.value);
   };
@@ -63,34 +49,19 @@ const SearchPoint = (props) => {
     setSourceToggles({ ...sourceToggles, [source]: !sourceToggles[source] });
   };
 
-  // componentDidMount() {
-  //   this.setState(
-  //     (prevState) => {
-  //       let urlParams = queryString.parse(this.props.location.search);
-  //       let newState = { ...prevState };
-  //       newState.keyWord = urlParams.keyWord;
-  //       newState.sourceToggles = {
-  //         twitter: urlParams.STTwitter === 'true',
-  //         reddit: urlParams.STReddit === 'true',
-  //         hacker: urlParams.STHackerNoon === 'true',
-  //       };
-  //       return newState;
-  //     },
-  //     () => refreshDataFromAPI(keyWord)
-  //   );
-  // }
+  // Each time the URL is changed --> Update KeyWord and sourceToggles + refresh API data
+  useEffect(() => {
+    let urlParams = queryString.parse(props.location.search);
+    setKeyWord(urlParams.keyWord);
+    setSourceToggles({
+      twitter: urlParams.STTwitter === 'true',
+      reddit: urlParams.STReddit === 'true',
+      hacker: urlParams.STHackerNoon === 'true',
+    });
+    refreshDataFromAPI(urlParams.keyWord);
+  }, [props.location.search]);
 
-  // useEffect(() => {
-  //   let urlParams = queryString.parse(props.location.search);
-  //   setKeyWord(urlParams.keyWord);
-  //   setSourceToggles({
-  //     twitter: urlParams.STTwitter === 'true',
-  //     reddit: urlParams.STReddit === 'true',
-  //     hacker: urlParams.STHackerNoon === 'true',
-  //   });
-  //   refreshDataFromAPI(keyWord);
-  // }, [keyWord]);
-
+  // Rendering
   return (
     <div className="appBody">
       <TopBar
