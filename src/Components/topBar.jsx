@@ -12,10 +12,7 @@ const TopBar = ({ keyWord, sourceToggles, handleToggle, handleChange, handleClic
           <div>
             <Image id="image" onClick={() => (window.location = '/')} src={logo} alt="logo" />
           </div>
-          <div className="titleT">
-            <h1>Welcome to Search Point!</h1>
-          </div>
-
+          <h1 className="titleT">Welcome to Search Point!</h1>
           <Input
             className="inputT"
             placeholder="Search..."

@@ -1,17 +1,13 @@
 .inputT {
-  margin-top: 2em;
-  height: 50%;
-  max-width: 50%;
+  margin-top: 4%;
+  max-width: 30%;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
-
 #image {
-  min-width: 45px;
-  min-height: 45px;
-  width: 90px;
-  height: 90px;
+  width: 70%;
+  height: 90%;
 }
 
 .titleT {
@@ -19,15 +15,48 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-left: auto;
+  font-size: 25px;
 }
 
 @media only screen and (min-device-width: 0px) and (max-device-width: 600px) {
+  .inputT {
+    margin-top: 15%;
+  }
   .titleT {
     display: none;
   }
   .item {
     display: flex;
     flex-direction: column;
+  }
+  #image {
+    width: 90%;
+    height: 90%;
+  }
+}
+
+@media only screen and (min-device-width: 600px) and (max-device-width: 800px) {
+  #image {
+    width: 80%;
+    height: 90%;
+  }
+  .inputT {
+    margin-top: 6%;
+  }
+}
+
+@media only screen and (min-device-width: 800px) and (max-device-width: 1023px) {
+  #image {
+    width: 90px;
+    height: 90px;
+  }
+  .titleT {
+    font-size: 18px;
+    margin-left: 3em;
+  }
+}
+@media only screen and (min-device-width: 1024px) and (max-device-width: 1600px) {
+  .inputT {
+    margin-left: 22%;
   }
 }
