@@ -15,7 +15,7 @@ class SearchPoint extends Component {
       redditData: [],
       twitterData: [],
       hackerNoonData: [],
-      sourceToggle: {
+      sourceToggles: {
         twitter: true,
         reddit: true,
         hacker: true,
@@ -46,9 +46,9 @@ class SearchPoint extends Component {
   };
 
   handleToggle = (source) => {
-    let sourceToggle = { ...this.state.sourceToggle };
-    sourceToggle[source] = !sourceToggle[source];
-    this.setState({ sourceToggle });
+    let sourceToggles = { ...this.state.sourceToggles };
+    sourceToggles[source] = !sourceToggles[source];
+    this.setState({ sourceToggles });
   };
 
   componentDidMount() {
@@ -57,7 +57,7 @@ class SearchPoint extends Component {
         let urlParams = queryString.parse(this.props.location.search);
         let newState = { ...prevState };
         newState.keyWord = urlParams.keyWord;
-        newState.sourceToggle = {
+        newState.sourceToggles = {
           twitter: urlParams.STTwitter === 'true',
           reddit: urlParams.STReddit === 'true',
           hacker: urlParams.STHackerNoon === 'true',
@@ -72,14 +72,14 @@ class SearchPoint extends Component {
     return (
       <div className="appBody">
         <TopBar
-          toggle={this.state.sourceToggle}
-          onToggle={this.handleToggle}
-          changeHandler={this.handleChange}
-          clickHandler={this.handleClick}
-          searchValue={this.state.keyWord}
+          keyWord={this.state.keyWord}
+          sourceToggles={this.state.sourceToggles}
+          handleToggle={this.handleToggle}
+          handleChange={this.handleChange}
+          handleClick={this.handleClick}
         />
         <Content
-          toggle={this.state.sourceToggle}
+          sourceToggles={this.state.sourceToggles}
           redditData={this.state.redditData}
           twitterData={this.state.twitterData}
           hackerNoonData={this.state.hackerNoonData}

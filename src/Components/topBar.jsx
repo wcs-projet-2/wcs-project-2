@@ -1,10 +1,10 @@
 import React from 'react';
-import './topBar.css';
 import { Input, Menu, Icon, Container, Checkbox, Image, Responsive } from 'semantic-ui-react';
-// import { prependOnceListener } from 'cluster';
+import PropTypes from 'prop-types';
+import './topBar.css';
 import logo from '../assets/images/Logo.png';
 
-const TopBar = (props) => {
+const TopBar = ({ keyWord, sourceToggles, handleToggle, handleChange, handleClick }) => {
   return (
     <Responsive minWidth={320} maxWidth={2580}>
       <Container fluid>
@@ -16,12 +16,12 @@ const TopBar = (props) => {
             <Input
               className="icon"
               placeholder="Search..."
-              icon={{ name: 'search', circular: true, link: true, onClick: () => props.clickHandler() }}
-              value={props.searchValue}
-              onChange={props.changeHandler}
+              icon={{ name: 'search', circular: true, link: true, onClick: () => handleClick() }}
+              value={keyWord}
+              onChange={handleChange}
               onKeyPress={(event) => {
                 if (event.key === 'Enter') {
-                  props.clickHandler();
+                  handleClick();
                 }
               }}
             />
@@ -29,21 +29,33 @@ const TopBar = (props) => {
           <Menu.Item>
             <div>
               <Icon className="twitter" />
-              <Checkbox toggle defaultChecked={true} onChange={() => props.onToggle('twitter')} />
+              <Checkbox toggle checked={sourceToggles.twitter} onChange={() => handleToggle('twitter')} />
             </div>
             <div>
               <Icon className="reddit alien" />
-              <Checkbox toggle defaultChecked={true} onChange={() => props.onToggle('reddit')} />
+              <Checkbox toggle checked={sourceToggles.reddit} onChange={() => handleToggle('reddit')} />
             </div>
             <div>
               <Icon className="moon" />
-              <Checkbox toggle defaultChecked={true} onChange={() => props.onToggle('hacker')} />
+              <Checkbox toggle checked={sourceToggles.hacker} onChange={() => handleToggle('hacker')} />
             </div>
           </Menu.Item>
         </Menu>
       </Container>
     </Responsive>
   );
+};
+
+TopBar.propTypes = {
+  keyWord: PropTypes.string.isRequired,
+  sourceToggles: PropTypes.shape({
+    twitter: PropTypes.bool.isRequired,
+    reddit: PropTypes.bool.isRequired,
+    hacker: PropTypes.bool.isRequired,
+  }),
+  handleToggle: PropTypes.func.isRequired,
+  handleChange: PropTypes.func.isRequired,
+  handleClick: PropTypes.func.isRequired,
 };
 
 export default TopBar;
