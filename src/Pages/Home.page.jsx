@@ -31,51 +31,50 @@ const Home = () => {
   }`;
   let redirect = toSearch && <Redirect to={{ pathname: '/searchpoint', search: urlParams }} />;
 
-    return (
-      <Container fluid style={{ height: '100%', display: 'flex', justifyContent: 'center' }}>
-        <div className={styles.container}>
-          {redirect}
-          <div className={styles.image}>
-            <Image src={logo} alt="logo" />
+  return (
+    <Container fluid style={{ height: '100%', display: 'flex', justifyContent: 'center' }}>
+      <div className={styles.container}>
+        {redirect}
+        <div className={styles.image}>
+          <Image src={logo} alt="logo" />
+        </div>
+        <div className={styles.title}>
+          <h1 style={{ textAlign: 'center' }}>Welcome !</h1>
+        </div>
+        <div className={styles.input}>
+          <Input
+            placeholder="Search..."
+            icon={{ name: 'search', circular: true, link: true, onClick: () => handleInputClick() }}
+            value={keyWord}
+            onChange={handleInputChange}
+            onKeyPress={(event) => event.key === 'Enter' && handleInputClick()}
+            autoFocus={true}
+            style={{ width: '50%' }}
+          />
+        </div>
+        <div className={styles.checkboxGroup}>
+          <div className={styles.checkbox}>
+            <Icon className="twitter" color="blue" />
+            <Responsive>
+              <Checkbox toggle defaultChecked={true} onChange={() => handleToggleChange('twitter')} />
+            </Responsive>
           </div>
-          <div className={styles.title}>
-            <h1 style={{ textAlign: 'center' }}>Welcome !</h1>
+          <div className={styles.checkbox}>
+            <Icon className="reddit alien" color="red" />
+            <Responsive>
+              <Checkbox toggle defaultChecked={true} onChange={() => handleToggleChange('reddit')} />
+            </Responsive>
           </div>
-          <div className={styles.input}>
-            <Input
-              placeholder="Search..."
-              icon={{ name: 'search', circular: true, link: true, onClick: () => handleInputClick() }}
-              value={keyWord}
-              onChange={handleInputChange}
-              onKeyPress={(event) => event.key === 'Enter' && handleInputClick()}
-              autoFocus={true}
-              style={{ width: '50%' }}
-            />
-          </div>
-          <div className={styles.checkboxGroup}>
-            <div className={styles.checkbox}>
-              <Icon className="twitter" color="blue" />
-              <Responsive>
-                <Checkbox toggle defaultChecked={true} onChange={() => handleToggleChange('twitter')} />
-              </Responsive>
-            </div>
-            <div className={styles.checkbox}>
-              <Icon className="reddit alien" color="red" />
-              <Responsive>
-                <Checkbox toggle defaultChecked={true} onChange={() => handleToggleChange('reddit')} />
-              </Responsive>
-            </div>
-            <div className={styles.checkbox}>
-              <Icon className="moon" color="green" />
-              <Responsive>
-                <Checkbox toggle defaultChecked={true} onChange={() => handleToggleChange('hacker')} />
-              </Responsive>
-            </div>
+          <div className={styles.checkbox}>
+            <Icon className="moon" color="green" />
+            <Responsive>
+              <Checkbox toggle defaultChecked={true} onChange={() => handleToggleChange('hacker')} />
+            </Responsive>
           </div>
         </div>
-      </Container>
-    );
-  }
-}
+      </div>
+    </Container>
+  );
+};
 
 export default Home;
