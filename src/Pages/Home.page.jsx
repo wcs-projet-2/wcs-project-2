@@ -1,43 +1,35 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import styles from './Home.module.css';
 import { Image, Icon, Checkbox, Input, Container, Responsive } from 'semantic-ui-react';
 import { Redirect } from 'react-router-dom';
 import logo from '../assets/images/Logo.png';
 
-class Home extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      toSearch: false,
-      keyWord: '',
-      sourceToggle: {
-        twitter: true,
-        reddit: true,
-        hacker: true,
-      },
-    };
-    this.handleToggleChange = this.handleToggleChange.bind(this);
-    this.handleInputChange = this.handleInputChange.bind(this);
-  }
+const Home = () => {
+  // State creation
+  const [toSearch, setToSearch] = useState(false);
+  const [keyWord, setKeyWord] = useState('');
+  const [sourceToggle, setSourceToggle] = useState({
+    twitter: true,
+    reddit: true,
+    hacker: true,
+  });
 
-  handleInputClick = (event) => {
-    this.setState({ toSearch: true });
+  const handleInputClick = (event) => {
+    setToSearch(true);
   };
 
-  handleInputChange = (event) => {
-    this.setState({ keyWord: event.target.value });
+  const handleInputChange = (event) => {
+    setKeyWord(event.target.value);
   };
 
-  handleToggleChange = (source) => {
-    this.setState((prevState) => {
-      let objectReturned = { ...prevState.sourceToggle };
-      objectReturned[source] = !objectReturned[source];
-      return { sourceToggle: objectReturned };
-    });
+  const handleToggleChange = (source) => {
+    setSourceToggle({ ...sourceToggle, [source]: !sourceToggle[source] });
   };
 
-  render() {
-    let redirect = this.state.toSearch && <Redirect to={{ pathname: '/searchpoint', state: this.state }} />;
+  let urlParams = `?keyWord=${keyWord}&STTwitter=${sourceToggle.twitter}&STReddit=${sourceToggle.reddit}&STHackerNoon=${
+    sourceToggle.hacker
+  }`;
+  let redirect = toSearch && <Redirect to={{ pathname: '/searchpoint', search: urlParams }} />;
 
     return (
       <Container fluid style={{ height: '100%', display: 'flex', justifyContent: 'center' }}>
@@ -52,10 +44,10 @@ class Home extends Component {
           <div className={styles.input}>
             <Input
               placeholder="Search..."
-              icon={{ name: 'search', circular: true, link: true, onClick: () => this.handleInputClick() }}
-              value={this.state.keyWord}
-              onChange={this.handleInputChange}
-              onKeyPress={(event) => event.key === 'Enter' && this.handleInputClick()}
+              icon={{ name: 'search', circular: true, link: true, onClick: () => handleInputClick() }}
+              value={keyWord}
+              onChange={handleInputChange}
+              onKeyPress={(event) => event.key === 'Enter' && handleInputClick()}
               autoFocus={true}
               style={{ width: '50%' }}
             />
@@ -64,19 +56,19 @@ class Home extends Component {
             <div className={styles.checkbox}>
               <Icon className="twitter" color="blue" />
               <Responsive>
-                <Checkbox toggle defaultChecked={true} onChange={() => this.handleToggleChange('twitter')} />
+                <Checkbox toggle defaultChecked={true} onChange={() => handleToggleChange('twitter')} />
               </Responsive>
             </div>
             <div className={styles.checkbox}>
               <Icon className="reddit alien" color="red" />
               <Responsive>
-                <Checkbox toggle defaultChecked={true} onChange={() => this.handleToggleChange('reddit')} />
+                <Checkbox toggle defaultChecked={true} onChange={() => handleToggleChange('reddit')} />
               </Responsive>
             </div>
             <div className={styles.checkbox}>
               <Icon className="moon" color="green" />
               <Responsive>
-                <Checkbox toggle defaultChecked={true} onChange={() => this.handleToggleChange('hacker')} />
+                <Checkbox toggle defaultChecked={true} onChange={() => handleToggleChange('hacker')} />
               </Responsive>
             </div>
           </div>
