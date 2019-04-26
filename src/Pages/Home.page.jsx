@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import styles from './Home.module.css';
-import { Image, Icon, Checkbox, Input, Container } from 'semantic-ui-react';
+import { Image, Icon, Checkbox, Input, Container, Responsive } from 'semantic-ui-react';
 import { Redirect } from 'react-router-dom';
 import logo from '../assets/images/Logo.png';
 
@@ -40,7 +40,7 @@ class Home extends Component {
     let redirect = this.state.toSearch && <Redirect to={{ pathname: '/searchpoint', state: this.state }} />;
 
     return (
-      <Container fluid>
+      <Container fluid style={{ height: '100%', display: 'flex', justifyContent: 'center' }}>
         <div className={styles.container}>
           {redirect}
           <div className={styles.image}>
@@ -57,21 +57,27 @@ class Home extends Component {
               onChange={this.handleInputChange}
               onKeyPress={(event) => event.key === 'Enter' && this.handleInputClick()}
               autoFocus={true}
-              style={{ width: '70%' }}
+              style={{ width: '50%' }}
             />
           </div>
-          <div className={styles.content}>
+          <div className={styles.checkboxGroup}>
             <div className={styles.checkbox}>
               <Icon className="twitter" color="blue" />
-              <Checkbox toggle defaultChecked={true} onChange={() => this.handleToggleChange('twitter')} />
+              <Responsive>
+                <Checkbox toggle defaultChecked={true} onChange={() => this.handleToggleChange('twitter')} />
+              </Responsive>
             </div>
             <div className={styles.checkbox}>
               <Icon className="reddit alien" color="red" />
-              <Checkbox toggle defaultChecked={true} onChange={() => this.handleToggleChange('reddit')} />
+              <Responsive>
+                <Checkbox toggle defaultChecked={true} onChange={() => this.handleToggleChange('reddit')} />
+              </Responsive>
             </div>
             <div className={styles.checkbox}>
               <Icon className="moon" color="green" />
-              <Checkbox toggle defaultChecked={true} onChange={() => this.handleToggleChange('hacker')} />
+              <Responsive>
+                <Checkbox toggle defaultChecked={true} onChange={() => this.handleToggleChange('hacker')} />
+              </Responsive>
             </div>
           </div>
         </div>
