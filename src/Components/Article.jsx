@@ -1,7 +1,7 @@
 import React from 'react';
-import { Card, Image } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import './Article.css';
+import { Card, Responsive, Image } from 'semantic-ui-react';
 import ArticleModal from './ArticleModal.jsx';
 
 class Article extends React.Component {
@@ -37,28 +37,38 @@ class Article extends React.Component {
     }
 
     // Card title definition
-    const MAX_TITLE_LENGTH = 20;
+    const MAX_TITLE_LENGTH = 40;
     let cardTitle = this.props.data.title.substring(0, MAX_TITLE_LENGTH);
     if (this.props.data.title.length > MAX_TITLE_LENGTH) {
       cardTitle += '...';
     }
 
+    const style = {
+      cardContent: {
+        padding: '0px',
+      },
+    };
+
     return (
       <div>
-        <Card onClick={this.handleCardClick} className="cardstyle">
-          <Card.Content>
-            <Card.Header className="title">{cardTitle}</Card.Header>
-            <Card.Description className="description">{this.props.data.creationDate}</Card.Description>
-            <hr />
-            <Card.Description>{content}</Card.Description>
-          </Card.Content>
-        </Card>
-        <ArticleModal
-          isModalOpen={this.state.isModalOpen}
-          handleModalClose={this.handleModalClose}
-          data={this.props.data}
-          content={content}
-        />
+        <Responsive>
+          <Card onClick={this.handleCardClick} className="cardstyle">
+            <Card.Content style={style.cardContent}>
+              <Card.Header className="cardHeader">
+                <div className="title">{cardTitle}</div>
+                <div className="date">{this.props.data.creationDate}</div>
+              </Card.Header>
+              <br />
+              <Card.Description className="cardContent">{content}</Card.Description>
+            </Card.Content>
+          </Card>
+          <ArticleModal
+            isModalOpen={this.state.isModalOpen}
+            handleModalClose={this.handleModalClose}
+            data={this.props.data}
+            content={content}
+          />
+        </Responsive>
       </div>
     );
   }
