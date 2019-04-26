@@ -20,7 +20,9 @@
 
 @media only screen and (min-device-width: 0px) and (max-device-width: 600px) {
   .inputT {
-    margin-top: 15%;
+    margin-top: 12%;
+    margin-left: auto;
+    width: auto;
   }
   .titleT {
     display: none;
@@ -30,7 +32,7 @@
     flex-direction: column;
   }
   #image {
-    width: 90%;
+    width: 70%;
     height: 90%;
   }
 }
@@ -41,7 +43,10 @@
     height: 90%;
   }
   .inputT {
-    margin-top: 6%;
+    margin-top: auto;
+  }
+  .titleT {
+    font-size: 18px;
   }
 }
 
@@ -52,11 +57,18 @@
   }
   .titleT {
     font-size: 18px;
-    margin-left: 3em;
+    margin-left: auto;
   }
 }
-@media only screen and (min-device-width: 1024px) and (max-device-width: 1600px) {
+@media only screen and (min-device-width: 1024px) {
   .inputT {
-    margin-left: 22%;
+    margin-left: auto;
+    margin-top: 5%;
+  }
+  .titleT {
+    margin-left: auto;
+  }
+  .item {
+    margin-left: auto;
   }
 }
