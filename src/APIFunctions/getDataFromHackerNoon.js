@@ -1,4 +1,4 @@
-// getDataFromHN.js
+// getDataFromHackerNoon.js
 
 /*
 

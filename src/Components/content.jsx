@@ -1,32 +1,44 @@
-/* eslint-disable no-lone-blocks */
-import React, { Component } from 'react';
+import React from 'react';
+import { Responsive } from 'semantic-ui-react';
+import PropTypes from 'prop-types';
 import Source from './source.jsx';
 import './content.css';
 
-class Content extends Component {
-  render() {
-    let resultTwitter;
-    let resultReddit;
-    let resultHacker;
+const Content = ({ sourceToggles, redditData, twitterData, hackerNoonData }) => {
+  let resultTwitter;
+  let resultReddit;
+  let resultHacker;
 
-    this.props.toggle.twitter ? (resultTwitter = '') : (resultTwitter = 'Content-toggle');
-    this.props.toggle.reddit ? (resultReddit = '') : (resultReddit = 'Content-toggle');
-    this.props.toggle.hacker ? (resultHacker = '') : (resultHacker = 'Content-toggle');
+  sourceToggles.twitter ? (resultTwitter = '') : (resultTwitter = 'Content-toggle');
+  sourceToggles.reddit ? (resultReddit = '') : (resultReddit = 'Content-toggle');
+  sourceToggles.hacker ? (resultHacker = '') : (resultHacker = 'Content-toggle');
 
-    return (
-      <div>
-        <div className={resultReddit}>
-          <Source source="reddit" data={this.props.redditData} />
-        </div>
-        <div className={resultTwitter}>
-          <Source source="twitter" data={this.props.twitterData} />
-        </div>
-        <div className={resultHacker}>
-          <Source source="hacker noon" data={this.props.hackerNoonData} />
-        </div>
+  return (
+    <div className="sourceContent">
+      <div className={resultReddit}>
+        <Responsive>
+          <Source source="reddit" data={redditData} />
+        </Responsive>
       </div>
-    );
-  }
-}
+      <div className={resultTwitter}>
+        <Responsive>
+          <Source source="twitter" data={twitterData} />
+        </Responsive>
+      </div>
+      <div className={resultHacker}>
+        <Responsive>
+          <Source source="hacker noon" data={hackerNoonData} />
+        </Responsive>
+      </div>
+    </div>
+  );
+};
+
+Content.propTypes = {
+  sourceToggles: PropTypes.object.isRequired,
+  redditData: PropTypes.arrayOf(PropTypes.object).isRequired,
+  twitterData: PropTypes.arrayOf(PropTypes.object).isRequired,
+  hackerNoonData: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
 
 export default Content;
