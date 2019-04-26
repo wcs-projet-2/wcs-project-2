@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
+import queryString from 'query-string';
 import TopBar from '../Components/topBar';
 import Content from '../Components/content';
 import BottomBar from '../Components/bottomBar';
 import getDataFromReddit from '../APIFunctions/getDataFromReddit';
+import getDataFromTwitter from '../APIFunctions/getDataFromTwitter';
+import getDataFromHackerNoon from '../APIFunctions/getDataFromHackerNoon';
 
 class SearchPoint extends Component {
   constructor(props) {
@@ -12,7 +15,7 @@ class SearchPoint extends Component {
       redditData: [],
       twitterData: [],
       hackerNoonData: [],
-      sourceToggle: {
+      sourceToggles: {
         twitter: true,
         reddit: true,
         hacker: true,
@@ -26,10 +29,10 @@ class SearchPoint extends Component {
     getDataFromReddit(keyWord, sort, nbOfItems).then((result) => this.setState({ redditData: result }));
 
     // refresh data from Twitter
-    // Add the code here...
+    this.setState({ twitterData: getDataFromTwitter() });
 
     // refresh data from Hacker noon
-    // Add the code here...
+    this.setState({ hackerNoonData: getDataFromHackerNoon() });
   }
 
   handleChange = (event) => {
@@ -43,18 +46,23 @@ class SearchPoint extends Component {
   };
 
   handleToggle = (source) => {
-    let sourceToggle = { ...this.state.sourceToggle };
-    sourceToggle[source] = !sourceToggle[source];
-    this.setState({ sourceToggle });
+    let sourceToggles = { ...this.state.sourceToggles };
+    sourceToggles[source] = !sourceToggles[source];
+    this.setState({ sourceToggles });
   };
 
   componentDidMount() {
     this.setState(
       (prevState) => {
-        let finalState = { ...prevState };
-        finalState.keyWord = this.props.location.state.keyWord;
-        finalState.sourceToggle = this.props.location.state.sourceToggle;
-        return finalState;
+        let urlParams = queryString.parse(this.props.location.search);
+        let newState = { ...prevState };
+        newState.keyWord = urlParams.keyWord;
+        newState.sourceToggles = {
+          twitter: urlParams.STTwitter === 'true',
+          reddit: urlParams.STReddit === 'true',
+          hacker: urlParams.STHackerNoon === 'true',
+        };
+        return newState;
       },
       () => this.refreshDataFromAPI(this.state.keyWord)
     );
@@ -64,14 +72,14 @@ class SearchPoint extends Component {
     return (
       <div className="appBody">
         <TopBar
-          toggle={this.state.sourceToggle}
-          onToggle={this.handleToggle}
-          changeHandler={this.handleChange}
-          clickHandler={this.handleClick}
-          searchValue={this.state.keyWord}
+          keyWord={this.state.keyWord}
+          sourceToggles={this.state.sourceToggles}
+          handleToggle={this.handleToggle}
+          handleChange={this.handleChange}
+          handleClick={this.handleClick}
         />
         <Content
-          toggle={this.state.sourceToggle}
+          sourceToggles={this.state.sourceToggles}
           redditData={this.state.redditData}
           twitterData={this.state.twitterData}
           hackerNoonData={this.state.hackerNoonData}
