@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Grid, Header, Container, Image, Button, Responsive } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import Article from './Article.jsx';
-import './source.css';
+import styles from './source.module.css';
 import HackerNoon from '../assets/images/HackerNoon.png';
 import reddit from '../assets/images/reddit.png';
 import twitter from '../assets/images/twitter.png';
@@ -59,31 +59,28 @@ const Source = ({ source, data }) => {
   });
 
   return (
-    <div>
-      <br />
-      <Responsive>
-        <Container fluid className="source">
-          <Grid>
-            <Grid.Row>
-              <Header as="h3" textAlign="left" style={{ textTransform: 'uppercase' }}>
-                {title}
-                <Image className="imageIcon" src={icon} size="mini" />
-              </Header>
-              <br />
-            </Grid.Row>
-            <Grid.Row>
-              <div className="leftArrow" width={1}>
-                <Button icon="arrow left" onClick={() => handleClickArrow('left')} />
-              </div>
-              {cardDisplay}
-              <div className="rightArrow" width={1}>
-                <Button icon="arrow right" onClick={() => handleClickArrow('right')} />
-              </div>
-            </Grid.Row>
-          </Grid>
-        </Container>
-      </Responsive>
-    </div>
+    <Responsive>
+      <Container fluid>
+        <Grid>
+          <Grid.Row>
+            <Header as="h3" textAlign="left" style={{ textTransform: 'uppercase' }}>
+              {title}
+              <Image className={styles.imageIcon} src={icon} size="mini" />
+            </Header>
+            <br />
+          </Grid.Row>
+          <Grid.Row centered>
+            <div className={styles.leftArrow} width={1}>
+              <Button icon="arrow left" onClick={() => handleClickArrow('left')} />
+            </div>
+            {cardDisplay}
+            <div className={styles.rightArrow} width={1}>
+              <Button icon="arrow right" onClick={() => handleClickArrow('right')} />
+            </div>
+          </Grid.Row>
+        </Grid>
+      </Container>
+    </Responsive>
   );
 };
 
