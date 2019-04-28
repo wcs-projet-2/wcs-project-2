@@ -11,7 +11,24 @@ const Source = ({ source, data }) => {
   const [startIndex, setStartIndex] = useState(0);
   const [cardsToBeDisplayed, setCardsToBeDisplayed] = useState([]);
   //const [nbCard, setNbCard] = useState(4); // To be used once responsivity will be put in place
-  const nbCard = 4;
+
+  //Display a number of card according to the window width
+  let displayNbCard = () => {
+    if (window.innerWidth >= 1440) {
+      return 4;
+    }
+    if (window.innerWidth < 1440 && window.innerWidth > 768) {
+      return 3;
+    }
+    if (window.innerWidth >= 768 && window.innerWidth < 1024) {
+      return 2;
+    }
+    if (window.innerWidth >= 320 && window.innerWidth <= 425) {
+      return 1;
+    } else {
+      return 1;
+    }
+  };
 
   // Si on clique sur la flèche de gauche, nos cards se déplacent vers la gauche
   const handleClickArrow = (direction) => {
@@ -31,7 +48,7 @@ const Source = ({ source, data }) => {
     let finalArray = [];
     if (data.length > 0) {
       let currentIndex = startIndex;
-      for (let i = 0; i < nbCard; i++) {
+      for (let i = 0; i < displayNbCard(); i++) {
         finalArray.push(data[currentIndex++ % data.length]);
       }
       setCardsToBeDisplayed(finalArray);
@@ -52,7 +69,7 @@ const Source = ({ source, data }) => {
 
   let cardDisplay = cardsToBeDisplayed.map((post) => {
     return (
-      <Grid.Column width={3} key={post.id} id={post.id}>
+      <Grid.Column width={12 / displayNbCard()} key={post.id} id={post.id}>
         <Article key={post.id} id={post.id} data={post} />
       </Grid.Column>
     );
