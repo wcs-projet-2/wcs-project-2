@@ -57,7 +57,7 @@ const Article = ({ data }) => {
             <Card.Description className="cardContent">{content}</Card.Description>
           </Card.Content>
         </Card>
-        <ArticleModal isModalOpen={isModalOpen} handleModalClose={handleModalClose} />
+        <ArticleModal isModalOpen={isModalOpen} handleModalClose={handleModalClose} data={data} content={content} />
       </Responsive>
     </div>
   );
