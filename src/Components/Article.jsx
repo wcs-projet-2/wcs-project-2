@@ -19,16 +19,28 @@ const Article = ({ data }) => {
   let content;
 
   if (typeof data.postType === 'undefined') {
-    content = data.text;
-  } else if (data.postType === 'image') {
-    content = <img src={data.thumbnail} alt="" />;
-  } else if (data.postType === 'link') {
+    if (data.text === '') {
+      content = data.title;
+    } else {
+      content = data.text;
+    }
+  }
+  if (data.postType === 'image') {
+    content = <img src={data.thumbnail} alt="" style={{ display: 'flex', margin: 'auto' }} />;
+  }
+  if (data.postType === 'link') {
     content = (
       <div>
-        <img src={data.thumbnail} alt="" />
+        <img src={data.thumbnail} alt="" style={{ display: 'flex', margin: 'auto' }} />
         <p>{data.postUrl}</p>
       </div>
     );
+  }
+  if (data.postType === 'rich:video') {
+    content = <img src={data.thumbnail} alt="" style={{ display: 'flex', margin: 'auto' }} />;
+  }
+  if (data.postType === 'hosted:video') {
+    content = data.postUrl;
   }
 
   // Card title definition
@@ -50,7 +62,10 @@ const Article = ({ data }) => {
         <Card onClick={handleCardClick} className="cardstyle">
           <Card.Content style={style.cardContent}>
             <Card.Header className="cardHeader">
-              <div className="title">{cardTitle}</div>
+              <div className="title">
+                {cardTitle}
+                <br />
+              </div>
               <div className="date">{data.creationDate}</div>
             </Card.Header>
             <br />

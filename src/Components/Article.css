@@ -7,7 +7,6 @@
 
 .cardHeader {
   height: 75px;
-  text-align: center;
   background-color: rgb(126, 185, 247, 0.5);
 }
 
@@ -16,18 +15,22 @@
   height: 45px;
   margin-top: 0px;
   padding-top: 5px;
+  text-align: center;
 }
 
 .date {
   font-size: 0.7em;
   height: 20px;
+  text-align: center;
 }
 
 .cardContent {
   word-wrap: break-word;
-  text-align: center;
+  text-align: justify;
+  margin: auto;
+  padding: 4%;
 }
 
 .description {
-  font-size: 11px;
+  font-size: 12px;
 }
