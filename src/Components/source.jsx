@@ -17,13 +17,13 @@ const Source = ({ source, data }) => {
     if (window.innerWidth >= 1440) {
       return 4;
     }
-    if (window.innerWidth < 1440 && window.innerWidth > 768) {
+    if (window.innerWidth > 1024 && window.innerWidth < 1440) {
       return 3;
     }
-    if (window.innerWidth >= 768 && window.innerWidth < 1024) {
+    if (window.innerWidth >= 650 && window.innerWidth < 1024) {
       return 2;
     }
-    if (window.innerWidth >= 320 && window.innerWidth <= 425) {
+    if (window.innerWidth >= 320 && window.innerWidth <= 650) {
       return 1;
     } else {
       return 1;
