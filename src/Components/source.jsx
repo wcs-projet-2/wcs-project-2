@@ -17,7 +17,7 @@ const Source = ({ source, data }) => {
     if (window.innerWidth >= 1440) {
       return 4;
     }
-    if (window.innerWidth > 1024 && window.innerWidth < 1440) {
+    if (window.innerWidth >= 1024 && window.innerWidth < 1440) {
       return 3;
     }
     if (window.innerWidth >= 650 && window.innerWidth < 1024) {
