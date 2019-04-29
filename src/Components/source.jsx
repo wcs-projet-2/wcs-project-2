@@ -7,10 +7,9 @@ import HackerNoon from '../assets/images/HackerNoon.png';
 import reddit from '../assets/images/reddit.png';
 import twitter from '../assets/images/twitter.png';
 
-const Source = ({ source, data }) => {
+const Source = ({ source, data, isResizing }) => {
   const [startIndex, setStartIndex] = useState(0);
   const [cardsToBeDisplayed, setCardsToBeDisplayed] = useState([]);
-  const [isResizing, setIsResizing] = useState(false);
   //const [nbCard, setNbCard] = useState(4); // To be used once responsivity will be put in place
 
   //Display a number of card according to the window width
@@ -55,9 +54,6 @@ const Source = ({ source, data }) => {
       setCardsToBeDisplayed(finalArray);
     }
   }, [startIndex, data, isResizing]);
-
-  // Force the previous effect each time the window is resized
-  window.onresize = () => setIsResizing(!isResizing);
 
   let title = source;
   let iconName = source;
