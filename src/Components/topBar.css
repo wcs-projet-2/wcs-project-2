@@ -1,32 +1,76 @@
-.papaContainer {
-  width: 100%;
-  align-self: center;
-}
-#search {
-  width: 35%;
+.inputT {
+  margin-top: 4%;
+  max-width: 30%;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  height: 100%;
+}
+#image {
+  width: 70%;
+  height: 90%;
 }
 
-.item {
+.titleT {
+  color: rgb(57, 4, 182);
   display: flex;
   flex-direction: column;
-  align-items: baseline;
+  justify-content: center;
+  font-size: 25px;
 }
 
-#image {
-  width: 100px;
-  height: 100px;
+@media only screen and (min-device-width: 0px) and (max-device-width: 600px) {
+  .inputT {
+    margin-top: 12%;
+    margin-left: auto;
+    width: auto;
+  }
+  .titleT {
+    display: none;
+  }
+  .item {
+    display: flex;
+    flex-direction: column;
+  }
+  #image {
+    width: 70%;
+    height: 90%;
+  }
 }
-#title {
-  font-size: 23px;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  color: rgb(57, 4, 182);
 
-  margin: auto;
+@media only screen and (min-device-width: 600px) and (max-device-width: 800px) {
+  #image {
+    width: 80%;
+    height: 90%;
+  }
+  .inputT {
+    margin-top: 6%;
+  }
+  .titleT {
+    font-size: 18px;
+  }
 }
 
-.iconTopBar {
-  margin: 3px;
+@media only screen and (min-device-width: 800px) and (max-device-width: 1023px) {
+  #image {
+    width: 90px;
+    height: 90px;
+  }
+  .titleT {
+    font-size: 18px;
+    margin-left: auto;
+  }
+}
+@media only screen and (min-device-width: 1024px) {
+  .inputT {
+    margin-left: auto;
+    margin-top: 4%;
+    width: 100%;
+  }
+  .titleT {
+    margin-left: auto;
+  }
+  .item {
+    margin-left: auto;
+  }
 }
