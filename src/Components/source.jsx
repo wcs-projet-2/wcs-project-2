@@ -30,7 +30,7 @@ const Source = ({ source, data }) => {
     }
   };
 
-  // Si on clique sur la flèche de gauche, nos cards se déplacent vers la gauche
+  // Navigation within the cusom carrousel
   const handleClickArrow = (direction) => {
     if (direction === 'left') {
       setStartIndex(
@@ -42,7 +42,7 @@ const Source = ({ source, data }) => {
     }
   };
 
-  // This section is launched each time the component is mounted or updated
+  // This Effect is launched each time new data is get from the APIs or following a click on the nav arrows
   useEffect(() => {
     // Update state.cardsToBeDisplayed according to state.startIndex
     let finalArray = [];
@@ -53,7 +53,7 @@ const Source = ({ source, data }) => {
       }
       setCardsToBeDisplayed(finalArray);
     }
-  });
+  }, [startIndex, data]);
 
   let title = source;
   let iconName = source;
