@@ -79,8 +79,8 @@ const Source = ({ source, data }) => {
     <Responsive>
       <Container fluid>
         <Grid>
-          <Grid.Row>
-            <Header as="h3" textAlign="left" style={{ textTransform: 'uppercase' }}>
+          <Grid.Row style={{ marginTop: '40px' }}>
+            <Header as="h3" style={{ textTransform: 'uppercase', margin: 'auto' }}>
               {title}
               <Image className={styles.imageIcon} src={icon} size="mini" />
             </Header>
