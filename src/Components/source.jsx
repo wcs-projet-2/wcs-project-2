@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Grid, Header, Container, Image, Button, Responsive } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import Article from './Article.jsx';
-import './source.css';
+import styles from './source.module.css';
 import HackerNoon from '../assets/images/HackerNoon.png';
 import reddit from '../assets/images/reddit.png';
 import twitter from '../assets/images/twitter.png';
@@ -11,7 +11,24 @@ const Source = ({ source, data }) => {
   const [startIndex, setStartIndex] = useState(0);
   const [cardsToBeDisplayed, setCardsToBeDisplayed] = useState([]);
   //const [nbCard, setNbCard] = useState(4); // To be used once responsivity will be put in place
-  const nbCard = 4;
+
+  //Display a number of card according to the window width
+  let displayNbCard = () => {
+    if (window.innerWidth >= 1440) {
+      return 4;
+    }
+    if (window.innerWidth >= 1024 && window.innerWidth < 1440) {
+      return 3;
+    }
+    if (window.innerWidth >= 650 && window.innerWidth < 1024) {
+      return 2;
+    }
+    if (window.innerWidth >= 320 && window.innerWidth <= 650) {
+      return 1;
+    } else {
+      return 1;
+    }
+  };
 
   // Si on clique sur la flèche de gauche, nos cards se déplacent vers la gauche
   const handleClickArrow = (direction) => {
@@ -31,7 +48,7 @@ const Source = ({ source, data }) => {
     let finalArray = [];
     if (data.length > 0) {
       let currentIndex = startIndex;
-      for (let i = 0; i < nbCard; i++) {
+      for (let i = 0; i < displayNbCard(); i++) {
         finalArray.push(data[currentIndex++ % data.length]);
       }
       setCardsToBeDisplayed(finalArray);
@@ -52,38 +69,35 @@ const Source = ({ source, data }) => {
 
   let cardDisplay = cardsToBeDisplayed.map((post) => {
     return (
-      <Grid.Column width={3} key={post.id} id={post.id}>
+      <Grid.Column width={12 / displayNbCard()} key={post.id} id={post.id}>
         <Article key={post.id} id={post.id} data={post} />
       </Grid.Column>
     );
   });
 
   return (
-    <div>
-      <br />
-      <Responsive>
-        <Container fluid className="source">
-          <Grid>
-            <Grid.Row>
-              <Header as="h3" textAlign="left" style={{ textTransform: 'uppercase' }}>
-                {title}
-                <Image className="imageIcon" src={icon} size="mini" />
-              </Header>
-              <br />
-            </Grid.Row>
-            <Grid.Row>
-              <div className="leftArrow" width={1}>
-                <Button icon="arrow left" onClick={() => handleClickArrow('left')} />
-              </div>
-              {cardDisplay}
-              <div className="rightArrow" width={1}>
-                <Button icon="arrow right" onClick={() => handleClickArrow('right')} />
-              </div>
-            </Grid.Row>
-          </Grid>
-        </Container>
-      </Responsive>
-    </div>
+    <Responsive>
+      <Container fluid>
+        <Grid>
+          <Grid.Row>
+            <Header as="h3" textAlign="left" style={{ textTransform: 'uppercase' }}>
+              {title}
+              <Image className={styles.imageIcon} src={icon} size="mini" />
+            </Header>
+            <br />
+          </Grid.Row>
+          <Grid.Row centered>
+            <div className={styles.leftArrow} width={1}>
+              <Button icon="arrow left" onClick={() => handleClickArrow('left')} />
+            </div>
+            {cardDisplay}
+            <div className={styles.rightArrow} width={1}>
+              <Button icon="arrow right" onClick={() => handleClickArrow('right')} />
+            </div>
+          </Grid.Row>
+        </Grid>
+      </Container>
+    </Responsive>
   );
 };
 
