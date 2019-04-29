@@ -5,10 +5,9 @@
   z-index: 9;
 }
 .inputT {
-  margin-top: 4%;
   max-width: 30%;
   display: flex;
-  flex-direction: column;
+  align-self: center;
   justify-content: center;
   height: 100%;
 }
@@ -28,22 +27,10 @@
   width: 10vw;
 }
 
-.titleT {
-  color: rgb(57, 4, 182);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  font-size: 25px;
-}
-
 @media only screen and (min-device-width: 0px) and (max-device-width: 600px) {
   .inputT {
-    margin-top: 12%;
     margin-left: auto;
     width: auto;
-  }
-  .titleT {
-    display: none;
   }
   .item {
     display: flex;
@@ -63,12 +50,6 @@
     width: 80%;
     height: 90%;
   }
-  .inputT {
-    margin-top: 6%;
-  }
-  .titleT {
-    font-size: 18px;
-  }
 }
 
 @media only screen and (min-device-width: 800px) and (max-device-width: 1023px) {
@@ -76,19 +57,11 @@
     width: 90px;
     height: 90px;
   }
-  .titleT {
-    font-size: 18px;
-    margin-left: auto;
-  }
 }
 @media only screen and (min-device-width: 1024px) {
   .inputT {
     margin-left: auto;
-    margin-top: 4%;
     width: 100%;
-  }
-  .titleT {
-    margin-left: auto;
   }
   .item {
     margin-left: auto;

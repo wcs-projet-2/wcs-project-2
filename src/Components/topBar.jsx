@@ -13,7 +13,6 @@ const TopBar = ({ keyWord, sourceToggles, handleToggle, handleChange, handleClic
             <div>
               <Image id="image" onClick={() => (window.location = '/')} src={logo} alt="logo" />
             </div>
-            <h1 className="titleT">Welcome to Search Point!</h1>
             <Input
               className="inputT"
               placeholder="Search..."
@@ -26,14 +25,6 @@ const TopBar = ({ keyWord, sourceToggles, handleToggle, handleChange, handleClic
                 }
               }}
             />
-            {/* <div className="item">
-              <Icon className="twitter" />
-              <Checkbox toggle checked={sourceToggles.twitter} onChange={() => handleToggle('twitter')} />
-              <Icon className="reddit alien" />
-              <Checkbox toggle checked={sourceToggles.reddit} onChange={() => handleToggle('reddit')} />
-              <Icon className="moon" />
-              <Checkbox toggle checked={sourceToggles.hacker} onChange={() => handleToggle('hacker')} />
-            </div> */}
             <div className="checkboxGroup">
               <div className="checkbox">
                 <Icon className="twitter" color="blue" />
