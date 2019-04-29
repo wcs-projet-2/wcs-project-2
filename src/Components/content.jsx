@@ -16,17 +16,17 @@ const Content = ({ sourceToggles, redditData, twitterData, hackerNoonData }) => 
   return (
     <div className="sourceContent">
       <div className={resultReddit}>
-        <Responsive>
+        <Responsive className="source">
           <Source source="reddit" data={redditData} />
         </Responsive>
       </div>
       <div className={resultTwitter}>
-        <Responsive>
+        <Responsive className="source">
           <Source source="twitter" data={twitterData} />
         </Responsive>
       </div>
       <div className={resultHacker}>
-        <Responsive>
+        <Responsive className="source">
           <Source source="hacker noon" data={hackerNoonData} />
         </Responsive>
       </div>

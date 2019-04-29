@@ -1,0 +1,25 @@
+.leftArrow {
+  position: relative;
+  margin: auto;
+  padding: auto;
+}
+
+.rightArrow {
+  position: relative;
+  margin: auto;
+  padding: auto;
+}
+
+.cards {
+  justify-content: space-evenly;
+}
+
+h3 {
+  padding-top: 2px;
+  padding-left: 10px;
+  margin-bottom: 5px;
+}
+
+.imageIcon {
+  margin-left: 5px;
+}
