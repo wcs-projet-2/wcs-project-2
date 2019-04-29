@@ -30,7 +30,7 @@ const Source = ({ source, data }) => {
     }
   };
 
-  // Navigation within the cusom carrousel
+  // Navigation within the custom carrousel
   const handleClickArrow = (direction) => {
     if (direction === 'left') {
       setStartIndex(
