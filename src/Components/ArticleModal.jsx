@@ -54,6 +54,14 @@ const ArticleModal = ({ isModalOpen, handleModalClose, data }) => {
       <Modal dimmer={true} open={isModalOpen} onClose={handleModalClose}>
         <Modal.Header style={{ fontWeight: 'normal', color: 'rgb(57,4,182)' }}>
           <div>
+            <button
+              style={{ backgroundColor: 'white', border: 'none', color: 'rgb(150,150,150)', float: 'right' }}
+              onClick={handleModalClose}
+            >
+              X
+            </button>
+          </div>
+          <div>
             <span style={{ fontWeight: 'bold' }}>{data.title}</span> <br />
             <span style={{ color: 'black' }}>submitted on </span> {data.creationDate}
             <span style={{ color: 'black' }}> by </span>
