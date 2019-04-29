@@ -1,32 +1,36 @@
+.topbar {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 9;
+}
 .inputT {
-  margin-top: 4%;
   max-width: 30%;
   display: flex;
-  flex-direction: column;
+  align-self: center;
   justify-content: center;
   height: 100%;
 }
 #image {
-  width: 70%;
+  width: 80%;
   height: 90%;
 }
-
-.titleT {
-  color: rgb(57, 4, 182);
+.checkboxGroup {
   display: flex;
-  flex-direction: column;
+  margin: auto;
   justify-content: center;
-  font-size: 25px;
+}
+.checkbox {
+  align-items: center;
+  text-align: center;
+  padding: 0 7px 0 7px;
+  width: 10vw;
 }
 
 @media only screen and (min-device-width: 0px) and (max-device-width: 600px) {
   .inputT {
-    margin-top: 12%;
     margin-left: auto;
     width: auto;
-  }
-  .titleT {
-    display: none;
   }
   .item {
     display: flex;
@@ -36,18 +40,15 @@
     width: 70%;
     height: 90%;
   }
+  .checkboxGroup {
+    display: block;
+  }
 }
 
 @media only screen and (min-device-width: 600px) and (max-device-width: 800px) {
   #image {
     width: 80%;
     height: 90%;
-  }
-  .inputT {
-    margin-top: 6%;
-  }
-  .titleT {
-    font-size: 18px;
   }
 }
 
@@ -56,19 +57,11 @@
     width: 90px;
     height: 90px;
   }
-  .titleT {
-    font-size: 18px;
-    margin-left: auto;
-  }
 }
 @media only screen and (min-device-width: 1024px) {
   .inputT {
     margin-left: auto;
-    margin-top: 4%;
     width: 100%;
-  }
-  .titleT {
-    margin-left: auto;
   }
   .item {
     margin-left: auto;

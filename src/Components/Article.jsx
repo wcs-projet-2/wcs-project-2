@@ -16,6 +16,20 @@ const Article = ({ data }) => {
     setIsModalOpen(false);
   };
 
+  // CSS Style
+  let articleStyle = {
+    cardMain: {
+      overflow: 'hidden',
+      width: '100%',
+      height: '260px',
+    },
+    cardContent: {
+      padding: '0px',
+      wordWrap: 'break-word',
+      textAlign: 'center',
+    },
+  };
+
   let content;
 
   if (typeof data.postType === 'undefined') {
@@ -50,17 +64,11 @@ const Article = ({ data }) => {
     cardTitle += '...';
   }
 
-  const style = {
-    cardContent: {
-      padding: '0px',
-    },
-  };
-
   return (
     <div>
       <Responsive>
-        <Card onClick={handleCardClick} className="cardstyle">
-          <Card.Content style={style.cardContent}>
+        <Card onClick={handleCardClick} style={articleStyle.cardMain}>
+          <Card.Content style={articleStyle.cardContent}>
             <Card.Header className="cardHeader">
               <div className="title">
                 {cardTitle}

@@ -22,7 +22,7 @@ const ArticleModal = ({ isModalOpen, handleModalClose, data }) => {
   } else if (data.postType === 'self') {
     content = data.text;
   } else if (data.postType === 'image') {
-    content = <Image src={data.mediaSrc} alt="img" />;
+    content = <Image style={{ margin: 'auto', maxWidth: '100%', maxHeight: '98%' }} src={data.mediaSrc} alt="img" />;
   }
   // if the video isn't from youtube, displays the link to the video.
   else if (data.postType === 'rich:video') {
@@ -51,8 +51,21 @@ const ArticleModal = ({ isModalOpen, handleModalClose, data }) => {
 
   return (
     <Responsive>
-      <Modal dimmer={true} open={isModalOpen} onClose={handleModalClose}>
+      <Modal
+        dimmer={true}
+        open={isModalOpen}
+        onClose={handleModalClose}
+        style={{ height: 'window.innerHeight', overflowY: 'auto' }}
+      >
         <Modal.Header style={{ fontWeight: 'normal', color: 'rgb(57,4,182)' }}>
+          <div>
+            <button
+              style={{ backgroundColor: 'white', border: 'none', color: 'rgb(150,150,150)', float: 'right' }}
+              onClick={handleModalClose}
+            >
+              X
+            </button>
+          </div>
           <div>
             <span style={{ fontWeight: 'bold' }}>{data.title}</span> <br />
             <span style={{ color: 'black' }}>submitted on </span> {data.creationDate}
@@ -60,8 +73,8 @@ const ArticleModal = ({ isModalOpen, handleModalClose, data }) => {
             <span style={{ fontStyle: 'italic' }}>{data.author}</span>
           </div>
         </Modal.Header>
-        <Modal.Content className="content" style={{ overflowY: 'auto' }}>
-          <div style={{ fontSize: '20px', margin: 'auto' }}>{content}</div>
+        <Modal.Content style={{ overflowX: 'hidden', wordWrap: 'break-word' }}>
+          <div style={{ fontSize: '20px', margin: 'auto', height: '74vh', width: '50vw' }}>{content}</div>
         </Modal.Content>
         <Modal.Actions>
           <div style={{ display: 'flex', justifyContent: 'center' }}>

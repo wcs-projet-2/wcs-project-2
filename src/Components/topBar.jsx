@@ -6,36 +6,49 @@ import logo from '../assets/images/Logo.png';
 
 const TopBar = ({ keyWord, sourceToggles, handleToggle, handleChange, handleClick }) => {
   return (
-    <Responsive minWidth={320} maxWidth={2580}>
-      <Container fluid>
-        <Menu>
-          <div>
-            <Image id="image" onClick={() => (window.location = '/')} src={logo} alt="logo" />
-          </div>
-          <h1 className="titleT">Welcome to Search Point!</h1>
-          <Input
-            className="inputT"
-            placeholder="Search..."
-            icon={{ name: 'search', circular: true, link: true, onClick: () => handleClick() }}
-            value={keyWord}
-            onChange={handleChange}
-            onKeyPress={(event) => {
-              if (event.key === 'Enter') {
-                handleClick();
-              }
-            }}
-          />
-          <div className="item">
-            <Icon className="twitter" />
-            <Checkbox toggle checked={sourceToggles.twitter} onChange={() => handleToggle('twitter')} />
-            <Icon className="reddit alien" />
-            <Checkbox toggle checked={sourceToggles.reddit} onChange={() => handleToggle('reddit')} />
-            <Icon className="moon" />
-            <Checkbox toggle checked={sourceToggles.hacker} onChange={() => handleToggle('hacker')} />
-          </div>
-        </Menu>
-      </Container>
-    </Responsive>
+    <div className="topbar">
+      <Responsive minWidth={320} maxWidth={2580}>
+        <Container fluid>
+          <Menu>
+            <div>
+              <Image id="image" onClick={() => (window.location = '/')} src={logo} alt="logo" />
+            </div>
+            <Input
+              className="inputT"
+              placeholder="Search..."
+              icon={{ name: 'search', circular: true, link: true, onClick: () => handleClick() }}
+              value={keyWord}
+              onChange={handleChange}
+              onKeyPress={(event) => {
+                if (event.key === 'Enter') {
+                  handleClick();
+                }
+              }}
+            />
+            <div className="checkboxGroup">
+              <div className="checkbox">
+                <Icon className="twitter" color="blue" />
+                <Responsive>
+                  <Checkbox toggle checked={sourceToggles.twitter} onChange={() => handleToggle('twitter')} />
+                </Responsive>
+              </div>
+              <div className="checkbox">
+                <Icon className="reddit alien" color="red" />
+                <Responsive>
+                  <Checkbox toggle checked={sourceToggles.reddit} onChange={() => handleToggle('reddit')} />
+                </Responsive>
+              </div>
+              <div className="checkbox">
+                <Icon className="moon" color="green" />
+                <Responsive>
+                  <Checkbox toggle checked={sourceToggles.hacker} onChange={() => handleToggle('hacker')} />
+                </Responsive>
+              </div>
+            </div>
+          </Menu>
+        </Container>
+      </Responsive>
+    </div>
   );
 };
 
