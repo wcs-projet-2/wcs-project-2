@@ -1,4 +1,4 @@
-div.topbar {
+.topbar {
   position: -webkit-sticky;
   position: sticky;
   top: 0;
@@ -13,8 +13,19 @@ div.topbar {
   height: 100%;
 }
 #image {
-  width: 70%;
+  width: 80%;
   height: 90%;
+}
+.checkboxGroup {
+  display: flex;
+  margin: auto;
+  justify-content: center;
+}
+.checkbox {
+  align-items: center;
+  text-align: center;
+  padding: 0 7px 0 7px;
+  width: 10vw;
 }
 
 .titleT {
@@ -41,6 +52,9 @@ div.topbar {
   #image {
     width: 70%;
     height: 90%;
+  }
+  .checkboxGroup {
+    display: block;
   }
 }
 

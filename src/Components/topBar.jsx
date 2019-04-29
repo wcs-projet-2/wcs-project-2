@@ -26,13 +26,33 @@ const TopBar = ({ keyWord, sourceToggles, handleToggle, handleChange, handleClic
                 }
               }}
             />
-            <div className="item">
+            {/* <div className="item">
               <Icon className="twitter" />
               <Checkbox toggle checked={sourceToggles.twitter} onChange={() => handleToggle('twitter')} />
               <Icon className="reddit alien" />
               <Checkbox toggle checked={sourceToggles.reddit} onChange={() => handleToggle('reddit')} />
               <Icon className="moon" />
               <Checkbox toggle checked={sourceToggles.hacker} onChange={() => handleToggle('hacker')} />
+            </div> */}
+            <div className="checkboxGroup">
+              <div className="checkbox">
+                <Icon className="twitter" color="blue" />
+                <Responsive>
+                  <Checkbox toggle checked={sourceToggles.twitter} onChange={() => handleToggle('twitter')} />
+                </Responsive>
+              </div>
+              <div className="checkbox">
+                <Icon className="reddit alien" color="red" />
+                <Responsive>
+                  <Checkbox toggle checked={sourceToggles.reddit} onChange={() => handleToggle('reddit')} />
+                </Responsive>
+              </div>
+              <div className="checkbox">
+                <Icon className="moon" color="green" />
+                <Responsive>
+                  <Checkbox toggle checked={sourceToggles.hacker} onChange={() => handleToggle('hacker')} />
+                </Responsive>
+              </div>
             </div>
           </Menu>
         </Container>
