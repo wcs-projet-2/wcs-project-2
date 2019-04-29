@@ -2,7 +2,7 @@ import React from 'react';
 import { Responsive } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import Source from './source.jsx';
-import styles from './content.module.css';
+import './content.css';
 
 const Content = ({ sourceToggles, redditData, twitterData, hackerNoonData }) => {
   let resultTwitter;
@@ -14,19 +14,19 @@ const Content = ({ sourceToggles, redditData, twitterData, hackerNoonData }) => 
   sourceToggles.hacker ? (resultHacker = '') : (resultHacker = 'Content-toggle');
 
   return (
-    <div className={styles.sourceContent}>
+    <div className="sourceContent">
       <div className={resultReddit}>
-        <Responsive className={styles.source}>
+        <Responsive className="source">
           <Source source="reddit" data={redditData} />
         </Responsive>
       </div>
       <div className={resultTwitter}>
-        <Responsive className={styles.source}>
+        <Responsive className="source">
           <Source source="twitter" data={twitterData} />
         </Responsive>
       </div>
       <div className={resultHacker}>
-        <Responsive className={styles.source}>
+        <Responsive className="source">
           <Source source="hacker noon" data={hackerNoonData} />
         </Responsive>
       </div>
