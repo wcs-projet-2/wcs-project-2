@@ -38,9 +38,6 @@ const Home = () => {
         <div className={styles.image}>
           <Image src={logo} alt="logo" />
         </div>
-        <div className={styles.title}>
-          <h1 style={{ textAlign: 'center' }}>Welcome !</h1>
-        </div>
         <div className={styles.input}>
           <Input
             placeholder="Search..."
