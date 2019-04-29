@@ -9,38 +9,30 @@ const TopBar = ({ keyWord, sourceToggles, handleToggle, handleChange, handleClic
     <Responsive minWidth={320} maxWidth={2580}>
       <Container fluid>
         <Menu>
-          <Menu.Item id="image" onClick={() => (window.location = '/')}>
-            <Image src={logo} alt="logo" />
-          </Menu.Item>
-          <h1 id="title">Welcome to Search Point!</h1>
-          <Menu.Item id="search" position="right">
-            <Input
-              className="icon"
-              placeholder="Search..."
-              icon={{ name: 'search', circular: true, link: true, onClick: () => handleClick() }}
-              value={keyWord}
-              onChange={handleChange}
-              onKeyPress={(event) => {
-                if (event.key === 'Enter') {
-                  handleClick();
-                }
-              }}
-            />
-          </Menu.Item>
-          <Menu.Item>
-            <div>
-              <Icon className="twitter" />
-              <Checkbox toggle checked={sourceToggles.twitter} onChange={() => handleToggle('twitter')} />
-            </div>
-            <div>
-              <Icon className="reddit alien" />
-              <Checkbox toggle checked={sourceToggles.reddit} onChange={() => handleToggle('reddit')} />
-            </div>
-            <div>
-              <Icon className="moon" />
-              <Checkbox toggle checked={sourceToggles.hacker} onChange={() => handleToggle('hacker')} />
-            </div>
-          </Menu.Item>
+          <div>
+            <Image id="image" onClick={() => (window.location = '/')} src={logo} alt="logo" />
+          </div>
+          <h1 className="titleT">Welcome to Search Point!</h1>
+          <Input
+            className="inputT"
+            placeholder="Search..."
+            icon={{ name: 'search', circular: true, link: true, onClick: () => handleClick() }}
+            value={keyWord}
+            onChange={handleChange}
+            onKeyPress={(event) => {
+              if (event.key === 'Enter') {
+                handleClick();
+              }
+            }}
+          />
+          <div className="item">
+            <Icon className="twitter" />
+            <Checkbox toggle checked={sourceToggles.twitter} onChange={() => handleToggle('twitter')} />
+            <Icon className="reddit alien" />
+            <Checkbox toggle checked={sourceToggles.reddit} onChange={() => handleToggle('reddit')} />
+            <Icon className="moon" />
+            <Checkbox toggle checked={sourceToggles.hacker} onChange={() => handleToggle('hacker')} />
+          </div>
         </Menu>
       </Container>
     </Responsive>

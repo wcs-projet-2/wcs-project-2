@@ -52,12 +52,12 @@ const ArticleModal = ({ isModalOpen, handleModalClose, data }) => {
   return (
     <Responsive>
       <Modal dimmer={true} open={isModalOpen} onClose={handleModalClose}>
-        <Modal.Header style={{ color: 'rgb(57,4,182)', display: 'flex', justifyContent: 'center' }}>
+        <Modal.Header style={{ fontWeight: 'normal', color: 'rgb(57,4,182)' }}>
           <div>
-            {data.title} <br />
+            <span style={{ fontWeight: 'bold' }}>{data.title}</span> <br />
             <span style={{ color: 'black' }}>submitted on </span> {data.creationDate}
             <span style={{ color: 'black' }}> by </span>
-            <span style={{ textDecoration: 'underline' }}>{data.author}</span>
+            <span style={{ fontStyle: 'italic' }}>{data.author}</span>
           </div>
         </Modal.Header>
         <Modal.Content className="content" style={{ overflowY: 'auto' }}>
