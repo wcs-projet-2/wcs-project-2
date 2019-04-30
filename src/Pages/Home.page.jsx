@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styles from './Home.module.css';
-import { Image, Icon, Checkbox, Input, Container, Responsive } from 'semantic-ui-react';
+import { Image, Icon, Checkbox, Input, Container } from 'semantic-ui-react';
 import { Redirect } from 'react-router-dom';
 import logo from '../assets/images/Logo.png';
 
@@ -36,7 +36,7 @@ const Home = () => {
       <div className={styles.container}>
         {redirect}
         <div className={styles.image}>
-          <Image src={logo} alt="logo" />
+          <Image src={logo} alt="logo" style={{ marginTop: '15vh', marginBottom: '15vh' }} />
         </div>
         <div className={styles.input}>
           <Input
@@ -46,27 +46,21 @@ const Home = () => {
             onChange={handleInputChange}
             onKeyPress={(event) => event.key === 'Enter' && handleInputClick()}
             autoFocus={true}
-            style={{ width: '50%' }}
+            style={{ width: '100%' }}
           />
         </div>
         <div className={styles.checkboxGroup}>
           <div className={styles.checkbox}>
             <Icon className="twitter" color="blue" />
-            <Responsive>
-              <Checkbox toggle defaultChecked={true} onChange={() => handleToggleChange('twitter')} />
-            </Responsive>
+            <Checkbox toggle defaultChecked={true} onChange={() => handleToggleChange('twitter')} />
           </div>
           <div className={styles.checkbox}>
             <Icon className="reddit alien" color="red" />
-            <Responsive>
-              <Checkbox toggle defaultChecked={true} onChange={() => handleToggleChange('reddit')} />
-            </Responsive>
+            <Checkbox toggle defaultChecked={true} onChange={() => handleToggleChange('reddit')} />
           </div>
           <div className={styles.checkbox}>
             <Icon className="moon" color="green" />
-            <Responsive>
-              <Checkbox toggle defaultChecked={true} onChange={() => handleToggleChange('hacker')} />
-            </Responsive>
+            <Checkbox toggle defaultChecked={true} onChange={() => handleToggleChange('hacker')} />
           </div>
         </div>
       </div>
