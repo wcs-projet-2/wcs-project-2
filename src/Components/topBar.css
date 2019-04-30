@@ -4,8 +4,14 @@
   top: 0;
   z-index: 9;
 }
+.menu {
+  width: 100vw;
+  display: inline-flex;
+  justify-content: space-evenly;
+  background-color: white;
+}
 .inputT {
-  max-width: 30%;
+  max-width: 35%;
   display: flex;
   align-self: center;
   justify-content: center;
@@ -14,6 +20,7 @@
 #image {
   width: 80%;
   height: 90%;
+  margin: auto;
 }
 .checkboxGroup {
   display: flex;
@@ -29,19 +36,17 @@
 
 @media only screen and (min-device-width: 0px) and (max-device-width: 600px) {
   .inputT {
-    margin-left: auto;
     width: auto;
-  }
-  .item {
-    display: flex;
-    flex-direction: column;
+    margin-right: auto;
   }
   #image {
-    width: 70%;
+    width: 80%;
     height: 90%;
+    margin: 0;
   }
   .checkboxGroup {
     display: block;
+    margin-right: 10vw;
   }
 }
 
@@ -50,20 +55,36 @@
     width: 80%;
     height: 90%;
   }
+  .inputT {
+    margin-left: 10vw;
+  }
+  .checkboxGroup {
+    margin-left: 10vw;
+  }
 }
 
 @media only screen and (min-device-width: 800px) and (max-device-width: 1023px) {
   #image {
-    width: 90px;
-    height: 90px;
+    width: 80%;
+    height: 100%;
+  }
+  .inputT {
+    margin-left: 15vw;
+  }
+  .checkboxGroup {
+    margin-left: 15vw;
   }
 }
 @media only screen and (min-device-width: 1024px) {
-  .inputT {
-    margin-left: auto;
-    width: 100%;
+  #image {
+    width: 80%;
+    height: 90%;
   }
-  .item {
-    margin-left: auto;
+  .inputT {
+    margin-left: 10vw;
+    width: 30vw;
+  }
+  .checkboxGroup {
+    margin-left: 15vw;
   }
 }
