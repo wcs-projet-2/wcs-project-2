@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styles from './Home.module.css';
-import { Image, Icon, Checkbox, Input, Container, Responsive } from 'semantic-ui-react';
+import { Image, Icon, Checkbox, Input, Container } from 'semantic-ui-react';
 import { Redirect } from 'react-router-dom';
 import logo from '../assets/images/Logo.png';
 
