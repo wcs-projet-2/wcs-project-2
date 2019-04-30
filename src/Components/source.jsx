@@ -7,7 +7,7 @@ import HackerNoon from '../assets/images/HackerNoon.png';
 import reddit from '../assets/images/reddit.png';
 import twitter from '../assets/images/twitter.png';
 
-const Source = ({ source, data }) => {
+const Source = ({ source, data, isResizing }) => {
   const [startIndex, setStartIndex] = useState(0);
   const [cardsToBeDisplayed, setCardsToBeDisplayed] = useState([]);
   //const [nbCard, setNbCard] = useState(4); // To be used once responsivity will be put in place
@@ -30,7 +30,7 @@ const Source = ({ source, data }) => {
     }
   };
 
-  // Si on clique sur la flèche de gauche, nos cards se déplacent vers la gauche
+  // Navigation within the custom carrousel
   const handleClickArrow = (direction) => {
     if (direction === 'left') {
       setStartIndex(
@@ -42,7 +42,7 @@ const Source = ({ source, data }) => {
     }
   };
 
-  // This section is launched each time the component is mounted or updated
+  // This Effect is launched each time new data is get from the APIs or following a click on the nav arrows
   useEffect(() => {
     // Update state.cardsToBeDisplayed according to state.startIndex
     let finalArray = [];
@@ -53,7 +53,7 @@ const Source = ({ source, data }) => {
       }
       setCardsToBeDisplayed(finalArray);
     }
-  });
+  }, [startIndex, data, isResizing]);
 
   let title = source;
   let iconName = source;
