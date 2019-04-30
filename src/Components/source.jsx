@@ -86,14 +86,14 @@ const Source = ({ source, data, isResizing }) => {
             </Header>
             <br />
           </Grid.Row>
-          <Grid.Row centered>
-            <div className={styles.leftArrow} width={1}>
-              <Button icon="arrow left" onClick={() => handleClickArrow('left')} />
-            </div>
+          <Grid.Row style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <Grid.Column className={styles.leftArrow}>
+              <Button icon="arrow left" onClick={() => handleClickArrow('left')} style={{ margin: '0px' }} />
+            </Grid.Column>
             {cardDisplay}
-            <div className={styles.rightArrow} width={1}>
+            <Grid.Column className={styles.rightArrow}>
               <Button icon="arrow right" onClick={() => handleClickArrow('right')} />
-            </div>
+            </Grid.Column>
           </Grid.Row>
         </Grid>
       </Container>

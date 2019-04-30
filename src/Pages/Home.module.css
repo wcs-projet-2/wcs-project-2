@@ -1,7 +1,6 @@
 /* LARGE SCREEN */
 
 .container {
-  overflow-y: hidden;
   height: 100%;
 }
 
@@ -18,16 +17,18 @@
   justify-content: center;
   margin-bottom: 10vh;
   display: flex;
-  width: 70vw;
+  width: 50vw;
 }
 
 .checkboxGroup {
   display: flex;
   margin: auto;
   justify-content: center;
+  align-items: center;
 }
 
 .checkbox {
+  display: flex;
   align-items: center;
   text-align: center;
   padding: 0 5px 0 5px;
@@ -51,7 +52,7 @@
   .input {
     margin: auto;
     margin-bottom: 15%;
-    width: 100%;
+    width: 90%;
   }
 
   .checkboxGroup {
