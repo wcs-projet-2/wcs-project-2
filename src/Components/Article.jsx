@@ -32,7 +32,7 @@ const Article = ({ data }) => {
 
   let content;
 
-  if (typeof data.postType === 'undefined') {
+  if (typeof data.postType === 'undefined' || data.postType === 'self') {
     if (data.text === '') {
       content = data.title;
     } else {
