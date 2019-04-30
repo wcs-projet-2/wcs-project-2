@@ -1,5 +1,5 @@
 import React from 'react';
-import { Input, Menu, Icon, Container, Checkbox, Image, Responsive } from 'semantic-ui-react';
+import { Input, Icon, Container, Checkbox, Image, Responsive } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import './topBar.css';
 import logo from '../assets/images/Logo.png';
@@ -9,7 +9,7 @@ const TopBar = ({ keyWord, sourceToggles, handleToggle, handleChange, handleClic
     <div className="topbar">
       <Responsive minWidth={320} maxWidth={2580}>
         <Container fluid>
-          <Menu>
+          <div className="menu">
             <div>
               <Image id="image" onClick={() => (window.location = '/')} src={logo} alt="logo" />
             </div>
@@ -45,7 +45,7 @@ const TopBar = ({ keyWord, sourceToggles, handleToggle, handleChange, handleClic
                 </Responsive>
               </div>
             </div>
-          </Menu>
+          </div>
         </Container>
       </Responsive>
     </div>
