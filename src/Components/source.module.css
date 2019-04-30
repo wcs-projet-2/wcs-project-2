@@ -1,9 +1,9 @@
 .leftArrow {
-  position: absolute;
+  text-align: right;
 }
 
 .rightArrow {
-  position: absolute;
+  text-align: left;
 }
 
 .cards {
