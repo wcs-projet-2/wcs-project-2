@@ -85,11 +85,11 @@ const Source = ({ source, data, isResizing }) => {
         <br />
       </Grid.Row>
       <Grid.Row style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        <Grid.Column className={styles.leftArrow} width={2}>
+        <Grid.Column className={styles.leftArrow} width={2} style={{ paddingRight: '0px' }}>
           <Button icon="arrow left" onClick={() => handleClickArrow('left')} style={{ margin: '0px' }} />
         </Grid.Column>
         {cardDisplay}
-        <Grid.Column className={styles.rightArrow} width={2}>
+        <Grid.Column className={styles.rightArrow} width={2} style={{ paddingLeft: '0px' }}>
           <Button icon="arrow right" onClick={() => handleClickArrow('right')} />
         </Grid.Column>
       </Grid.Row>
