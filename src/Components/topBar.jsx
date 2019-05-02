@@ -24,6 +24,7 @@ const TopBar = ({ keyWord, sourceToggles, handleToggle, handleChange, handleClic
     },
     image: {
       maxHeight: '10vh',
+      float: 'right',
     },
     colInput: {
       display: 'flex',
