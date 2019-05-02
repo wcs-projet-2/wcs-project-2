@@ -1,0 +1,70 @@
+/* LARGE SCREEN */
+
+.container {
+  height: 100%;
+}
+
+.image {
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+  height: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.input {
+  margin: auto;
+  justify-content: center;
+  margin-bottom: 10vh;
+  display: flex;
+  width: 50vw;
+}
+
+.checkboxGroup {
+  display: flex;
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  padding: 0 5px 0 5px;
+  width: 8vw;
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 548px) {
+  .image {
+    width: 200px;
+    margin: auto;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    margin-top: 15%;
+  }
+
+  .container {
+    width: 100%;
+  }
+
+  .input {
+    margin: auto;
+    margin-bottom: 15%;
+    width: 90%;
+  }
+
+  .checkboxGroup {
+    display: flex;
+    margin-right: 40px;
+    justify-content: space-around;
+  }
+
+  /* .checkbox {
+    align-items: center;
+    text-align: center;
+    padding: 0 3px 0 3px;
+    width: 10vw;
+  } */
+}

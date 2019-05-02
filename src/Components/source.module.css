@@ -1,0 +1,21 @@
+.leftArrow {
+  text-align: right;
+}
+
+.rightArrow {
+  text-align: left;
+}
+
+.cards {
+  justify-content: space-evenly;
+}
+
+h3 {
+  padding-top: 2px;
+  padding-left: 10px;
+  margin-bottom: 5px;
+}
+
+.imageIcon {
+  margin-left: 5px;
+}

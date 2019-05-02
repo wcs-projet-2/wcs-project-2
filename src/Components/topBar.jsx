@@ -1,46 +1,119 @@
 import React from 'react';
-import './topBar.css';
-import { Input, Menu, Icon, Container, Checkbox, Image } from 'semantic-ui-react';
-// import { prependOnceListener } from 'cluster';
-import logo from './assets/images/Logo.png';
+import { Input, Icon, Checkbox, Image, Grid } from 'semantic-ui-react';
+import PropTypes from 'prop-types';
+import logo from '../assets/images/Logo.png';
 
-const TopBar = (props) => {
+const TopBar = ({ keyWord, sourceToggles, handleToggle, handleChange, handleClick }) => {
+  let topBarStyle = {
+    main: {
+      backgroundColor: 'white',
+      borderBottom: '1px solid blue',
+      position: 'sticky',
+      top: '0',
+      zIndex: '9',
+      padding: '20px',
+    },
+    grid: {
+      margin: '0px',
+    },
+    mainRow: {
+      padding: '0 0 0 0',
+    },
+    colLogo: {
+      padding: '0 0 0 0px',
+    },
+    image: {
+      maxHeight: '10vh',
+      float: 'right',
+    },
+    colInput: {
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      alignItems: 'center',
+      padding: '0',
+    },
+    input: {
+      width: '60vw',
+    },
+    rowCheckboxes: {
+      display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'center',
+      alignItems: 'center',
+      marginTop: '10px',
+    },
+    checkBoxGroup: {
+      padding: '0 1.5vw 0 1.5vw',
+      display: 'flex',
+      alignItems: 'center',
+    },
+    icon: {
+      height: '100%',
+    },
+    checkBox: {
+      size: '50%',
+    },
+  };
+
   return (
-    <Container>
-      <Menu>
-        <Menu.Item id="image">
-          <Image src={logo} alt="logo" />
-        </Menu.Item>
-        <h1 id="title">Welcome to Search Point!</h1>
-        <Menu.Item id="search" position="right">
-          <Input
-            className="icon"
-            placeholder="Search..."
-            icon={{ name: 'search', circular: true, link: true, onClick: () => props.clickHandler() }}
-            value={props.searchValue}
-            onChange={props.changeHandler}
-            onKeyPress={(event) => {
-              if (event.key === 'Enter') {
-                props.clickHandler();
-              }
-            }}
-          />
-          <div>
-            <Icon className="twitter" />
-            <Checkbox toggle defaultChecked={true} onChange={() => props.onToggle('twitter')} />
-          </div>
-          <div>
-            <Icon className="reddit alien" />
-            <Checkbox toggle defaultChecked={true} onChange={() => props.onToggle('reddit')} />
-          </div>
-          <div>
-            <Icon className="moon" />
-            <Checkbox toggle defaultChecked={true} onChange={() => props.onToggle('hacker')} />
-          </div>
-        </Menu.Item>
-      </Menu>
-    </Container>
+    <div style={topBarStyle.main}>
+      <Grid style={topBarStyle.grid}>
+        <Grid.Row columns={1} style={topBarStyle.mainRow}>
+          <Grid.Column mobile={4} tablet={2} computer={2} style={topBarStyle.colLogo}>
+            <Image id="image" onClick={() => (window.location = '/')} src={logo} alt="logo" style={topBarStyle.image} />
+          </Grid.Column>
+          <Grid.Column mobile={12} tablet={14} computer={14} style={topBarStyle.colInput}>
+            <Grid.Row columns={2}>
+              <Input
+                style={topBarStyle.input}
+                placeholder="Search..."
+                icon={{ name: 'search', circular: true, link: true, onClick: () => handleClick() }}
+                value={keyWord}
+                onChange={handleChange}
+                onKeyPress={(event) => {
+                  if (event.key === 'Enter') {
+                    handleClick();
+                  }
+                }}
+              />
+            </Grid.Row>
+            <Grid.Row columns={3} style={topBarStyle.rowCheckboxes}>
+              <Grid.Column style={topBarStyle.checkBoxGroup}>
+                <Icon className="twitter" color="blue" style={topBarStyle.icon} />
+                <Checkbox toggle checked={sourceToggles.twitter} onChange={() => handleToggle('twitter')} />
+              </Grid.Column>
+              <Grid.Column style={topBarStyle.checkBoxGroup}>
+                <Icon className="reddit alien" color="red" style={topBarStyle.icon} />
+                <Checkbox toggle checked={sourceToggles.reddit} onChange={() => handleToggle('reddit')} />
+              </Grid.Column>
+              <Grid.Column style={topBarStyle.checkBoxGroup}>
+                <Icon className="moon" color="green" style={topBarStyle.icon} />
+                <Checkbox
+                  toggle
+                  checked={sourceToggles.hacker}
+                  onChange={() => handleToggle('hacker')}
+                  style={topBarStyle.checkBox}
+                />
+              </Grid.Column>
+            </Grid.Row>
+          </Grid.Column>
+        </Grid.Row>
+      </Grid>
+    </div>
   );
+};
+
+TopBar.propTypes = {
+  keyWord: PropTypes.string.isRequired,
+  sourceToggles: PropTypes.shape({
+    twitter: PropTypes.bool.isRequired,
+    reddit: PropTypes.bool.isRequired,
+    hacker: PropTypes.bool.isRequired,
+  }),
+  handleToggle: PropTypes.func.isRequired,
+  handleChange: PropTypes.func.isRequired,
+  handleClick: PropTypes.func.isRequired,
 };
 
 export default TopBar;

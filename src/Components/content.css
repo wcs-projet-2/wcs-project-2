@@ -1,3 +1,17 @@
 .Content-toggle {
   display: none;
 }
+
+.sourceContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.source {
+  /* border: #61dafb 1px solid;
+  border-radius: 10px; */
+  margin: 20px 0px 10px 0px;
+  padding: 10px 0px 10px 0px;
+  height: auto;
+}

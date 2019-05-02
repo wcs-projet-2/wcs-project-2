@@ -1,59 +1,99 @@
-import React from 'react';
-import { Card } from 'semantic-ui-react';
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import './Article.css';
+import { Card } from 'semantic-ui-react';
 import ArticleModal from './ArticleModal.jsx';
 
-class Article extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isModalOpen: false,
-    };
-  }
+const Article = ({ data }) => {
+  // Declaration State key "isModalOpen"
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  handleCardClick = () => {
-    this.setState({ isModalOpen: true });
+  const handleCardClick = () => {
+    setIsModalOpen(true);
   };
 
-  handleModalClose = () => {
-    this.setState({ isModalOpen: false });
+  const handleModalClose = () => {
+    setIsModalOpen(false);
   };
 
-  render() {
-    let content;
+  // CSS Style
+  let articleStyle = {
+    cardMain: {
+      overflow: 'hidden',
+      width: '100%',
+      height: '260px',
+      marginBottom: 0,
+    },
+    cardContent: {
+      padding: '0px',
+      wordWrap: 'break-word',
+      textAlign: 'center',
+    },
+  };
 
-    if (typeof this.props.data.postType === 'undefined') {
-      content = this.props.data.text;
-    } else if (this.props.data.postType === 'image') {
-      content = <img src={this.props.data.thumbnail} alt="" />;
-    } else if (this.props.data.postType === 'link') {
-      content = (
-        <div>
-          <img src={this.props.data.thumbnail} alt="" />
-          <p>this.props.data.postUrl</p>
-        </div>
-      );
+  let content;
+
+  if (typeof data.postType === 'undefined' || data.postType === 'self') {
+    if (data.text === '') {
+      content = data.title;
+    } else {
+      content = data.text;
     }
-
-    return (
+  }
+  if (data.postType === 'image') {
+    content = <img src={data.thumbnail} alt="" style={{ display: 'flex', margin: 'auto' }} />;
+  }
+  if (data.postType === 'link') {
+    content = (
       <div>
-        <Card onClick={this.handleCardClick} className="cardstyle">
-          <Card.Content>
-            <Card.Header className="title">{this.props.data.title}</Card.Header>
-            <Card.Description className="description">{this.props.data.creationDate}</Card.Description>
-            <hr />
-            <Card.Description>{content}</Card.Description>
-            {/*   Commentés car on va les utiliser seulement dans le pop-up            
-              <div>
-                <Button circular color="facebook" icon="facebook" />
-                <Button circular color="twitter" icon="twitter" />
-              </div> */}
-          </Card.Content>
-        </Card>
-        <ArticleModal isModalOpen={this.state.isModalOpen} onModalClose={this.handleModalClose} />
+        <img src={data.thumbnail} alt="" style={{ display: 'flex', margin: 'auto' }} />
+        <p>{data.postUrl}</p>
       </div>
     );
   }
-}
+  if (data.postType === 'rich:video') {
+    content = <img src={data.thumbnail} alt="" style={{ display: 'flex', margin: 'auto' }} />;
+  }
+  if (data.postType === 'hosted:video') {
+    content = data.postUrl;
+  }
+
+  // Card title definition
+  const MAX_TITLE_LENGTH = 40;
+  let cardTitle = data.title.substring(0, MAX_TITLE_LENGTH);
+  if (data.title.length > MAX_TITLE_LENGTH) {
+    cardTitle += '...';
+  }
+
+  return (
+    <div>
+      <Card onClick={handleCardClick} style={articleStyle.cardMain}>
+        <Card.Content style={articleStyle.cardContent}>
+          <Card.Header className="cardHeader">
+            <div className="title">
+              {cardTitle}
+              <br />
+            </div>
+            <div className="date">{data.creationDate}</div>
+          </Card.Header>
+          <br />
+          <Card.Description className="cardContent">{content}</Card.Description>
+        </Card.Content>
+      </Card>
+      <ArticleModal isModalOpen={isModalOpen} handleModalClose={handleModalClose} data={data} content={content} />
+    </div>
+  );
+};
+
+Article.propTypes = {
+  data: PropTypes.shape({
+    postType: PropTypes.string,
+    title: PropTypes.string.isRequired,
+    text: PropTypes.string.isRequired,
+    thumbnail: PropTypes.string,
+    postUrl: PropTypes.string,
+    creationDate: PropTypes.string.isRequired,
+  }),
+};
 
 export default Article;
