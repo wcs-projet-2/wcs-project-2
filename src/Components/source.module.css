@@ -1,13 +1,9 @@
 .leftArrow {
-  position: relative;
-  margin: auto;
-  padding: auto;
+  text-align: right;
 }
 
 .rightArrow {
-  position: relative;
-  margin: auto;
-  padding: auto;
+  text-align: left;
 }
 
 .cards {

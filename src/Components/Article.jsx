@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import './Article.css';
-import { Card, Responsive } from 'semantic-ui-react';
+import { Card } from 'semantic-ui-react';
 import ArticleModal from './ArticleModal.jsx';
 
 const Article = ({ data }) => {
@@ -22,6 +22,7 @@ const Article = ({ data }) => {
       overflow: 'hidden',
       width: '100%',
       height: '260px',
+      marginBottom: 0,
     },
     cardContent: {
       padding: '0px',
@@ -66,22 +67,20 @@ const Article = ({ data }) => {
 
   return (
     <div>
-      <Responsive>
-        <Card onClick={handleCardClick} style={articleStyle.cardMain}>
-          <Card.Content style={articleStyle.cardContent}>
-            <Card.Header className="cardHeader">
-              <div className="title">
-                {cardTitle}
-                <br />
-              </div>
-              <div className="date">{data.creationDate}</div>
-            </Card.Header>
-            <br />
-            <Card.Description className="cardContent">{content}</Card.Description>
-          </Card.Content>
-        </Card>
-        <ArticleModal isModalOpen={isModalOpen} handleModalClose={handleModalClose} data={data} content={content} />
-      </Responsive>
+      <Card onClick={handleCardClick} style={articleStyle.cardMain}>
+        <Card.Content style={articleStyle.cardContent}>
+          <Card.Header className="cardHeader">
+            <div className="title">
+              {cardTitle}
+              <br />
+            </div>
+            <div className="date">{data.creationDate}</div>
+          </Card.Header>
+          <br />
+          <Card.Description className="cardContent">{content}</Card.Description>
+        </Card.Content>
+      </Card>
+      <ArticleModal isModalOpen={isModalOpen} handleModalClose={handleModalClose} data={data} content={content} />
     </div>
   );
 };

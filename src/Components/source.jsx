@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Grid, Header, Container, Image, Button, Responsive } from 'semantic-ui-react';
+import { Grid, Header, Image, Button } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import Article from './Article.jsx';
 import styles from './source.module.css';
@@ -76,28 +76,24 @@ const Source = ({ source, data, isResizing }) => {
   });
 
   return (
-    <Responsive>
-      <Container fluid>
-        <Grid>
-          <Grid.Row style={{ marginTop: '40px' }}>
-            <Header as="h3" style={{ textTransform: 'uppercase', margin: 'auto' }}>
-              {title}
-              <Image className={styles.imageIcon} src={icon} size="mini" />
-            </Header>
-            <br />
-          </Grid.Row>
-          <Grid.Row centered>
-            <div className={styles.leftArrow} width={1}>
-              <Button icon="arrow left" onClick={() => handleClickArrow('left')} />
-            </div>
-            {cardDisplay}
-            <div className={styles.rightArrow} width={1}>
-              <Button icon="arrow right" onClick={() => handleClickArrow('right')} />
-            </div>
-          </Grid.Row>
-        </Grid>
-      </Container>
-    </Responsive>
+    <Grid>
+      <Grid.Row style={{ marginTop: '40px' }}>
+        <Header as="h3" style={{ textTransform: 'uppercase', margin: 'auto' }}>
+          {title}
+          <Image className={styles.imageIcon} src={icon} size="mini" />
+        </Header>
+        <br />
+      </Grid.Row>
+      <Grid.Row style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <Grid.Column className={styles.leftArrow} width={2} style={{ paddingRight: '0px' }}>
+          <Button icon="arrow left" onClick={() => handleClickArrow('left')} style={{ margin: '0px' }} />
+        </Grid.Column>
+        {cardDisplay}
+        <Grid.Column className={styles.rightArrow} width={2} style={{ paddingLeft: '0px' }}>
+          <Button icon="arrow right" onClick={() => handleClickArrow('right')} />
+        </Grid.Column>
+      </Grid.Row>
+    </Grid>
   );
 };
 

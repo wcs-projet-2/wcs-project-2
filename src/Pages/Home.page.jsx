@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styles from './Home.module.css';
-import { Image, Icon, Checkbox, Input, Container } from 'semantic-ui-react';
+import { Image, Icon, Checkbox, Input } from 'semantic-ui-react';
 import { Redirect } from 'react-router-dom';
 import logo from '../assets/images/Logo.png';
 
@@ -32,7 +32,7 @@ const Home = () => {
   let redirect = toSearch && <Redirect to={{ pathname: '/searchpoint', search: urlParams }} />;
 
   return (
-    <Container fluid style={{ height: '100%', display: 'flex', justifyContent: 'center' }}>
+    <div style={{ height: '100%', display: 'flex', justifyContent: 'center' }}>
       <div className={styles.container}>
         {redirect}
         <div className={styles.image}>
@@ -64,7 +64,7 @@ const Home = () => {
           </div>
         </div>
       </div>
-    </Container>
+    </div>
   );
 };
 
