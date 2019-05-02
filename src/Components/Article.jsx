@@ -29,6 +29,14 @@ const Article = ({ data }) => {
       wordWrap: 'break-word',
       textAlign: 'center',
     },
+    thumbnail: {
+      display: 'flex',
+      margin: 'auto',
+      border: '1px solid black',
+      // width: '100%',
+      maxHeight: '150px',
+      objectFit: 'cover',
+    },
   };
 
   let content;
@@ -41,18 +49,18 @@ const Article = ({ data }) => {
     }
   }
   if (data.postType === 'image') {
-    content = <img src={data.thumbnail} alt="" style={{ display: 'flex', margin: 'auto' }} />;
+    content = <img src={data.thumbnail} alt="" style={articleStyle.thumbnail} />;
   }
   if (data.postType === 'link') {
     content = (
       <div>
-        <img src={data.thumbnail} alt="" style={{ display: 'flex', margin: 'auto' }} />
+        <img src={data.thumbnail} alt="" style={articleStyle.thumbnail} />
         <p>{data.postUrl}</p>
       </div>
     );
   }
   if (data.postType === 'rich:video') {
-    content = <img src={data.thumbnail} alt="" style={{ display: 'flex', margin: 'auto' }} />;
+    content = <img src={data.thumbnail} alt="" style={articleStyle.thumbnail} />;
   }
   if (data.postType === 'hosted:video') {
     content = data.postUrl;
@@ -70,13 +78,9 @@ const Article = ({ data }) => {
       <Card onClick={handleCardClick} style={articleStyle.cardMain}>
         <Card.Content style={articleStyle.cardContent}>
           <Card.Header className="cardHeader">
-            <div className="title">
-              {cardTitle}
-              <br />
-            </div>
+            <div className="title">{cardTitle}</div>
             <div className="date">{data.creationDate}</div>
           </Card.Header>
-          <br />
           <Card.Description className="cardContent">{content}</Card.Description>
         </Card.Content>
       </Card>
