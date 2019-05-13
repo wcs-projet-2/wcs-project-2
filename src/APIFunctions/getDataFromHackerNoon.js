@@ -6,6 +6,19 @@ inputs: None
 Output: Array of fake data
 
 */
+// get random image
+const getRandomImage = () => {
+  const imgList = [
+    'https://www.rd.com/wp-content/uploads/2018/05/shutterstock_725437768-760x506.jpg',
+    'https://upload.wikimedia.org/wikipedia/commons/a/a3/Eq_it-na_pizza-margherita_sep2005_sml.jpg',
+    'https://i.ytimg.com/vi/bq8h94PpmcY/hqdefault.jpg',
+    'https://i.pinimg.com/236x/4a/ff/b8/4affb85914d69ff813b93edc7f27a4e4--mom-birthday-meme-happy-birthday-dad-funny.jpg',
+    'https://bambr.nl/resources/uploads/article/2018/4a345c22fe808f2a971eecfeb96993a2.jpg',
+  ];
+
+  return imgList[Math.floor(Math.random() * imgList.length)];
+};
+
 // get random text
 const getRandomText = (minLenght, maxLenght) => {
   const lorem =
@@ -56,9 +69,8 @@ let fakeDataFromHN = [
     title: getRandomText(20, 100),
     text: getRandomText(100, 300),
     postUrl: 'https://en.wikipedia.org/wiki/Pizza',
-    mediaSrc: 'https://upload.wikimedia.org/wikipedia/commons/a/a3/Eq_it-na_pizza-margherita_sep2005_sml.jpg',
-    thumbnail:
-      'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Eq_it-na_pizza-margherita_sep2005_sml.jpg/220px-Eq_it-na_pizza-margherita_sep2005_sml.jpg',
+    mediaSrc: getRandomImage(),
+    thumbnail: getRandomImage(),
     postType: getRandomPostType(),
   },
   {
@@ -70,9 +82,8 @@ let fakeDataFromHN = [
     title: getRandomText(20, 100),
     text: getRandomText(100, 300),
     postUrl: 'https://en.wikipedia.org/wiki/Pizza',
-    mediaSrc: 'https://upload.wikimedia.org/wikipedia/commons/a/a3/Eq_it-na_pizza-margherita_sep2005_sml.jpg',
-    thumbnail:
-      'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Eq_it-na_pizza-margherita_sep2005_sml.jpg/220px-Eq_it-na_pizza-margherita_sep2005_sml.jpg',
+    mediaSrc: getRandomImage(),
+    thumbnail: getRandomImage(),
     postType: getRandomPostType(),
   },
   {
@@ -84,9 +95,8 @@ let fakeDataFromHN = [
     title: getRandomText(20, 100),
     text: getRandomText(100, 300),
     postUrl: 'https://en.wikipedia.org/wiki/Pizza',
-    mediaSrc: 'https://upload.wikimedia.org/wikipedia/commons/a/a3/Eq_it-na_pizza-margherita_sep2005_sml.jpg',
-    thumbnail:
-      'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Eq_it-na_pizza-margherita_sep2005_sml.jpg/220px-Eq_it-na_pizza-margherita_sep2005_sml.jpg',
+    mediaSrc: getRandomImage(),
+    thumbnail: getRandomImage(),
     postType: getRandomPostType(),
   },
   {
@@ -98,9 +108,8 @@ let fakeDataFromHN = [
     title: getRandomText(20, 100),
     text: getRandomText(100, 300),
     postUrl: 'https://en.wikipedia.org/wiki/Pizza',
-    mediaSrc: 'https://upload.wikimedia.org/wikipedia/commons/a/a3/Eq_it-na_pizza-margherita_sep2005_sml.jpg',
-    thumbnail:
-      'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Eq_it-na_pizza-margherita_sep2005_sml.jpg/220px-Eq_it-na_pizza-margherita_sep2005_sml.jpg',
+    mediaSrc: getRandomImage(),
+    thumbnail: getRandomImage(),
     postType: getRandomPostType(),
   },
   {
@@ -112,9 +121,8 @@ let fakeDataFromHN = [
     title: getRandomText(20, 100),
     text: getRandomText(100, 300),
     postUrl: 'https://en.wikipedia.org/wiki/Pizza',
-    mediaSrc: 'https://upload.wikimedia.org/wikipedia/commons/a/a3/Eq_it-na_pizza-margherita_sep2005_sml.jpg',
-    thumbnail:
-      'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Eq_it-na_pizza-margherita_sep2005_sml.jpg/220px-Eq_it-na_pizza-margherita_sep2005_sml.jpg',
+    mediaSrc: getRandomImage(),
+    thumbnail: getRandomImage(),
     postType: getRandomPostType(),
   },
   {
@@ -126,9 +134,8 @@ let fakeDataFromHN = [
     title: getRandomText(20, 100),
     text: getRandomText(100, 300),
     postUrl: 'https://en.wikipedia.org/wiki/Pizza',
-    mediaSrc: 'https://upload.wikimedia.org/wikipedia/commons/a/a3/Eq_it-na_pizza-margherita_sep2005_sml.jpg',
-    thumbnail:
-      'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Eq_it-na_pizza-margherita_sep2005_sml.jpg/220px-Eq_it-na_pizza-margherita_sep2005_sml.jpg',
+    mediaSrc: getRandomImage(),
+    thumbnail: getRandomImage(),
     postType: getRandomPostType(),
   },
   {
@@ -140,9 +147,8 @@ let fakeDataFromHN = [
     title: getRandomText(20, 100),
     text: getRandomText(100, 300),
     postUrl: 'https://en.wikipedia.org/wiki/Pizza',
-    mediaSrc: 'https://upload.wikimedia.org/wikipedia/commons/a/a3/Eq_it-na_pizza-margherita_sep2005_sml.jpg',
-    thumbnail:
-      'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Eq_it-na_pizza-margherita_sep2005_sml.jpg/220px-Eq_it-na_pizza-margherita_sep2005_sml.jpg',
+    mediaSrc: getRandomImage(),
+    thumbnail: getRandomImage(),
     postType: getRandomPostType(),
   },
   {
@@ -154,9 +160,8 @@ let fakeDataFromHN = [
     title: getRandomText(20, 100),
     text: getRandomText(100, 300),
     postUrl: 'https://en.wikipedia.org/wiki/Pizza',
-    mediaSrc: 'https://upload.wikimedia.org/wikipedia/commons/a/a3/Eq_it-na_pizza-margherita_sep2005_sml.jpg',
-    thumbnail:
-      'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Eq_it-na_pizza-margherita_sep2005_sml.jpg/220px-Eq_it-na_pizza-margherita_sep2005_sml.jpg',
+    mediaSrc: getRandomImage(),
+    thumbnail: getRandomImage(),
     postType: getRandomPostType(),
   },
   {
@@ -168,9 +173,8 @@ let fakeDataFromHN = [
     title: getRandomText(20, 100),
     text: getRandomText(100, 300),
     postUrl: 'https://en.wikipedia.org/wiki/Pizza',
-    mediaSrc: 'https://upload.wikimedia.org/wikipedia/commons/a/a3/Eq_it-na_pizza-margherita_sep2005_sml.jpg',
-    thumbnail:
-      'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Eq_it-na_pizza-margherita_sep2005_sml.jpg/220px-Eq_it-na_pizza-margherita_sep2005_sml.jpg',
+    mediaSrc: getRandomImage(),
+    thumbnail: getRandomImage(),
     postType: getRandomPostType(),
   },
   {
@@ -182,9 +186,8 @@ let fakeDataFromHN = [
     title: getRandomText(20, 100),
     text: getRandomText(100, 300),
     postUrl: 'https://en.wikipedia.org/wiki/Pizza',
-    mediaSrc: 'https://upload.wikimedia.org/wikipedia/commons/a/a3/Eq_it-na_pizza-margherita_sep2005_sml.jpg',
-    thumbnail:
-      'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a3/Eq_it-na_pizza-margherita_sep2005_sml.jpg/220px-Eq_it-na_pizza-margherita_sep2005_sml.jpg',
+    mediaSrc: getRandomImage(),
+    thumbnail: getRandomImage(),
     postType: getRandomPostType(),
   },
 ];
