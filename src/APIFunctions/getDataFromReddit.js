@@ -16,7 +16,7 @@ import axios from 'axios';
 const getDataFromReddit = (keyWord, sortType, nbOfItems) => {
   return axios({
     method: 'get',
-    url: `http://www.reddit.com/search.json`,
+    url: `https://www.reddit.com/search.json`,
     params: {
       // ?q=${keyWord}&sort=${sortType}&limit=${nbOfItems}
       q: keyWord,
